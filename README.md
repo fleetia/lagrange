@@ -1,0 +1,127 @@
+# Lagrange
+
+Lagrange는 촘촘하고 정확한 data interface를 위한 editorial React design system입니다.
+
+- Package: <code>@fleetia/lagrange</code>
+- Registry: GitHub Packages
+- Runtime: React 18.2 이상, React 19 지원
+- Toolchain: Node.js 22.14 이상, pnpm 11.9.0
+- License: AGPL-3.0-only
+
+현재 API는 <code>1.0.0</code> 이전 단계입니다. 공개 API와 visual language가 안정화되기 전까지 minor release에서도 migration이 필요할 수 있습니다.
+
+## 설치
+
+GitHub Packages는 package를 읽을 때도 GitHub token을 요구합니다. consumer repository에는 registry mapping만 저장합니다.
+
+~~~ini
+@fleetia:registry=https://npm.pkg.github.com
+always-auth=true
+~~~
+
+pnpm 11은 committed project configuration의 registry credential을 신뢰하지 않으므로 token은 user-level configuration에만 설정합니다. GitHub의 <code>personal access token (classic)</code>을 사용하고, 설치 token에는 최소 <code>read:packages</code> 권한만 부여하세요.
+
+~~~bash
+export NODE_AUTH_TOKEN="YOUR_GITHUB_PACKAGES_TOKEN"
+pnpm config set --location=user //npm.pkg.github.com/:_authToken "$NODE_AUTH_TOKEN"
+~~~
+
+CI에서는 <code>actions/setup-node</code>의 <code>registry-url</code>과 secret <code>NODE_AUTH_TOKEN</code>을 사용합니다.
+
+~~~bash
+pnpm add @fleetia/lagrange
+~~~
+
+실제 token, <code>.env</code>, user-level <code>~/.npmrc</code>를 repository에 commit하지 마세요. token이 노출되면 즉시 revoke하고 새 token으로 교체해야 합니다.
+
+## 사용
+
+application entry에서 global stylesheet를 한 번 불러오고, UI root를 <code>ThemeRoot</code>로 감쌉니다.
+
+~~~tsx
+import type { ReactElement } from 'react';
+import { ThemeRoot } from '@fleetia/lagrange';
+import '@fleetia/lagrange/styles.css';
+
+import { App } from './App';
+
+export function Root(): ReactElement {
+  return (
+    <ThemeRoot>
+      <App />
+    </ThemeRoot>
+  );
+}
+~~~
+
+<code>styles.css</code>는 theme와 component styles를 포함합니다. application의 reset은 consumer가 소유하며, Lagrange stylesheet는 entry에서 한 번만 import합니다.
+
+<code>FormField</code>는 direct <code>TextField</code> 또는 <code>Select</code> 하나를 받습니다. field 안에서는 <code>id</code>와 <code>required</code>를 <code>FormField</code>에 지정하고, child의 같은 prop은 standalone 사용에만 적용됩니다.
+
+## Design principles
+
+Lagrange는 generic SaaS dashboard보다 편집물과 technical ledger에 가까운 화면을 지향합니다.
+
+- 정보 밀도를 우선하고 불필요한 card, pill, shadow, 큰 radius를 피합니다.
+- typography와 spacing으로 계층을 만들고 box는 의미 있는 경계에만 사용합니다.
+- focus와 error에서 border 두께나 component 크기를 바꾸지 않습니다. color, marker, background wash로 상태를 표현해 layout shift를 막습니다.
+- table과 반복 목록은 compact rhythm을 유지합니다. 기본 row는 22–24px 범위를 목표로 합니다.
+- decorative effect보다 읽기 순서, 숫자 정렬, keyboard interaction, contrast를 우선합니다.
+
+### Rule semantics
+
+Rule은 단순한 장식이 아니라 정보 구조를 표현합니다.
+
+| Semantic | 표현 | 사용처 |
+| --- | --- | --- |
+| <code>weak</code> | dotted hairline | body row, 같은 group 내부의 약한 구분 |
+| <code>boundary</code> | single 1px rule | 일반 section 경계, editable field baseline |
+| <code>structural</code> | 1px rule 두 개와 2–3px gap | <code>thead</code>/<code>tbody</code>, subtotal/total, form/action처럼 구조가 바뀌는 경계 |
+
+<code>structural</code>을 두꺼운 2px border 한 줄로 대체하지 않습니다. double rule의 두 선과 사이 공간이 구조적 의미의 일부입니다.
+
+## 개발
+
+~~~bash
+corepack enable
+corepack install --global pnpm@11.9.0
+pnpm install
+pnpm dev
+~~~
+
+주요 command:
+
+| Command | 역할 |
+| --- | --- |
+| <code>pnpm lint</code> | ESLint |
+| <code>pnpm typecheck</code> | TypeScript type check |
+| <code>pnpm test</code> | Vitest unit tests |
+| <code>pnpm build</code> | package build와 type declarations 생성 |
+| <code>pnpm verify:react-18</code> | packed package의 React 18.2 type compatibility 검증 |
+| <code>pnpm storybook:build</code> | static Storybook build |
+| <code>pnpm test:visual</code> | Playwright accessibility와 visual checks |
+| <code>pnpm check</code> | lint, typecheck, unit, React 18 compatibility, package/consumer/Storybook build |
+
+Playwright를 처음 실행하는 machine에서는 browser를 설치합니다.
+
+~~~bash
+pnpm exec playwright install chromium
+pnpm test:visual
+~~~
+
+자세한 contribution 규칙은 [CONTRIBUTING.md](./CONTRIBUTING.md)를 참고하세요.
+
+## Release
+
+Lagrange는 Changesets로 version을 관리하고 GitHub Packages에만 배포합니다.
+
+1. publishable change와 함께 <code>pnpm changeset</code>을 실행합니다.
+2. <code>main</code>에 merge되면 Release workflow가 release PR을 생성하거나 갱신합니다.
+3. release PR을 merge하면 workflow가 build 후 <code>@fleetia/lagrange</code>를 publish합니다.
+4. workflow는 repository-scoped <code>GITHUB_TOKEN</code>과 <code>packages: write</code>만 사용합니다.
+
+개인 token으로 local publish하지 않고 version을 수동으로 수정하지 않습니다.
+
+## License
+
+[AGPL-3.0-only](./LICENSE)

@@ -1,0 +1,215 @@
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#storybook-root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #f1eddf;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.lagrange-story {
+  min-height: 100vh;
+  padding: 32px 40px 48px;
+  background: #f1eddf;
+  color: #2f2a32;
+}
+
+.lagrange-story--compact {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.lagrange-story__kicker {
+  margin: 0 0 6px;
+  color: #62556f;
+  font: 600 10px/1.25 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lagrange-story__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.lagrange-story__meta {
+  color: #6f6970;
+  font: 500 10px/1.45 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.06em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.lagrange-story__section {
+  padding: 18px 0 22px;
+}
+
+.lagrange-story__section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.lagrange-story__index {
+  color: #6a5a7a;
+  font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.08em;
+}
+
+.lagrange-story__swatches {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  border-block: 1px dotted #8a818b;
+}
+
+.lagrange-story__swatch {
+  min-height: 130px;
+  padding: 74px 12px 12px;
+  border-inline-end: 1px dotted #8a818b;
+}
+
+.lagrange-story__swatch:last-child {
+  border-inline-end: 0;
+}
+
+.lagrange-story__swatch-name,
+.lagrange-story__swatch-value {
+  display: block;
+  font: 600 9px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.lagrange-story__swatch-value {
+  opacity: 0.72;
+}
+
+.lagrange-story__type-specimens {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 28px;
+}
+
+.lagrange-story__type-column {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.lagrange-story__rule-list {
+  display: grid;
+  gap: 24px;
+}
+
+.lagrange-story__rule-example {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+}
+
+.lagrange-story__quick-entry {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr 1.6fr 1.15fr 0.9fr auto;
+  align-items: end;
+  gap: 14px;
+  padding: 14px 0 16px;
+}
+
+.lagrange-story__state-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.lagrange-story__state-example {
+  min-width: 0;
+}
+
+.lagrange-story__table {
+  margin-top: 12px;
+}
+
+.lagrange-story__summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.lagrange-story__summary-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dotted #8a818b;
+}
+
+.lagrange-story__summary-value {
+  justify-self: end;
+  color: #4e4358;
+  font: 600 18px/1.1 Georgia, 'Times New Roman', serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.lagrange-story__note {
+  margin-top: 14px;
+  color: #6f6970;
+  font: 500 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@media (max-width: 900px) {
+  .lagrange-story {
+    padding: 24px;
+  }
+
+  .lagrange-story__quick-entry,
+  .lagrange-story__state-grid,
+  .lagrange-story__summary,
+  .lagrange-story__type-specimens {
+    grid-template-columns: 1fr;
+  }
+
+  .lagrange-story__swatches {
+    grid-template-columns: 1fr;
+  }
+
+  .lagrange-story__swatch {
+    min-height: 72px;
+    padding-top: 24px;
+    border-inline-end: 0;
+    border-block-end: 1px dotted #8a818b;
+  }
+
+  .lagrange-story__swatch:last-child {
+    border-block-end: 0;
+  }
+}
