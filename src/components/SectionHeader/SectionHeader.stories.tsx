@@ -19,7 +19,8 @@ const STORY_GRID_STYLE: CSSProperties = {
 };
 
 const meta = {
-  title: 'Components/SectionHeader',
+  title: 'Components/Structure/SectionHeader',
+  id: 'components-sectionheader',
   component: SectionHeader,
   args: {
     description: '계좌와 투자 자산을 합산한 현재 구성입니다.',

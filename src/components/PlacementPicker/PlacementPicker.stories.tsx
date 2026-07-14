@@ -6,7 +6,8 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { PlacementPicker } from './PlacementPicker';
 
 const meta = {
-  title: 'Components/PlacementPicker',
+  title: 'Components/Input/PlacementPicker',
+  id: 'components-placementpicker',
   component: PlacementPicker,
   decorators: [
     (Story) => (

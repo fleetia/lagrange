@@ -17,6 +17,18 @@ const REQUIRED_COMPONENT_STORIES = [
   'Variants',
 ] as const;
 
+const COMPONENT_FAMILIES = [
+  'Structure',
+  'Command',
+  'Input',
+  'Choice',
+  'Overlay',
+  'Feedback',
+  'Data',
+] as const;
+
+const FOUNDATION_DOCUMENTATION_TITLE = 'Foundations/Visual Language';
+
 test('each component family exposes the standard story catalog', async ({
   request,
 }) => {
@@ -27,9 +39,35 @@ test('each component family exposes the standard story catalog', async ({
   const componentStories = Object.values(index.entries).filter(
     ({ title, type }) => type === 'story' && title.startsWith('Components/'),
   );
+  const componentTitles = [...new Set(
+    componentStories.map(({ title }) => title),
+  )];
+
+  for (const title of componentTitles) {
+    const titleSegments = title.split('/');
+
+    expect(
+      titleSegments,
+      `${title} must follow Components/Family/Component`,
+    ).toHaveLength(3);
+    expect(
+      COMPONENT_FAMILIES,
+      `${title} must use a documented component family`,
+    ).toContain(titleSegments[1]);
+  }
+
+  const foundationComponentStories = Object.values(index.entries).filter(
+    ({ title, type }) =>
+      type === 'story' &&
+      title.startsWith('Foundations/') &&
+      title !== FOUNDATION_DOCUMENTATION_TITLE,
+  );
   const storiesByTitle = new Map<string, Set<string>>();
 
-  for (const { name, title } of componentStories) {
+  for (const { name, title } of [
+    ...componentStories,
+    ...foundationComponentStories,
+  ]) {
     const names = storiesByTitle.get(title) ?? new Set<string>();
     names.add(name);
     storiesByTitle.set(title, names);
@@ -80,18 +118,11 @@ test('RadialBreakdownChart Docs explains usage and API', async ({
   expect(response.ok()).toBe(true);
 
   const index = (await response.json()) as StorybookIndex;
-  const docsEntry = Object.entries(index.entries).find(
-    ([, { title, type }]) =>
-      type === 'docs' && title === 'Components/RadialBreakdownChart',
-  );
+  const docsId = 'components-radialbreakdownchart--docs';
+  const docsEntry = index.entries[docsId];
 
   expect(docsEntry).toBeDefined();
-
-  const docsId = docsEntry?.[0];
-
-  if (!docsId) {
-    throw new Error('RadialBreakdownChart Docs entry is missing.');
-  }
+  expect(docsEntry?.type).toBe('docs');
 
   await page.goto(`/iframe.html?id=${docsId}&viewMode=docs`);
 

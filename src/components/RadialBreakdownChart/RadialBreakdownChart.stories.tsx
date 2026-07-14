@@ -164,7 +164,8 @@ const MULTI_RING_DATA: readonly RadialBreakdownRing[] = [
 ];
 
 const meta = {
-  title: 'Components/RadialBreakdownChart',
+  title: 'Components/Data/RadialBreakdownChart',
+  id: 'components-radialbreakdownchart',
   component: RadialBreakdownChart,
   parameters: {
     docs: {

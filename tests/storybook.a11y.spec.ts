@@ -84,6 +84,7 @@ const STORY_CASES: readonly StoryA11yCase[] = [
     id: 'components-sectionheader--accessibility',
     name: 'SectionHeader accessibility',
   },
+  { id: 'components-select--accessibility', name: 'Select accessibility' },
   { id: 'components-toolbar--accessibility', name: 'Toolbar accessibility' },
   {
     id: 'components-statusmarker--accessibility',
@@ -92,6 +93,10 @@ const STORY_CASES: readonly StoryA11yCase[] = [
   { id: 'components-switch--accessibility', name: 'Switch accessibility' },
   { id: 'components-tabs--accessibility', name: 'Tabs accessibility' },
   { id: 'components-textarea--accessibility', name: 'TextArea accessibility' },
+  {
+    id: 'components-textfield--accessibility',
+    name: 'TextField accessibility',
+  },
   {
     id: 'components-themeroot--accessibility',
     name: 'ThemeRoot accessibility',

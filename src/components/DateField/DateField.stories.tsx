@@ -7,7 +7,8 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { DateField } from './DateField';
 
 const meta = {
-  title: 'Components/DateField',
+  title: 'Components/Input/DateField',
+  id: 'components-datefield',
   component: DateField,
   decorators: [
     (Story) => (

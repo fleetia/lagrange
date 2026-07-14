@@ -7,7 +7,12 @@ import { Stack } from '../Layout/Layout';
 import { Text } from '../Typography/Typography';
 import { ThemeRoot } from '../../theme/ThemeRoot';
 import { DataGrid } from './DataGrid';
-import type { DataGridCellCommit, DataGridColumn, DataGridSort } from './types';
+import type {
+  DataGridCellCommit,
+  DataGridColumn,
+  DataGridProps,
+  DataGridSort,
+} from './types';
 
 type LedgerRow = {
   amount: string;
@@ -76,6 +81,10 @@ function updateRows(
   );
 }
 
+function LedgerDataGrid(props: DataGridProps<LedgerRow>): ReactElement {
+  return <DataGrid {...props} />;
+}
+
 function DataGridExample(): ReactElement {
   const [rows, setRows] = useState(INITIAL_ROWS);
   const [selectedKeys, setSelectedKeys] = useState<ReadonlySet<Key>>(new Set());
@@ -138,12 +147,26 @@ function DataGridExample(): ReactElement {
 }
 
 const meta = {
-  title: 'Components/DataGrid',
+  title: 'Components/Data/DataGrid',
+  id: 'components-datagrid',
+  component: LedgerDataGrid,
+  args: {
+    'aria-label': '거래 내역',
+    columns: COLUMNS,
+    getRowKey: (row: LedgerRow) => row.id,
+    rows: INITIAL_ROWS,
+  },
   parameters: {
     controls: { disable: true },
+    docs: {
+      description: {
+        component:
+          'Keyboard cell navigation, sorting, row selection, inline editing을 제공하는 generic data grid입니다. 조회 전용 semantic table만 필요하면 DataTable을 사용합니다.',
+      },
+    },
   },
   tags: ['autodocs'],
-} satisfies Meta;
+} satisfies Meta<typeof LedgerDataGrid>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

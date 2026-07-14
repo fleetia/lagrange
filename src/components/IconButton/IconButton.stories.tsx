@@ -13,10 +13,17 @@ const EDIT_ICON = (
 );
 
 const meta = {
-  title: 'Components/IconButton',
+  title: 'Components/Command/IconButton',
+  id: 'components-iconbutton',
   component: IconButton,
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component:
+          'Icon-only command에 visible tooltip 없이도 accessible name을 제공하는 compact button입니다. Default, quiet, critical hierarchy를 지원합니다.',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {

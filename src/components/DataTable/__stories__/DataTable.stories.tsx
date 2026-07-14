@@ -77,7 +77,8 @@ function LedgerTable(props: DataTableProps<LedgerRow>): ReactElement {
 }
 
 const meta = {
-  title: 'Components/DataTable',
+  title: 'Components/Data/DataTable',
+  id: 'components-datatable',
   component: LedgerTable,
   args: {
     'aria-label': '거래 내역',

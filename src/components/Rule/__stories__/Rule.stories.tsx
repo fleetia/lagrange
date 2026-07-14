@@ -15,7 +15,8 @@ const LABEL_STYLE: CSSProperties = {
 };
 
 const meta = {
-  title: 'Components/Rule',
+  title: 'Foundations/Rule',
+  id: 'components-rule',
   component: Rule,
   parameters: {
     layout: 'padded',

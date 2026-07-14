@@ -125,7 +125,7 @@ Lagrange는 app domain을 포함하지 않는 generic component만 제공합니�
 | Foundation | <code>ThemeRoot</code>, <code>Text</code>, <code>Heading</code>, <code>Rule</code>, <code>Stack</code>, <code>Inline</code>, <code>VisuallyHidden</code> |
 | Structure | <code>Section</code>, <code>SectionHeader</code>, <code>Toolbar</code>, <code>FieldGroup</code>, <code>FieldGrid</code>, <code>Breadcrumb</code>, <code>Tabs</code>, <code>TabList</code>, <code>Tab</code>, <code>TabPanel</code> |
 | Command | <code>Action</code>, <code>Button</code>, <code>Icon</code>, <code>IconButton</code> |
-| Input | <code>FormField</code>, <code>TextField</code>, <code>TextArea</code>, <code>NumberField</code>, <code>DateField</code>, <code>Select</code>, <code>Combobox</code>, <code>RangeField</code>, <code>ColorField</code>, <code>PlacementPicker</code> |
+| Input | <code>FormField</code>, <code>TextField</code>, <code>TextArea</code>, <code>NumberField</code>, <code>DateField</code>, <code>Select</code>, <code>Combobox</code>, <code>RangeField</code>, <code>ColorField</code>, <code>PlacementPicker</code>, <code>InlineEdit</code> |
 | Choice | <code>Checkbox</code>, <code>RadioGroup</code>, <code>Radio</code>, <code>Switch</code>, <code>ChoiceGroup</code>, <code>Choice</code> |
 | Overlay | <code>Dialog</code>, <code>ContextMenu</code>, <code>ContextMenuItem</code> |
 | Feedback | <code>SaveStatus</code>, <code>StatusMarker</code> |

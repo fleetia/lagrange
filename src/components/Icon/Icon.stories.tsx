@@ -6,10 +6,17 @@ import { themeVars } from '../../theme/themeContract.css';
 import { Icon } from './Icon';
 
 const meta = {
-  title: 'Components/Icon',
+  title: 'Components/Command/Icon',
+  id: 'components-icon',
   component: Icon,
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component:
+          '현재 text color를 상속하는 SVG icon primitive입니다. Decorative icon은 accessibility tree에서 숨기고, 의미가 있으면 label을 함께 제공합니다.',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {

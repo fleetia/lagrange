@@ -7,10 +7,18 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { ContextMenu, ContextMenuItem } from './ContextMenu';
 
 const meta = {
-  title: 'Components/ContextMenu',
+  title: 'Components/Overlay/ContextMenu',
+  id: 'components-contextmenu',
   component: ContextMenu,
+  subcomponents: { ContextMenuItem },
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      description: {
+        component:
+          'Viewport 안에 위치를 보정하는 controlled context menu입니다. ContextMenuItem은 disabled와 critical tone, keyboard selection 뒤 trigger focus 복귀를 제공합니다.',
+      },
+    },
   },
   decorators: [
     (Story): ReactElement => (

@@ -14,8 +14,10 @@ const PERIOD_CHOICES = (
 );
 
 const meta = {
-  title: 'Components/ChoiceGroup',
+  title: 'Components/Choice/ChoiceGroup',
+  id: 'components-choicegroup',
   component: ChoiceGroup,
+  subcomponents: { Choice },
   decorators: [
     (Story) => (
       <ThemeRoot className="lagrange-story lagrange-story--compact">

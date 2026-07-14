@@ -25,11 +25,16 @@ type LedgerRecord = {
 
 const meta = {
   title: 'Compositions/Recent Records',
-  component: ThemeRoot,
   parameters: {
     controls: { disable: true },
+    docs: {
+      description: {
+        component:
+          'Typography, Rule, DataTable을 사용해 summary와 recent records hierarchy를 구성한 read-only ledger composition입니다.',
+      },
+    },
   },
-} satisfies Meta<typeof ThemeRoot>;
+} satisfies Meta;
 
 export default meta;
 

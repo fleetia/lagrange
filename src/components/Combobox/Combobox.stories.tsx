@@ -22,8 +22,17 @@ const PAYMENT_OPTIONS = [
 ] as const;
 
 const meta = {
-  title: 'Components/Combobox',
+  title: 'Components/Input/Combobox',
+  id: 'components-combobox',
   component: Combobox,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '입력값으로 option을 좁히고 keyboard navigation으로 선택하는 FormField-compatible combobox입니다. Controlled와 uncontrolled value를 모두 지원합니다.',
+      },
+    },
+  },
   decorators: [
     (Story): ReactElement => (
       <ThemeRoot style={{ minHeight: 280, padding: 32 }}>

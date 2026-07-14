@@ -8,7 +8,8 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { SaveStatus } from './SaveStatus';
 
 const meta = {
-  title: 'Components/SaveStatus',
+  title: 'Components/Feedback/SaveStatus',
+  id: 'components-savestatus',
   component: SaveStatus,
   decorators: [
     (Story): ReactElement => (
@@ -18,6 +19,14 @@ const meta = {
     ),
   ],
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Idle, saving, saved, error lifecycle을 compact live-region message로 전달합니다. Error action은 alert 밖에 두어 message와 interactive control의 책임을 분리합니다.',
+      },
+    },
+  },
   args: {
     state: 'saved',
   },

@@ -14,8 +14,10 @@ const DEFAULT_OPTIONS = (
 );
 
 const meta = {
-  title: 'Components/RadioGroup',
+  title: 'Components/Choice/RadioGroup',
+  id: 'components-radiogroup',
   component: RadioGroup,
+  subcomponents: { Radio },
   decorators: [
     (Story) => (
       <ThemeRoot className="lagrange-story lagrange-story--compact">

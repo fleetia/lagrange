@@ -91,7 +91,8 @@ function ConfirmationDialogExample(): ReactElement {
 }
 
 const meta = {
-  title: 'Components/Dialog',
+  title: 'Components/Overlay/Dialog',
+  id: 'components-dialog',
   component: Dialog,
   args: {
     children: 'Dialog content',

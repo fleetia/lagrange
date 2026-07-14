@@ -16,11 +16,16 @@ import {
 
 const meta = {
   title: 'Compositions/Quick Entry',
-  component: ThemeRoot,
   parameters: {
     controls: { disable: true },
+    docs: {
+      description: {
+        component:
+          'FormField, Select, TextField, Action을 compact keyboard-first ledger form으로 조합한 reference composition입니다.',
+      },
+    },
   },
-} satisfies Meta<typeof ThemeRoot>;
+} satisfies Meta;
 
 export default meta;
 

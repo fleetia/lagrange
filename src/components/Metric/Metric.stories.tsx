@@ -25,7 +25,8 @@ const GRID_STYLE: CSSProperties = {
 };
 
 const meta = {
-  title: 'Components/Metric',
+  title: 'Components/Data/Metric',
+  id: 'components-metric',
   component: Metric,
   args: {
     detail: '전월 대비 +4.2%',

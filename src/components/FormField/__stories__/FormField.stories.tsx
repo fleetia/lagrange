@@ -16,7 +16,8 @@ const FIELD_GRID_STYLE: CSSProperties = {
 };
 
 const meta = {
-  title: 'Components/Form Controls',
+  title: 'Components/Input/FormField',
+  id: 'components-form-controls',
   component: FormField,
   subcomponents: { Select, TextField },
   args: {
@@ -127,54 +128,6 @@ export const Accessibility: Story = {
     await expect(describedBy).toContain(description.id);
     await expect(describedBy).toContain(error.id);
   },
-};
-
-export const TextFieldStates: Story = {
-  render: (): ReactElement => (
-    <div style={FIELD_GRID_STYLE}>
-      <FormField description="기본 입력 상태" label="기본" marker="S1">
-        <TextField defaultValue="카페라떼" />
-      </FormField>
-      <FormField description="Keyboard focus" label="포커스" marker="S2">
-        <TextField autoFocus defaultValue="카페라떼" />
-      </FormField>
-      <FormField error="내용을 입력하세요" label="오류" marker="S3" required>
-        <TextField defaultValue="" />
-      </FormField>
-      <FormField description="수정할 수 없는 확정 값" label="읽기 전용" marker="S4">
-        <TextField defaultValue="정기 지출" readOnly />
-      </FormField>
-      <FormField description="현재 사용할 수 없음" label="비활성" marker="S5">
-        <TextField defaultValue="잠긴 계정" disabled />
-      </FormField>
-    </div>
-  ),
-};
-
-export const SelectStates: Story = {
-  render: (): ReactElement => (
-    <div style={FIELD_GRID_STYLE}>
-      <FormField label="카테고리" marker="C1">
-        <Select defaultValue="cafe">
-          <option value="cafe">식비 › 카페</option>
-          <option value="transport">교통비 › 대중교통</option>
-        </Select>
-      </FormField>
-      <FormField error="카테고리를 선택하세요" label="오류" marker="C2" required>
-        <Select defaultValue="">
-          <option disabled value="">
-            선택하세요
-          </option>
-          <option value="cafe">식비 › 카페</option>
-        </Select>
-      </FormField>
-      <FormField description="계좌 연결 후 선택 가능" label="비활성" marker="C3">
-        <Select defaultValue="cash" disabled>
-          <option value="cash">현금</option>
-        </Select>
-      </FormField>
-    </div>
-  ),
 };
 
 export const KeyboardFlow: Story = {

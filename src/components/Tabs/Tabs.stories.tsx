@@ -51,8 +51,10 @@ function SettingsTabs({
 }
 
 const meta = {
-  title: 'Components/Tabs',
+  title: 'Components/Structure/Tabs',
+  id: 'components-tabs',
   component: Tabs,
+  subcomponents: { Tab, TabList, TabPanel },
   parameters: {
     layout: 'padded',
     docs: {

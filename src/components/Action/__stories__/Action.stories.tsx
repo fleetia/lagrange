@@ -28,7 +28,8 @@ function KeyboardActivationStory(): ReactElement {
 }
 
 const meta = {
-  title: 'Components/Action',
+  title: 'Components/Command/Action',
+  id: 'components-action',
   component: Action,
   parameters: {
     layout: 'padded',

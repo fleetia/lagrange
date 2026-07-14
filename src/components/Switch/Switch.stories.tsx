@@ -6,7 +6,8 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { Switch } from './Switch';
 
 const meta = {
-  title: 'Components/Switch',
+  title: 'Components/Choice/Switch',
+  id: 'components-switch',
   component: Switch,
   decorators: [
     (Story) => (
