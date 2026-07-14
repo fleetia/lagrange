@@ -98,4 +98,25 @@ describe('DataTable', () => {
 
     expect(emptyCell.getAttribute('colspan')).toBe('3');
   });
+
+  it('marks muted and critical rows with their public tone', () => {
+    render(
+      <DataTable
+        aria-label="상태별 거래 내역"
+        columns={COLUMNS}
+        getRowKey={(transaction) => transaction.id}
+        getRowTone={(transaction) =>
+          transaction.id === 'tx-1' ? 'muted' : 'critical'
+        }
+        rows={TRANSACTIONS}
+      />,
+    );
+
+    expect(screen.getByText('카페라떼').closest('tr')?.dataset.rowTone).toBe(
+      'muted',
+    );
+    expect(screen.getByText('점심 식사').closest('tr')?.dataset.rowTone).toBe(
+      'critical',
+    );
+  });
 });

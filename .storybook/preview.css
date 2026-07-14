@@ -30,7 +30,7 @@ textarea {
 .lagrange-story {
   min-height: 100vh;
   padding: 32px 40px 48px;
-  background: #f1eddf;
+  background-color: #f1eddf;
   color: #2f2a32;
 }
 
@@ -184,6 +184,28 @@ textarea {
   margin-top: 14px;
   color: #6f6970;
   font: 500 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.lagrange-radial-center {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  color: #4d2d57;
+  white-space: nowrap;
+}
+
+.lagrange-radial-center__title {
+  font: 650 13px/1.35 Pretendard, "IBM Plex Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+
+.lagrange-radial-center__kicker {
+  font: 700 10.5px/1.35 Pretendard, "IBM Plex Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  letter-spacing: 0.035em;
+}
+
+.lagrange-radial-center__amount {
+  font: 700 12px/1.35 "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-variant-numeric: tabular-nums;
 }
 
 @media (max-width: 900px) {

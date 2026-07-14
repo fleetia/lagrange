@@ -31,6 +31,24 @@ function run(command, args, cwd) {
   }
 }
 
+function read(command, args, cwd) {
+  const result = spawnSync(command, args, {
+    cwd,
+    encoding: 'utf8',
+    env: process.env,
+  });
+
+  if (result.error) {
+    throw result.error;
+  }
+
+  if (result.status !== 0) {
+    throw new Error(`${command} ${args.join(' ')} exited with ${result.status}`);
+  }
+
+  return result.stdout;
+}
+
 async function verifyReact18() {
   const temporaryRoot = await mkdtemp(join(tmpdir(), 'lagrange-react-18-'));
 
@@ -54,6 +72,16 @@ async function verifyReact18() {
     const packagePath = join(consumer, 'package.json');
     const manifest = JSON.parse(await readFile(packagePath, 'utf8'));
     const tarballPath = join(artifacts, tarballs[0]);
+    const packageFiles = read('tar', ['-tzf', tarballPath], ROOT).split('\n');
+    const privateDeclarations = packageFiles.filter((file) =>
+      /\.(?:stories|test)\.d\.ts$/.test(file),
+    );
+
+    if (privateDeclarations.length > 0) {
+      throw new Error(
+        `Package contains private declarations:\n${privateDeclarations.join('\n')}`,
+      );
+    }
 
     manifest.dependencies['@fleetia/lagrange'] = `file:${tarballPath}`;
     await writeFile(packagePath, `${JSON.stringify(manifest, null, 2)}\n`);

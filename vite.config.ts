@@ -9,7 +9,11 @@ export default defineConfig({
     react(),
     vanillaExtractPlugin(),
     dts({
-      exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx'],
+      exclude: [
+        'src/**/*.stories.tsx',
+        'src/**/*.test.ts',
+        'src/**/*.test.tsx',
+      ],
       insertTypesEntry: true,
       tsconfigPath: './tsconfig.build.json',
     }),

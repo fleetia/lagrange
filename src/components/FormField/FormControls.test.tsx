@@ -47,6 +47,26 @@ describe('Form controls', () => {
     expect(handleChange).toHaveBeenCalledTimes(1);
   });
 
+  it('preserves native disabled and read-only TextField states', () => {
+    render(
+      <>
+        <FormField label="비활성 내용">
+          <TextField defaultValue="잠긴 계정" disabled />
+        </FormField>
+        <FormField label="읽기 전용 내용">
+          <TextField defaultValue="정기 지출" readOnly />
+        </FormField>
+      </>,
+    );
+
+    expect(screen.getByLabelText('비활성 내용').hasAttribute('disabled')).toBe(
+      true,
+    );
+    expect(
+      screen.getByLabelText('읽기 전용 내용').hasAttribute('readonly'),
+    ).toBe(true);
+  });
+
   it('keeps the FormField label connected when a child id is provided', () => {
     render(
       <FormField id="amount-field" label="금액">
@@ -114,6 +134,20 @@ describe('Form controls', () => {
 
     expect(select.tagName).toBe('SELECT');
     expect(select.value).toBe('cafe');
+  });
+
+  it('preserves the native disabled Select state', () => {
+    render(
+      <FormField label="결제수단">
+        <Select defaultValue="cash" disabled>
+          <option value="cash">현금</option>
+        </Select>
+      </FormField>,
+    );
+
+    expect(screen.getByLabelText('결제수단').hasAttribute('disabled')).toBe(
+      true,
+    );
   });
 
   it('keeps the FormField label connected to Select child ids', () => {

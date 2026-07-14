@@ -56,7 +56,25 @@ export function Root(): ReactElement {
 
 <code>styles.css</code>는 theme와 component styles를 포함합니다. application의 reset은 consumer가 소유하며, Lagrange stylesheet는 entry에서 한 번만 import합니다.
 
-<code>FormField</code>는 direct <code>TextField</code> 또는 <code>Select</code> 하나를 받습니다. field 안에서는 <code>id</code>와 <code>required</code>를 <code>FormField</code>에 지정하고, child의 같은 prop은 standalone 사용에만 적용됩니다.
+<code>FormField</code>는 direct form control 하나를 받습니다. field 안에서는 <code>id</code>와 <code>required</code>를 <code>FormField</code>에 지정하고, child의 같은 prop은 standalone 사용에만 적용됩니다. 현재 <code>TextField</code>, <code>TextArea</code>, <code>NumberField</code>, <code>DateField</code>, <code>Select</code>, <code>Combobox</code>가 이 contract를 지원합니다.
+
+## Components
+
+Lagrange는 app domain을 포함하지 않는 generic component만 제공합니다.
+
+| Family | Components |
+| --- | --- |
+| Foundation | <code>ThemeRoot</code>, <code>Text</code>, <code>Heading</code>, <code>Rule</code>, <code>Stack</code>, <code>Inline</code>, <code>VisuallyHidden</code> |
+| Structure | <code>Section</code>, <code>SectionHeader</code>, <code>Toolbar</code>, <code>FieldGroup</code>, <code>FieldGrid</code> |
+| Command | <code>Action</code>, <code>Button</code>, <code>Icon</code>, <code>IconButton</code> |
+| Input | <code>FormField</code>, <code>TextField</code>, <code>TextArea</code>, <code>NumberField</code>, <code>DateField</code>, <code>Select</code>, <code>Combobox</code> |
+| Choice | <code>Checkbox</code>, <code>RadioGroup</code>, <code>Radio</code>, <code>Switch</code>, <code>ChoiceGroup</code>, <code>Choice</code> |
+| Feedback | <code>SaveStatus</code>, <code>StatusMarker</code> |
+| Data | <code>Metric</code>, <code>DataTable</code>, <code>DataGrid</code>, <code>RadialBreakdownChart</code> |
+
+<code>DataTable</code>은 semantic read-only data에 사용합니다. keyboard cell navigation, sorting, row selection, inline editing이 필요하면 <code>DataGrid</code>를 사용합니다. <code>RadialBreakdownChart</code>에는 자산·부채 같은 domain 의미를 넣지 않고 segment와 formatter만 전달합니다.
+
+Storybook은 각 component의 Default, Variants, States, Accessibility와 실제 keyboard interaction을 제공합니다.
 
 ## Design principles
 

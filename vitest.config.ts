@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react(), vanillaExtractPlugin()],
   test: {
     environment: 'happy-dom',
-    include: ['src/**/*.test.tsx'],
+    include: ['src/**/*.test.{ts,tsx}'],
     restoreMocks: true,
   },
 });
