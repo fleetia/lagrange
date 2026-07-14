@@ -21,6 +21,7 @@ describe('createThemeTokens', () => {
       },
       component: {
         button: { primaryBackground: '#294f59' },
+        navigation: { selectedIndicator: '#6f7748' },
       },
     });
 
@@ -31,6 +32,10 @@ describe('createThemeTokens', () => {
     expect(theme.component.button.primaryBackground).toBe('#294f59');
     expect(theme.component.button.primaryText).toBe(
       componentTokens.button.primaryText,
+    );
+    expect(theme.component.navigation.selectedIndicator).toBe('#6f7748');
+    expect(theme.component.navigation.separator).toBe(
+      componentTokens.navigation.separator,
     );
   });
 

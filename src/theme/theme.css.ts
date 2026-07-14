@@ -15,6 +15,9 @@ const componentResetTokens = {
   table: resetTokenGroup(componentTokens.table),
   rule: resetTokenGroup(componentTokens.rule),
   chart: resetTokenGroup(componentTokens.chart),
+  overlay: resetTokenGroup(componentTokens.overlay),
+  navigation: resetTokenGroup(componentTokens.navigation),
+  range: resetTokenGroup(componentTokens.range),
 };
 
 const semanticDefaultTokens = {

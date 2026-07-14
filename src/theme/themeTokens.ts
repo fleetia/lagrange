@@ -142,6 +142,29 @@ export const componentTokens: LagrangeTheme['component'] = {
     pigmentLight: themeVars.semantic.color.surface.raised,
     pigmentFiber: themeVars.semantic.color.content.secondary,
   },
+  overlay: {
+    backdrop: `color-mix(in srgb, ${themeVars.semantic.color.content.accent} 42%, transparent)`,
+    surface: themeVars.semantic.color.surface.raised,
+    border: themeVars.semantic.color.border.strong,
+    text: themeVars.semantic.color.content.primary,
+  },
+  navigation: {
+    text: themeVars.semantic.color.content.secondary,
+    hoverText: themeVars.semantic.color.content.accent,
+    hoverSurface: themeVars.semantic.color.interaction.focusSurface,
+    selectedText: themeVars.semantic.color.content.accent,
+    selectedSurface: themeVars.semantic.color.selection.surface,
+    selectedIndicator: themeVars.semantic.color.selection.indicator,
+    separator: themeVars.semantic.color.border.subtle,
+  },
+  range: {
+    track: themeVars.semantic.color.border.subtle,
+    activeTrack: themeVars.semantic.color.interaction.primary,
+    thumb: themeVars.semantic.color.interaction.primary,
+    focusIndicator: themeVars.semantic.color.interaction.focus,
+    disabledTrack: themeVars.semantic.color.border.subtle,
+    disabledThumb: themeVars.semantic.color.content.secondary,
+  },
 };
 
 export const lagrangeTheme: LagrangeTheme = {
@@ -255,6 +278,18 @@ export const createThemeTokens = (
     chart: mergeTokenGroup(
       componentTokens.chart,
       overrides.component?.chart,
+    ),
+    overlay: mergeTokenGroup(
+      componentTokens.overlay,
+      overrides.component?.overlay,
+    ),
+    navigation: mergeTokenGroup(
+      componentTokens.navigation,
+      overrides.component?.navigation,
+    ),
+    range: mergeTokenGroup(
+      componentTokens.range,
+      overrides.component?.range,
     ),
   },
 });
