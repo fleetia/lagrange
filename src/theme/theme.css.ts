@@ -1,58 +1,97 @@
 import { createTheme, style } from '@vanilla-extract/css';
 
-import { tokens } from './tokens';
+import { semanticVars, themeVars } from './themeContract.css';
+import { componentTokens, semanticTokens } from './themeTokens';
 
-const PAPER_GRAIN_SVG = [
-  '<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">',
-  '<defs>',
-  '<radialGradient id="wash"><stop stop-color="#6f5e66" stop-opacity=".04"/><stop offset="1" stop-color="#6f5e66" stop-opacity="0"/></radialGradient>',
-  '<radialGradient id="lift"><stop stop-color="#fffdf5" stop-opacity=".14"/><stop offset="1" stop-color="#fffdf5" stop-opacity="0"/></radialGradient>',
-  '<pattern id="a" width="7" height="11" patternUnits="userSpaceOnUse" patternTransform="rotate(7)">',
-  '<path fill="#4d2d57" fill-opacity=".095" d="M1.1 2.2h.55v.55h-.55zM5.4 8.3h.35v.35h-.35z"/>',
-  '</pattern>',
-  '<pattern id="b" width="13" height="17" patternUnits="userSpaceOnUse" patternTransform="rotate(-11)">',
-  '<path fill="#fffdf6" fill-opacity=".28" d="M2.4 4.1h.7v.7h-.7zM10.1 13.2h.45v.45h-.45z"/>',
-  '<path fill="#756269" fill-opacity=".075" d="M6.2 9.1h1.05v.35H6.2z"/>',
-  '</pattern>',
-  '<pattern id="c" width="19" height="23" patternUnits="userSpaceOnUse" patternTransform="rotate(19)">',
-  '<path fill="#3f3440" fill-opacity=".065" d="M3.2 6.4h1.25v.45H3.2zM15.1 17.8h.55v.9h-.55z"/>',
-  '<path fill="#fffaf0" fill-opacity=".22" d="M9.2 2.1h.4v.4h-.4z"/>',
-  '</pattern>',
-  '<pattern id="d" width="43" height="47" patternUnits="userSpaceOnUse" patternTransform="rotate(-13)">',
-  '<circle cx="9" cy="11" r="5" fill="url(#wash)"/><circle cx="34" cy="37" r="4" fill="url(#lift)"/>',
-  '</pattern>',
-  '</defs>',
-  '<rect width="128" height="128" fill="url(#a)"/>',
-  '<rect width="128" height="128" fill="url(#b)"/>',
-  '<rect width="128" height="128" fill="url(#c)"/>',
-  '<rect width="128" height="128" fill="url(#d)"/>',
-  '</svg>',
-].join('');
+const resetTokenGroup = <Group extends Readonly<Record<string, string>>>(
+  group: Group,
+): Group =>
+  Object.fromEntries(Object.keys(group).map((key) => [key, 'initial'])) as Group;
 
-const PAPER_GRAIN_TEXTURE = `url("data:image/svg+xml,${encodeURIComponent(PAPER_GRAIN_SVG)}")`;
+const componentResetTokens = {
+  control: resetTokenGroup(componentTokens.control),
+  button: resetTokenGroup(componentTokens.button),
+  choice: resetTokenGroup(componentTokens.choice),
+  table: resetTokenGroup(componentTokens.table),
+  rule: resetTokenGroup(componentTokens.rule),
+  chart: resetTokenGroup(componentTokens.chart),
+};
 
-export const [themeClass, vars] = createTheme({
-  color: tokens.color,
-  font: tokens.font,
-  fontSize: tokens.fontSize,
-  lineHeight: tokens.lineHeight,
-  space: tokens.space,
-  size: tokens.size,
-  radius: tokens.radius,
-  border: tokens.border,
-});
+const semanticDefaultTokens = {
+  ...semanticTokens,
+  color: {
+    ...semanticTokens.color,
+    content: {
+      ...semanticTokens.color.content,
+      onAccent: 'initial',
+    },
+    interaction: {
+      ...semanticTokens.color.interaction,
+      primary: 'initial',
+      primaryHover: 'initial',
+    },
+    selection: {
+      indicator: 'initial',
+      surface: 'initial',
+    },
+  },
+};
+
+export const lagrangeThemeClass = createTheme(
+  themeVars,
+  {
+    semantic: semanticDefaultTokens,
+    component: componentResetTokens,
+  },
+  'lagrange',
+);
+
+export const themeClass = lagrangeThemeClass;
+
+export const vars = {
+  color: {
+    paper: themeVars.semantic.color.surface.canvas,
+    paperRaised: themeVars.semantic.color.surface.raised,
+    paperMuted: themeVars.semantic.color.surface.muted,
+    ink: themeVars.semantic.color.content.primary,
+    inkMuted: themeVars.semantic.color.content.secondary,
+    rule: themeVars.semantic.color.border.strong,
+    ruleMuted: themeVars.semantic.color.border.subtle,
+    aubergine: themeVars.semantic.color.content.accent,
+    periwinkle: themeVars.semantic.color.interaction.focus,
+    periwinkleWash: themeVars.semantic.color.interaction.focusSurface,
+    olive: themeVars.semantic.color.status.positive,
+    oliveWash: themeVars.semantic.color.status.positiveSurface,
+    vermilion: themeVars.semantic.color.status.critical,
+    vermilionWash: themeVars.semantic.color.status.criticalSurface,
+  },
+  font: themeVars.semantic.typography.family,
+  fontSize: themeVars.semantic.typography.size,
+  lineHeight: themeVars.semantic.typography.lineHeight,
+  space: themeVars.semantic.space,
+  size: {
+    control: themeVars.semantic.dimension.control,
+    row: themeVars.semantic.dimension.row,
+    ruleGap: themeVars.semantic.dimension.ruleGap,
+  },
+  radius: themeVars.semantic.shape.radius,
+  border: {
+    hairline: themeVars.semantic.border.width.hairline,
+  },
+} as const;
 
 export const root = style({
   minWidth: 0,
-  color: vars.color.ink,
-  backgroundColor: vars.color.paper,
-  backgroundImage: PAPER_GRAIN_TEXTURE,
+  colorScheme: semanticVars.colorScheme,
+  color: semanticVars.color.content.primary,
+  backgroundColor: semanticVars.color.surface.canvas,
+  backgroundImage: semanticVars.material.canvasTexture,
   backgroundPosition: '0 0',
   backgroundRepeat: 'repeat',
-  backgroundSize: '128px 128px',
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.body,
-  lineHeight: vars.lineHeight.body,
+  backgroundSize: semanticVars.material.canvasTextureSize,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.body,
+  lineHeight: semanticVars.typography.lineHeight.body,
   WebkitFontSmoothing: 'antialiased',
   textRendering: 'optimizeLegibility',
 });

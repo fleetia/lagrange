@@ -1,6 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const button = style({
   position: 'relative',
@@ -11,11 +11,11 @@ export const button = style({
   justifyContent: 'center',
   margin: 0,
   padding: 0,
-  color: vars.color.aubergine,
+  color: semanticVars.color.content.accent,
   backgroundColor: 'transparent',
   border: 0,
-  borderBottom: `${vars.border.hairline} solid ${vars.color.ruleMuted}`,
-  borderRadius: vars.radius.none,
+  borderBottom: `${semanticVars.border.width.hairline} solid ${semanticVars.color.border.subtle}`,
+  borderRadius: semanticVars.shape.radius.none,
   cursor: 'pointer',
   selectors: {
     '&::before': {
@@ -27,20 +27,20 @@ export const button = style({
       content: '',
     },
     '&:hover:not(:disabled)': {
-      backgroundColor: vars.color.periwinkleWash,
+      backgroundColor: semanticVars.color.interaction.focusSurface,
     },
     '&:focus': {
       outline: 'none',
     },
     '&:focus-visible': {
-      backgroundColor: vars.color.periwinkleWash,
+      backgroundColor: semanticVars.color.interaction.focusSurface,
     },
     '&:focus-visible::before': {
-      backgroundColor: vars.color.periwinkle,
+      backgroundColor: semanticVars.color.interaction.focus,
     },
     '&:disabled': {
-      color: vars.color.inkMuted,
-      backgroundColor: vars.color.paperMuted,
+      color: semanticVars.color.content.secondary,
+      backgroundColor: semanticVars.color.surface.muted,
       cursor: 'not-allowed',
       opacity: 0.6,
     },
@@ -48,15 +48,21 @@ export const button = style({
 });
 
 export const variant = styleVariants({
-  default: { color: vars.color.aubergine },
+  default: { color: semanticVars.color.content.accent },
   quiet: {
-    color: vars.color.inkMuted,
+    color: semanticVars.color.content.secondary,
     borderBottomStyle: 'dotted',
   },
-  critical: { color: vars.color.vermilion },
+  critical: { color: semanticVars.color.status.critical },
 });
 
 export const size = styleVariants({
-  compact: { width: vars.size.row, height: vars.size.row },
-  default: { width: vars.size.control, height: vars.size.control },
+  compact: {
+    width: componentVars.control.compactHeight,
+    height: componentVars.control.compactHeight,
+  },
+  default: {
+    width: componentVars.control.height,
+    height: componentVars.control.height,
+  },
 });

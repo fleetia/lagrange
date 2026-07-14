@@ -14,7 +14,8 @@
     "url": "https://github.com/fleetia/lagrange/issues"
   },
   "files": [
-    "dist"
+    "dist",
+    "docs"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -23,6 +24,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./theme": {
+      "types": "./dist/theme-entry.d.ts",
+      "import": "./dist/theme-entry.js"
     },
     "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"

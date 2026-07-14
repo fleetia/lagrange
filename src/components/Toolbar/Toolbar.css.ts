@@ -1,14 +1,14 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const toolbar = style({
   position: 'relative',
   display: 'flex',
   minWidth: 0,
   alignItems: 'center',
-  gap: vars.space.md,
-  paddingBlock: vars.space.sm,
+  gap: semanticVars.space.md,
+  paddingBlock: semanticVars.space.sm,
 });
 
 export const align = styleVariants({
@@ -25,16 +25,16 @@ export const wrap = styleVariants({
 export const boundary = styleVariants({
   none: {},
   weak: {
-    borderBottom: `${vars.border.hairline} dotted ${vars.color.ruleMuted}`,
+    borderBottom: `${semanticVars.border.width.hairline} dotted ${semanticVars.color.border.subtle}`,
   },
   boundary: {
-    borderBottom: `${vars.border.hairline} solid ${vars.color.rule}`,
+    borderBottom: `${semanticVars.border.width.hairline} solid ${semanticVars.color.border.strong}`,
   },
   structural: {
-    paddingBlockEnd: `calc(${vars.space.sm} + ${vars.size.ruleGap} + ${vars.border.hairline})`,
-    backgroundImage: `linear-gradient(${vars.color.rule}, ${vars.color.rule}), linear-gradient(${vars.color.rule}, ${vars.color.rule})`,
+    paddingBlockEnd: `calc(${semanticVars.space.sm} + ${componentVars.rule.gap} + ${semanticVars.border.width.hairline})`,
+    backgroundImage: `linear-gradient(${semanticVars.color.border.strong}, ${semanticVars.color.border.strong}), linear-gradient(${semanticVars.color.border.strong}, ${semanticVars.color.border.strong})`,
     backgroundPosition: 'left bottom, left bottom 3px',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: `100% ${vars.border.hairline}, 100% ${vars.border.hairline}`,
+    backgroundSize: `100% ${semanticVars.border.width.hairline}, 100% ${semanticVars.border.width.hairline}`,
   },
 });

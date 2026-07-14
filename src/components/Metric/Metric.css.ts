@@ -1,14 +1,14 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const metric = style({
   display: 'grid',
   minWidth: 0,
-  gap: vars.space.xxs,
+  gap: semanticVars.space.xxs,
   margin: 0,
-  paddingBlockEnd: vars.space.sm,
-  borderBottom: `${vars.border.hairline} dotted ${vars.color.ruleMuted}`,
+  paddingBlockEnd: semanticVars.space.sm,
+  borderBottom: `${semanticVars.border.width.hairline} dotted ${componentVars.rule.subtle}`,
 });
 
 export const align = styleVariants({
@@ -17,48 +17,48 @@ export const align = styleVariants({
 });
 
 export const label = style({
-  color: vars.color.inkMuted,
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.caption,
+  color: semanticVars.color.content.secondary,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.caption,
   fontWeight: 700,
   letterSpacing: '0.06em',
-  lineHeight: vars.lineHeight.compact,
+  lineHeight: semanticVars.typography.lineHeight.compact,
   textTransform: 'uppercase',
 });
 
 export const definition = style({
   display: 'grid',
   minWidth: 0,
-  gap: vars.space.xxs,
+  gap: semanticVars.space.xxs,
   margin: 0,
 });
 
 export const value = style({
   minWidth: 0,
-  fontFamily: vars.font.display,
+  fontFamily: semanticVars.typography.family.display,
   fontVariantNumeric: 'tabular-nums',
   fontWeight: 600,
   letterSpacing: '-0.02em',
-  lineHeight: vars.lineHeight.tight,
+  lineHeight: semanticVars.typography.lineHeight.tight,
 });
 
 export const size = styleVariants({
-  compact: { fontSize: vars.fontSize.headingSm },
-  default: { fontSize: vars.fontSize.headingMd },
-  prominent: { fontSize: vars.fontSize.headingLg },
+  compact: { fontSize: semanticVars.typography.size.headingSm },
+  default: { fontSize: semanticVars.typography.size.headingMd },
+  prominent: { fontSize: semanticVars.typography.size.headingLg },
 });
 
 export const tone = styleVariants({
-  default: { color: vars.color.ink },
-  muted: { color: vars.color.inkMuted },
-  accent: { color: vars.color.aubergine },
-  positive: { color: vars.color.olive },
-  critical: { color: vars.color.vermilion },
+  default: { color: semanticVars.color.content.primary },
+  muted: { color: semanticVars.color.content.secondary },
+  accent: { color: semanticVars.color.content.accent },
+  positive: { color: semanticVars.color.status.positive },
+  critical: { color: semanticVars.color.status.critical },
 });
 
 export const detail = style({
-  color: vars.color.inkMuted,
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.caption,
-  lineHeight: vars.lineHeight.compact,
+  color: semanticVars.color.content.secondary,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.caption,
+  lineHeight: semanticVars.typography.lineHeight.compact,
 });

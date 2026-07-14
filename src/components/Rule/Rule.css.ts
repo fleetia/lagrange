@@ -1,13 +1,13 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const base = style({
   boxSizing: 'border-box',
   flexShrink: 0,
   margin: 0,
   padding: 0,
-  color: vars.color.rule,
+  color: componentVars.rule.strong,
   border: 0,
 });
 
@@ -17,38 +17,38 @@ export const orientation = styleVariants({
   },
   vertical: {
     alignSelf: 'stretch',
-    minHeight: vars.size.control,
+    minHeight: componentVars.control.height,
   },
 });
 
 export const horizontalVariant = styleVariants({
   weak: {
-    height: vars.border.hairline,
-    borderTop: `${vars.border.hairline} dotted currentColor`,
+    height: semanticVars.border.width.hairline,
+    borderTop: `${semanticVars.border.width.hairline} dotted currentColor`,
   },
   boundary: {
-    height: vars.border.hairline,
-    borderTop: `${vars.border.hairline} solid currentColor`,
+    height: semanticVars.border.width.hairline,
+    borderTop: `${semanticVars.border.width.hairline} solid currentColor`,
   },
   structural: {
-    height: `calc(${vars.border.hairline} * 2 + ${vars.size.ruleGap})`,
-    borderTop: `${vars.border.hairline} solid currentColor`,
-    borderBottom: `${vars.border.hairline} solid currentColor`,
+    height: `calc(${semanticVars.border.width.hairline} * 2 + ${componentVars.rule.gap})`,
+    borderTop: `${semanticVars.border.width.hairline} solid currentColor`,
+    borderBottom: `${semanticVars.border.width.hairline} solid currentColor`,
   },
 });
 
 export const verticalVariant = styleVariants({
   weak: {
-    width: vars.border.hairline,
-    borderLeft: `${vars.border.hairline} dotted currentColor`,
+    width: semanticVars.border.width.hairline,
+    borderLeft: `${semanticVars.border.width.hairline} dotted currentColor`,
   },
   boundary: {
-    width: vars.border.hairline,
-    borderLeft: `${vars.border.hairline} solid currentColor`,
+    width: semanticVars.border.width.hairline,
+    borderLeft: `${semanticVars.border.width.hairline} solid currentColor`,
   },
   structural: {
-    width: `calc(${vars.border.hairline} * 2 + ${vars.size.ruleGap})`,
-    borderLeft: `${vars.border.hairline} solid currentColor`,
-    borderRight: `${vars.border.hairline} solid currentColor`,
+    width: `calc(${semanticVars.border.width.hairline} * 2 + ${componentVars.rule.gap})`,
+    borderLeft: `${semanticVars.border.width.hairline} solid currentColor`,
+    borderRight: `${semanticVars.border.width.hairline} solid currentColor`,
   },
 });

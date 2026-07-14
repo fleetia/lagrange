@@ -1,24 +1,24 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { semanticVars } from '../../theme/themeContract.css';
 
 export const marker = style({
   display: 'inline-flex',
   minWidth: 0,
   alignItems: 'center',
-  gap: vars.space.xs,
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.caption,
+  gap: semanticVars.space.xs,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.caption,
   fontWeight: 650,
-  lineHeight: vars.lineHeight.compact,
+  lineHeight: semanticVars.typography.lineHeight.compact,
 });
 
 export const tone = styleVariants({
-  default: { color: vars.color.ink },
-  muted: { color: vars.color.inkMuted },
-  accent: { color: vars.color.aubergine },
-  positive: { color: vars.color.olive },
-  critical: { color: vars.color.vermilion },
+  default: { color: semanticVars.color.content.primary },
+  muted: { color: semanticVars.color.content.secondary },
+  accent: { color: semanticVars.color.content.accent },
+  positive: { color: semanticVars.color.status.positive },
+  critical: { color: semanticVars.color.status.critical },
 });
 
 export const indicator = style({
@@ -29,12 +29,12 @@ export const indicator = style({
 
 export const shape = styleVariants({
   line: {
-    width: vars.space.sm,
-    height: vars.border.hairline,
+    width: semanticVars.space.sm,
+    height: semanticVars.border.width.hairline,
   },
   square: {
-    width: vars.space.xs,
-    height: vars.space.xs,
+    width: semanticVars.space.xs,
+    height: semanticVars.space.xs,
   },
 });
 

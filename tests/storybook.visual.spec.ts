@@ -421,6 +421,11 @@ const DESKTOP_CASES: readonly Omit<StoryVisualCase, 'viewport'>[] = [
     snapshot: 'theme-root-variants-desktop.png',
   },
   {
+    id: 'components-themeroot--theming',
+    name: 'ThemeRoot theming',
+    snapshot: 'theme-root-theming-desktop.png',
+  },
+  {
     id: 'components-themeroot--states',
     name: 'ThemeRoot states',
     snapshot: 'theme-root-states-desktop.png',

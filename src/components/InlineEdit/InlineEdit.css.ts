@@ -1,11 +1,11 @@
 import { style } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const root = style({
   display: 'grid',
   minWidth: 0,
-  gap: vars.space.xxs,
+  gap: semanticVars.space.xxs,
 });
 
 export const trigger = style({
@@ -14,38 +14,38 @@ export const trigger = style({
   boxSizing: 'border-box',
   width: '100%',
   minWidth: 0,
-  minHeight: vars.size.control,
+  minHeight: componentVars.control.height,
   gridTemplateColumns: 'minmax(0, 1fr) auto',
   alignItems: 'center',
-  gap: vars.space.sm,
+  gap: semanticVars.space.sm,
   margin: 0,
-  padding: `${vars.space.xs} ${vars.space.xxs}`,
-  color: vars.color.ink,
+  padding: `${semanticVars.space.xs} ${semanticVars.space.xxs}`,
+  color: componentVars.control.text,
   backgroundColor: 'transparent',
   border: 0,
   borderInlineStart: '2px solid transparent',
-  borderBottom: `${vars.border.hairline} dotted ${vars.color.ruleMuted}`,
-  borderRadius: vars.radius.none,
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.body,
-  lineHeight: vars.lineHeight.compact,
+  borderBottom: `${semanticVars.border.width.hairline} dotted ${semanticVars.color.border.subtle}`,
+  borderRadius: semanticVars.shape.radius.none,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.body,
+  lineHeight: semanticVars.typography.lineHeight.compact,
   textAlign: 'left',
   cursor: 'text',
   selectors: {
     '&:hover:not(:disabled)': {
-      backgroundColor: vars.color.periwinkleWash,
-      borderBottomColor: vars.color.aubergine,
+      backgroundColor: componentVars.control.focusSurface,
+      borderBottomColor: componentVars.control.hoverBorder,
     },
     '&:focus': {
       outline: 'none',
     },
     '&:focus-visible': {
-      backgroundColor: vars.color.periwinkleWash,
-      borderInlineStartColor: vars.color.periwinkle,
-      borderBottomColor: vars.color.periwinkle,
+      backgroundColor: componentVars.control.focusSurface,
+      borderInlineStartColor: componentVars.control.focusIndicator,
+      borderBottomColor: componentVars.control.focusIndicator,
     },
     '&:disabled': {
-      color: vars.color.inkMuted,
+      color: componentVars.control.disabledText,
       cursor: 'not-allowed',
       opacity: 0.64,
     },
@@ -60,13 +60,13 @@ export const value = style({
 });
 
 export const empty = style({
-  color: vars.color.inkMuted,
+  color: componentVars.control.placeholder,
 });
 
 export const marker = style({
-  color: vars.color.inkMuted,
-  fontFamily: vars.font.data,
-  fontSize: vars.fontSize.caption,
+  color: semanticVars.color.content.secondary,
+  fontFamily: semanticVars.typography.family.data,
+  fontSize: semanticVars.typography.size.caption,
 });
 
 export const input = style({
@@ -75,8 +75,8 @@ export const input = style({
 
 export const feedback = style({
   margin: 0,
-  color: vars.color.vermilion,
-  fontSize: vars.fontSize.caption,
+  color: componentVars.control.invalidIndicator,
+  fontSize: semanticVars.typography.size.caption,
   fontWeight: 650,
-  lineHeight: vars.lineHeight.compact,
+  lineHeight: semanticVars.typography.lineHeight.compact,
 });

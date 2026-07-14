@@ -59,4 +59,15 @@ export const tokens = {
   },
 } as const;
 
+export const primitiveTokens = {
+  palette: tokens.color,
+  fontFamily: tokens.font,
+  fontSize: tokens.fontSize,
+  lineHeight: tokens.lineHeight,
+  space: tokens.space,
+  dimension: tokens.size,
+  radius: tokens.radius,
+  borderWidth: tokens.border,
+} as const;
+
 export type Space = keyof typeof tokens.space;

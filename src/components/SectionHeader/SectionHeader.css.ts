@@ -1,11 +1,11 @@
 import { style } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { semanticVars } from '../../theme/themeContract.css';
 
 export const header = style({
   display: 'grid',
   minWidth: 0,
-  gap: vars.space.sm,
+  gap: semanticVars.space.sm,
 });
 
 export const main = style({
@@ -13,7 +13,7 @@ export const main = style({
   minWidth: 0,
   gridTemplateColumns: 'minmax(0, 1fr) auto',
   alignItems: 'end',
-  gap: vars.space.lg,
+  gap: semanticVars.space.lg,
   '@media': {
     'screen and (max-width: 40rem)': {
       gridTemplateColumns: 'minmax(0, 1fr)',
@@ -25,7 +25,7 @@ export const main = style({
 export const copy = style({
   display: 'grid',
   minWidth: 0,
-  gap: vars.space.xxs,
+  gap: semanticVars.space.xxs,
 });
 
 export const eyebrow = style({
@@ -42,7 +42,7 @@ export const aside = style({
   minWidth: 0,
   alignItems: 'center',
   justifyContent: 'flex-end',
-  gap: vars.space.sm,
+  gap: semanticVars.space.sm,
   '@media': {
     'screen and (max-width: 40rem)': {
       justifyContent: 'flex-start',

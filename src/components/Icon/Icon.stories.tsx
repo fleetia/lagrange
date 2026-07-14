@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ThemeRoot } from '../../theme/ThemeRoot';
+import { themeVars } from '../../theme/themeContract.css';
 import { Icon } from './Icon';
 
 const meta = {
@@ -47,7 +48,7 @@ export const States: Story = {
       <span style={{ color: 'currentColor' }}>
         <Icon><circle cx="12" cy="12" r="8" /></Icon>
       </span>{' '}
-      <span style={{ color: 'var(--lagrange-color-vermilion, #a53d2c)' }}>
+      <span style={{ color: themeVars.semantic.color.status.critical }}>
         <Icon><path d="M12 4v10m0 4v.01" /></Icon>
       </span>
     </ThemeRoot>

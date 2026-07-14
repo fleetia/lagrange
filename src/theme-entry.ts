@@ -1,9 +1,8 @@
-export { ThemeRoot, type ThemeRootProps } from './ThemeRoot';
 export {
   lagrangeThemeClass,
   themeClass,
   vars,
-} from './theme.css';
+} from './theme/theme.css';
 export {
   componentVars,
   semanticVars,
@@ -11,12 +10,16 @@ export {
   themeVars,
   type LagrangeTheme,
   type LagrangeThemeOverrides,
-} from './themeContract.css';
+} from './theme/themeContract.css';
 export {
   componentTokens,
   createThemeTokens,
   lagrangeTheme,
   semanticTokens,
-} from './themeTokens';
-export { createSelectIndicatorTexture } from './materials';
-export { primitiveTokens, tokens, type Space } from './tokens';
+} from './theme/themeTokens';
+export { createSelectIndicatorTexture } from './theme/materials';
+export {
+  primitiveTokens,
+  tokens,
+  type Space,
+} from './theme/tokens';

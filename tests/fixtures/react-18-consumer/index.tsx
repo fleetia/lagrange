@@ -13,6 +13,18 @@ import {
   type DataTableColumn,
   type RadialBreakdownSegment,
 } from '@fleetia/lagrange';
+import {
+  componentVars,
+  componentTokens,
+  createSelectIndicatorTexture,
+  createThemeTokens,
+  lagrangeThemeClass,
+  primitiveTokens,
+  semanticVars,
+  semanticTokens,
+  themeVars,
+  tokens,
+} from '@fleetia/lagrange/theme';
 import '@fleetia/lagrange/styles.css';
 
 type Row = {
@@ -42,8 +54,30 @@ const segments: readonly RadialBreakdownSegment[] = [
   { color: '#62663b', id: 'investments', label: 'Investments', value: 40 },
 ];
 
+const fixtureTheme = createThemeTokens({
+  semantic: {
+    color: {
+      content: { accent: primitiveTokens.palette.aubergine },
+    },
+  },
+});
+
+const themeContractProbe = [
+  tokens.color.paper,
+  semanticTokens.color.surface.canvas,
+  componentTokens.button.primaryBackground,
+  componentVars.button.primaryBackground,
+  semanticVars.color.interaction.primary,
+  themeVars.semantic.color.content.accent,
+  createSelectIndicatorTexture('#4d2d57'),
+].join('|');
+
 export const fixture = (
-  <ThemeRoot>
+  <ThemeRoot
+    data-theme-accent={fixtureTheme.semantic.color.content.accent}
+    data-theme-contract={themeContractProbe}
+    themeClassName={lagrangeThemeClass}
+  >
     <Text>Lagrange React 18 consumer</Text>
     <FormField label="Memo">
       <TextField />

@@ -1,10 +1,9 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { semanticVars } from '../../theme/themeContract.css';
 
 export const dateField = style({
-  colorScheme: 'light',
-  fontFamily: vars.font.data,
+  fontFamily: semanticVars.typography.family.data,
   fontVariantNumeric: 'tabular-nums',
   letterSpacing: '-0.015em',
 });
@@ -13,7 +12,7 @@ globalStyle(`${dateField}::-webkit-calendar-picker-indicator`, {
   width: '0.875rem',
   height: '0.875rem',
   margin: 0,
-  padding: vars.space.xs,
+  padding: semanticVars.space.xs,
   cursor: 'pointer',
   opacity: 0.7,
 });

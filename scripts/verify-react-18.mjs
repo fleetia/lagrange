@@ -74,12 +74,28 @@ async function verifyReact18() {
     const tarballPath = join(artifacts, tarballs[0]);
     const packageFiles = read('tar', ['-tzf', tarballPath], ROOT).split('\n');
     const privateDeclarations = packageFiles.filter((file) =>
-      /\.(?:stories|test)\.d\.ts$/.test(file),
+      /(?:__stories__|\.(?:stories|test)\.d\.ts$)/.test(file),
+    );
+    const requiredPackageFiles = [
+      'package/dist/index.js',
+      'package/dist/styles.css',
+      'package/dist/theme-entry.d.ts',
+      'package/dist/theme-entry.js',
+      'package/docs/theming.md',
+    ];
+    const missingPackageFiles = requiredPackageFiles.filter(
+      (file) => !packageFiles.includes(file),
     );
 
     if (privateDeclarations.length > 0) {
       throw new Error(
         `Package contains private declarations:\n${privateDeclarations.join('\n')}`,
+      );
+    }
+
+    if (missingPackageFiles.length > 0) {
+      throw new Error(
+        `Package is missing required artifacts:\n${missingPackageFiles.join('\n')}`,
       );
     }
 

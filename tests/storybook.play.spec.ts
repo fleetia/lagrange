@@ -146,3 +146,28 @@ test('renders all eight radial breakdown categories with accessible data', async
   await expect(table.getByRole('rowheader')).toHaveCount(8);
   await expect(table.getByRole('row')).toHaveCount(9);
 });
+
+test('resolves nested legacy and component theme overrides at the use site', async ({
+  page,
+}) => {
+  await page.goto(
+    '/iframe.html?id=components-themeroot--nested-compatibility&viewMode=story',
+  );
+
+  const buttonBackground = async (name: string): Promise<string> =>
+    page.getByRole('button', { name }).evaluate(
+      (button) => getComputedStyle(button).backgroundColor,
+    );
+  const defaultBackground = await buttonBackground('Default reference');
+
+  expect(defaultBackground).toBe('rgb(77, 45, 87)');
+  expect(await buttonBackground('Legacy accent override')).toBe(
+    'rgb(194, 65, 45)',
+  );
+  expect(await buttonBackground('Outer component override')).toBe(
+    'rgb(23, 58, 94)',
+  );
+  expect(await buttonBackground('Nested default reset')).toBe(
+    defaultBackground,
+  );
+});

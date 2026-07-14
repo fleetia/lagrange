@@ -1,6 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const section = style({
   position: 'relative',
@@ -11,20 +11,20 @@ export const section = style({
 export const boundary = styleVariants({
   none: {},
   weak: {
-    borderTop: `${vars.border.hairline} dotted ${vars.color.ruleMuted}`,
+    borderTop: `${semanticVars.border.width.hairline} dotted ${semanticVars.color.border.subtle}`,
   },
   boundary: {
-    borderTop: `${vars.border.hairline} solid ${vars.color.rule}`,
+    borderTop: `${semanticVars.border.width.hairline} solid ${semanticVars.color.border.strong}`,
   },
   structural: {
-    borderTop: `${vars.border.hairline} solid ${vars.color.rule}`,
+    borderTop: `${semanticVars.border.width.hairline} solid ${semanticVars.color.border.strong}`,
     selectors: {
       '&::before': {
         position: 'absolute',
-        top: `calc(${vars.border.hairline} + ${vars.size.ruleGap})`,
+        top: `calc(${semanticVars.border.width.hairline} + ${componentVars.rule.gap})`,
         right: 0,
         left: 0,
-        borderTop: `${vars.border.hairline} solid ${vars.color.rule}`,
+        borderTop: `${semanticVars.border.width.hairline} solid ${semanticVars.color.border.strong}`,
         content: '',
         pointerEvents: 'none',
       },
@@ -34,15 +34,15 @@ export const boundary = styleVariants({
 
 export const spacing = styleVariants({
   compact: {
-    gap: vars.space.sm,
-    paddingBlock: vars.space.sm,
+    gap: semanticVars.space.sm,
+    paddingBlock: semanticVars.space.sm,
   },
   default: {
-    gap: vars.space.md,
-    paddingBlock: vars.space.lg,
+    gap: semanticVars.space.md,
+    paddingBlock: semanticVars.space.lg,
   },
   relaxed: {
-    gap: vars.space.lg,
-    paddingBlock: vars.space.xl,
+    gap: semanticVars.space.lg,
+    paddingBlock: semanticVars.space.xl,
   },
 });

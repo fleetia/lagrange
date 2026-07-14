@@ -1,12 +1,12 @@
 import { style } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const root = style({
   width: '100%',
   minWidth: 0,
   margin: 0,
-  color: vars.color.ink,
+  color: semanticVars.color.content.primary,
 });
 
 export const frame = style({
@@ -25,7 +25,7 @@ export const svg = style({
 
 export const orbitGuide = style({
   fill: 'none',
-  stroke: vars.color.aubergine,
+  stroke: componentVars.chart.chrome,
   strokeDasharray: '1.5 3.5',
   strokeLinecap: 'round',
   strokeOpacity: 0.58,
@@ -34,21 +34,21 @@ export const orbitGuide = style({
 });
 
 export const tick = style({
-  stroke: vars.color.periwinkle,
+  stroke: componentVars.chart.tick,
   strokeOpacity: 0.48,
   strokeWidth: 1,
   vectorEffect: 'non-scaling-stroke',
 });
 
 export const majorTick = style({
-  stroke: vars.color.aubergine,
+  stroke: componentVars.chart.chrome,
   strokeOpacity: 0.62,
   strokeWidth: 1.15,
 });
 
 export const segment = style({
   fillOpacity: 0.88,
-  stroke: vars.color.aubergine,
+  stroke: componentVars.chart.chrome,
   strokeOpacity: 0.55,
   strokeWidth: 0.8,
   vectorEffect: 'non-scaling-stroke',
@@ -61,18 +61,18 @@ export const segmentTexture = style({
 });
 
 export const pigmentGrainDark = style({
-  fill: vars.color.aubergine,
+  fill: componentVars.chart.pigmentDark,
   opacity: 0.28,
 });
 
 export const pigmentGrainLight = style({
-  fill: vars.color.paperRaised,
+  fill: componentVars.chart.pigmentLight,
   opacity: 0.35,
 });
 
 export const pigmentGrainFiber = style({
   fill: 'none',
-  stroke: vars.color.inkMuted,
+  stroke: componentVars.chart.pigmentFiber,
   strokeLinecap: 'round',
   strokeOpacity: 0.22,
   strokeWidth: 0.35,
@@ -80,7 +80,7 @@ export const pigmentGrainFiber = style({
 
 export const ringBoundary = style({
   fill: 'none',
-  stroke: vars.color.aubergine,
+  stroke: componentVars.chart.chrome,
   strokeOpacity: 0.68,
   strokeWidth: 1,
   vectorEffect: 'non-scaling-stroke',
@@ -88,7 +88,7 @@ export const ringBoundary = style({
 
 export const axis = style({
   fill: 'none',
-  stroke: vars.color.aubergine,
+  stroke: componentVars.chart.chrome,
   strokeLinecap: 'square',
   strokeOpacity: 0.58,
   strokeWidth: 0.9,
@@ -96,13 +96,13 @@ export const axis = style({
 });
 
 export const centerDisk = style({
-  fill: vars.color.paperRaised,
+  fill: componentVars.chart.surface,
   fillOpacity: 0.5,
 });
 
 export const centerGuide = style({
   fill: 'none',
-  stroke: vars.color.aubergine,
+  stroke: componentVars.chart.chrome,
   strokeDasharray: '1.5 3.5',
   strokeLinecap: 'round',
   strokeOpacity: 0.55,
@@ -111,40 +111,40 @@ export const centerGuide = style({
 });
 
 export const anchor = style({
-  fill: vars.color.aubergine,
-  stroke: vars.color.paperRaised,
+  fill: componentVars.chart.chrome,
+  stroke: componentVars.chart.surface,
   strokeWidth: 1.25,
   vectorEffect: 'non-scaling-stroke',
 });
 
 export const oliveAnchor = style({
-  fill: vars.color.olive,
+  fill: componentVars.chart.alternate,
 });
 
 export const satellite = style({
-  fill: vars.color.paperRaised,
-  stroke: vars.color.aubergine,
+  fill: componentVars.chart.surface,
+  stroke: componentVars.chart.chrome,
   strokeWidth: 1.25,
   vectorEffect: 'non-scaling-stroke',
 });
 
 export const leader = style({
   fill: 'none',
-  stroke: vars.color.aubergine,
+  stroke: componentVars.chart.chrome,
   strokeOpacity: 0.68,
   strokeWidth: 1,
   vectorEffect: 'non-scaling-stroke',
 });
 
 export const leaderDot = style({
-  fill: vars.color.paperRaised,
+  fill: componentVars.chart.surface,
   strokeWidth: 1.25,
   vectorEffect: 'non-scaling-stroke',
 });
 
 export const label = style({
-  fill: vars.color.aubergine,
-  fontFamily: vars.font.ui,
+  fill: componentVars.chart.text,
+  fontFamily: semanticVars.typography.family.ui,
   fontSize: '13px',
   fontWeight: 700,
   letterSpacing: '0.015em',
@@ -152,8 +152,8 @@ export const label = style({
 });
 
 export const labelValue = style({
-  fill: vars.color.aubergine,
-  fontFamily: vars.font.ui,
+  fill: componentVars.chart.text,
+  fontFamily: semanticVars.typography.family.ui,
   fontSize: '17px',
   fontVariantNumeric: 'tabular-nums',
   fontWeight: 700,
@@ -161,8 +161,8 @@ export const labelValue = style({
 });
 
 export const detail = style({
-  fill: vars.color.inkMuted,
-  fontFamily: vars.font.data,
+  fill: componentVars.chart.mutedText,
+  fontFamily: semanticVars.typography.family.data,
   fontSize: '10.5px',
   fontVariantNumeric: 'tabular-nums',
   fontWeight: 500,
@@ -196,9 +196,9 @@ export const empty = style({
   position: 'absolute',
   top: '50%',
   left: '55.06%',
-  color: vars.color.inkMuted,
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.label,
+  color: componentVars.chart.mutedText,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.label,
   transform: 'translate(-50%, -50%)',
 });
 

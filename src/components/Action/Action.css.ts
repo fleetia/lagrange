@@ -1,34 +1,34 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const action = style({
   position: 'relative',
   display: 'inline-flex',
   boxSizing: 'border-box',
   width: 'fit-content',
-  minHeight: vars.size.row,
+  minHeight: componentVars.control.compactHeight,
   alignItems: 'center',
   justifyContent: 'center',
-  gap: vars.space.xs,
+  gap: semanticVars.space.xs,
   margin: 0,
-  padding: `${vars.space.xxs} 0`,
-  color: vars.color.aubergine,
+  padding: `${semanticVars.space.xxs} 0`,
+  color: semanticVars.color.content.accent,
   backgroundColor: 'transparent',
   border: 0,
-  borderBottom: `${vars.border.hairline} solid currentColor`,
-  borderRadius: vars.radius.none,
-  fontFamily: vars.font.ui,
+  borderBottom: `${semanticVars.border.width.hairline} solid currentColor`,
+  borderRadius: semanticVars.shape.radius.none,
+  fontFamily: semanticVars.typography.family.ui,
   fontWeight: 700,
-  lineHeight: vars.lineHeight.compact,
+  lineHeight: semanticVars.typography.lineHeight.compact,
   letterSpacing: '0.025em',
   textAlign: 'left',
   textDecoration: 'none',
   cursor: 'pointer',
   selectors: {
     '&::before': {
-      width: vars.space.sm,
-      height: vars.border.hairline,
+      width: semanticVars.space.sm,
+      height: semanticVars.border.width.hairline,
       backgroundColor: 'currentColor',
       content: '',
     },
@@ -36,25 +36,25 @@ export const action = style({
       position: 'absolute',
       top: 0,
       bottom: 0,
-      left: `calc(${vars.space.xs} * -1)`,
+      left: `calc(${semanticVars.space.xs} * -1)`,
       width: '2px',
       backgroundColor: 'transparent',
       content: '',
     },
     '&:hover:not(:disabled)': {
-      backgroundColor: vars.color.periwinkleWash,
+      backgroundColor: semanticVars.color.interaction.focusSurface,
     },
     '&:focus': {
       outline: 'none',
     },
     '&:focus-visible': {
-      backgroundColor: vars.color.periwinkleWash,
+      backgroundColor: semanticVars.color.interaction.focusSurface,
     },
     '&:focus-visible::after': {
-      backgroundColor: vars.color.periwinkle,
+      backgroundColor: semanticVars.color.interaction.focus,
     },
     '&:disabled': {
-      color: vars.color.inkMuted,
+      color: semanticVars.color.content.secondary,
       cursor: 'not-allowed',
       opacity: 0.55,
     },
@@ -63,25 +63,25 @@ export const action = style({
 
 export const variant = styleVariants({
   primary: {
-    color: vars.color.aubergine,
+    color: semanticVars.color.content.accent,
     borderBottomStyle: 'solid',
   },
   quiet: {
-    color: vars.color.inkMuted,
+    color: semanticVars.color.content.secondary,
     borderBottomStyle: 'dotted',
     fontWeight: 550,
   },
   critical: {
-    color: vars.color.vermilion,
+    color: semanticVars.color.status.critical,
     borderBottomStyle: 'solid',
   },
 });
 
 export const size = styleVariants({
   compact: {
-    fontSize: vars.fontSize.caption,
+    fontSize: semanticVars.typography.size.caption,
   },
   default: {
-    fontSize: vars.fontSize.label,
+    fontSize: semanticVars.typography.size.label,
   },
 });

@@ -1,6 +1,6 @@
 import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const container = style({
   width: '100%',
@@ -11,24 +11,24 @@ export const container = style({
 export const table = style({
   width: '100%',
   minWidth: '40rem',
-  color: vars.color.ink,
+  color: componentVars.table.text,
   backgroundColor: 'transparent',
   borderCollapse: 'separate',
   borderSpacing: 0,
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.data,
-  lineHeight: vars.lineHeight.compact,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.data,
+  lineHeight: semanticVars.typography.lineHeight.compact,
   tableLayout: 'fixed',
 });
 
 export const headerCell = style({
   boxSizing: 'border-box',
-  height: vars.size.row,
-  padding: `${vars.space.xs} ${vars.space.sm}`,
-  color: vars.color.aubergine,
-  backgroundColor: vars.color.paperMuted,
-  borderTop: `${vars.border.hairline} solid ${vars.color.rule}`,
-  fontSize: vars.fontSize.caption,
+  height: componentVars.table.rowHeight,
+  padding: `${semanticVars.space.xs} ${semanticVars.space.sm}`,
+  color: componentVars.table.headerText,
+  backgroundColor: componentVars.table.headerSurface,
+  borderTop: `${semanticVars.border.width.hairline} solid ${componentVars.table.structuralBorder}`,
+  fontSize: semanticVars.typography.size.caption,
   fontWeight: 750,
   letterSpacing: '0.045em',
   textTransform: 'uppercase',
@@ -44,7 +44,7 @@ export const stickyHeader = style({
 export const sortButton = style({
   display: 'inline-flex',
   alignItems: 'center',
-  gap: vars.space.xs,
+  gap: semanticVars.space.xs,
   margin: 0,
   padding: 0,
   color: 'inherit',
@@ -56,15 +56,15 @@ export const sortButton = style({
   cursor: 'pointer',
   selectors: {
     '&:focus-visible': {
-      outline: `${vars.border.hairline} dotted ${vars.color.aubergine}`,
+      outline: `${semanticVars.border.width.hairline} dotted ${componentVars.table.headerText}`,
       outlineOffset: '2px',
     },
   },
 });
 
 export const sortMarker = style({
-  minWidth: vars.space.sm,
-  fontFamily: vars.font.data,
+  minWidth: semanticVars.space.sm,
+  fontFamily: semanticVars.typography.family.data,
 });
 
 export const row = style({
@@ -73,24 +73,24 @@ export const row = style({
 
 export const rowTone = styleVariants({
   default: {},
-  muted: { color: vars.color.inkMuted },
+  muted: { color: componentVars.table.rowMutedText },
   critical: {
-    color: vars.color.vermilion,
-    backgroundColor: vars.color.vermilionWash,
+    color: componentVars.table.rowCriticalText,
+    backgroundColor: componentVars.table.rowCriticalSurface,
   },
 });
 
 export const selectedRow = style({
-  backgroundColor: vars.color.periwinkleWash,
+  backgroundColor: componentVars.table.rowSelectedSurface,
 });
 
 export const cell = style({
   boxSizing: 'border-box',
-  height: vars.size.row,
+  height: componentVars.table.rowHeight,
   maxWidth: 0,
-  padding: `${vars.space.xs} ${vars.space.sm}`,
+  padding: `${semanticVars.space.xs} ${semanticVars.space.sm}`,
   overflow: 'hidden',
-  borderBottom: `${vars.border.hairline} dotted ${vars.color.ruleMuted}`,
+  borderBottom: `${semanticVars.border.width.hairline} dotted ${componentVars.table.rowDivider}`,
   textOverflow: 'ellipsis',
   verticalAlign: 'middle',
   whiteSpace: 'nowrap',
@@ -99,8 +99,8 @@ export const cell = style({
       outline: 'none',
     },
     '&:focus-visible': {
-      backgroundColor: vars.color.periwinkleWash,
-      boxShadow: `inset 2px 0 0 ${vars.color.periwinkle}`,
+      backgroundColor: componentVars.table.rowSelectedSurface,
+      boxShadow: `inset 2px 0 0 ${semanticVars.color.interaction.focus}`,
     },
     '&[data-editable="true"]': {
       cursor: 'text',
@@ -108,8 +108,8 @@ export const cell = style({
     '&[data-editing="true"]': {
       padding: 0,
       overflow: 'visible',
-      backgroundColor: vars.color.paperRaised,
-      boxShadow: `inset 2px 0 0 ${vars.color.olive}`,
+      backgroundColor: semanticVars.color.surface.raised,
+      boxShadow: `inset 2px 0 0 ${componentVars.table.rowSelectedIndicator}`,
     },
   },
 });
@@ -117,16 +117,16 @@ export const cell = style({
 export const editor = style({
   boxSizing: 'border-box',
   width: '100%',
-  height: vars.size.row,
+  height: componentVars.table.rowHeight,
   margin: 0,
-  padding: `${vars.space.xxs} ${vars.space.sm}`,
-  color: vars.color.ink,
+  padding: `${semanticVars.space.xxs} ${semanticVars.space.sm}`,
+  color: componentVars.table.text,
   backgroundColor: 'transparent',
   border: 0,
-  borderBottom: `${vars.border.hairline} solid ${vars.color.olive}`,
+  borderBottom: `${semanticVars.border.width.hairline} solid ${componentVars.table.rowSelectedIndicator}`,
   borderRadius: 0,
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.data,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.data,
   outline: 'none',
 });
 
@@ -141,31 +141,31 @@ export const align = styleVariants({
 
 export const structuralCell = style({
   boxSizing: 'border-box',
-  height: `calc(${vars.border.hairline} * 2 + ${vars.size.ruleGap})`,
+  height: `calc(${semanticVars.border.width.hairline} * 2 + ${componentVars.rule.gap})`,
   padding: 0,
-  borderTop: `${vars.border.hairline} solid ${vars.color.rule}`,
-  borderBottom: `${vars.border.hairline} solid ${vars.color.rule}`,
+  borderTop: `${semanticVars.border.width.hairline} solid ${componentVars.table.structuralBorder}`,
+  borderBottom: `${semanticVars.border.width.hairline} solid ${componentVars.table.structuralBorder}`,
 });
 
 export const totalCell = style({
   boxSizing: 'border-box',
-  height: `calc(${vars.size.row} + ${vars.space.xs})`,
-  padding: `${vars.space.xs} ${vars.space.sm}`,
-  color: vars.color.aubergine,
-  backgroundColor: vars.color.oliveWash,
-  fontFamily: vars.font.data,
+  height: `calc(${componentVars.table.rowHeight} + ${semanticVars.space.xs})`,
+  padding: `${semanticVars.space.xs} ${semanticVars.space.sm}`,
+  color: componentVars.table.totalText,
+  backgroundColor: componentVars.table.totalSurface,
+  fontFamily: semanticVars.typography.family.data,
   fontWeight: 700,
   verticalAlign: 'middle',
 });
 
 export const emptyCell = style({
-  padding: `${vars.space.xl} ${vars.space.sm}`,
-  color: vars.color.inkMuted,
-  borderBottom: `${vars.border.hairline} dotted ${vars.color.ruleMuted}`,
+  padding: `${semanticVars.space.xl} ${semanticVars.space.sm}`,
+  color: componentVars.table.emptyText,
+  borderBottom: `${semanticVars.border.width.hairline} dotted ${componentVars.table.rowDivider}`,
   textAlign: 'center',
 });
 
 globalStyle(`${selectedRow} > ${cell}:first-child`, {
-  paddingInlineStart: `calc(${vars.space.sm} - 2px)`,
-  borderInlineStart: `2px solid ${vars.color.olive}`,
+  paddingInlineStart: `calc(${semanticVars.space.sm} - 2px)`,
+  borderInlineStart: `2px solid ${componentVars.table.rowSelectedIndicator}`,
 });

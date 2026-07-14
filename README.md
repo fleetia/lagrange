@@ -56,6 +56,64 @@ export function Root(): ReactElement {
 
 <code>styles.css</code>는 theme와 component styles를 포함합니다. application의 reset은 consumer가 소유하며, Lagrange stylesheet는 entry에서 한 번만 import합니다.
 
+### Theme customization
+
+Lagrange theme은 raw value인 <code>primitiveTokens</code>, UI 역할을 표현하는 <code>semanticTokens</code>, 특정 component의 결정을 분리하는 <code>componentTokens</code>의 세 계층으로 구성됩니다. component stylesheet는 primitive color 이름에 직접 의존하지 않습니다.
+
+전체 brand theme은 consumer의 Vanilla Extract build에서 미리 compile하고 <code>themeClassName</code>으로 기본 theme을 교체합니다.
+
+~~~bash
+pnpm add -D @vanilla-extract/css @vanilla-extract/vite-plugin
+~~~
+
+Consumer bundler에도 Vanilla Extract integration을 등록해야 합니다. 아래는 theme 작성 API이며, Vite 설정을 포함한 전체 예시는 [Theming guide](./docs/theming.md)를 참고하세요.
+
+~~~ts
+import { createTheme } from '@vanilla-extract/css';
+import {
+  createThemeTokens,
+  themeVars,
+} from '@fleetia/lagrange/theme';
+
+export const brandThemeClass = createTheme(
+  themeVars,
+  createThemeTokens({
+    semantic: {
+      color: {
+        content: { accent: '#294f59' },
+        interaction: {
+          primary: '#294f59',
+          primaryHover: '#7a5736',
+        },
+      },
+    },
+  }),
+);
+~~~
+
+~~~tsx
+<ThemeRoot themeClassName={brandThemeClass}>
+  <App />
+</ThemeRoot>
+~~~
+
+작은 brand 조정은 stable CSS variable을 application stylesheet에서 override하고 기존 default theme을 유지할 수 있습니다.
+
+~~~css
+.brand-surface {
+  --lagrange-semantic-color-content-accent: #294f59;
+  --lagrange-semantic-color-interaction-primary: #294f59;
+}
+~~~
+
+~~~tsx
+<ThemeRoot className="brand-surface">
+  <App />
+</ThemeRoot>
+~~~
+
+두 방식의 contract와 token 선택 기준은 [Theming guide](./docs/theming.md)에 정리되어 있습니다. 기존 <code>tokens</code>, <code>vars</code>, <code>themeClass</code> export는 호환성을 위해 유지됩니다.
+
 <code>FormField</code>는 direct form control 하나를 받습니다. field 안에서는 <code>id</code>와 <code>required</code>를 <code>FormField</code>에 지정하고, child의 같은 prop은 standalone 사용에만 적용됩니다. 현재 <code>TextField</code>, <code>TextArea</code>, <code>NumberField</code>, <code>DateField</code>, <code>Select</code>, <code>Combobox</code>가 이 contract를 지원합니다.
 
 ## Components

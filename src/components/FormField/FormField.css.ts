@@ -1,11 +1,11 @@
 import { style } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { semanticVars } from '../../theme/themeContract.css';
 
 export const field = style({
   display: 'grid',
   minWidth: 0,
-  gap: vars.space.xxs,
+  gap: semanticVars.space.xxs,
 });
 
 export const labelRow = style({
@@ -13,43 +13,43 @@ export const labelRow = style({
   minWidth: 0,
   alignItems: 'baseline',
   justifyContent: 'space-between',
-  gap: vars.space.sm,
+  gap: semanticVars.space.sm,
 });
 
 export const label = style({
-  color: vars.color.aubergine,
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.label,
+  color: semanticVars.color.content.accent,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.label,
   fontWeight: 700,
-  lineHeight: vars.lineHeight.compact,
+  lineHeight: semanticVars.typography.lineHeight.compact,
   letterSpacing: '0.045em',
 });
 
 export const marker = style({
-  color: vars.color.inkMuted,
-  fontFamily: vars.font.data,
-  fontSize: vars.fontSize.caption,
+  color: semanticVars.color.content.secondary,
+  fontFamily: semanticVars.typography.family.data,
+  fontSize: semanticVars.typography.size.caption,
   fontVariantNumeric: 'tabular-nums',
-  lineHeight: vars.lineHeight.compact,
+  lineHeight: semanticVars.typography.lineHeight.compact,
 });
 
 export const required = style({
-  color: vars.color.vermilion,
-  marginInlineStart: vars.space.xs,
+  color: semanticVars.color.status.critical,
+  marginInlineStart: semanticVars.space.xs,
 });
 
 export const feedback = style({
   margin: 0,
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.caption,
-  lineHeight: vars.lineHeight.compact,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.caption,
+  lineHeight: semanticVars.typography.lineHeight.compact,
 });
 
 export const description = style({
-  color: vars.color.inkMuted,
+  color: semanticVars.color.content.secondary,
 });
 
 export const error = style({
-  color: vars.color.vermilion,
+  color: semanticVars.color.status.critical,
   fontWeight: 650,
 });

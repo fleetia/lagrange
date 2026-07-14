@@ -1,12 +1,12 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const group = style({
   minWidth: 0,
   margin: 0,
   padding: 0,
-  color: vars.color.ink,
+  color: semanticVars.color.content.primary,
   border: 0,
 });
 
@@ -15,34 +15,34 @@ export const legend = style({
   width: '100%',
   margin: 0,
   padding: 0,
-  color: vars.color.aubergine,
-  fontFamily: vars.font.display,
-  fontSize: vars.fontSize.headingSm,
+  color: semanticVars.color.content.accent,
+  fontFamily: semanticVars.typography.family.display,
+  fontSize: semanticVars.typography.size.headingSm,
   fontWeight: 650,
-  lineHeight: vars.lineHeight.compact,
+  lineHeight: semanticVars.typography.lineHeight.compact,
 });
 
 export const description = style({
-  margin: `${vars.space.xxs} 0 0`,
-  color: vars.color.inkMuted,
-  fontFamily: vars.font.ui,
-  fontSize: vars.fontSize.caption,
-  lineHeight: vars.lineHeight.compact,
+  margin: `${semanticVars.space.xxs} 0 0`,
+  color: semanticVars.color.content.secondary,
+  fontFamily: semanticVars.typography.family.ui,
+  fontSize: semanticVars.typography.size.caption,
+  lineHeight: semanticVars.typography.lineHeight.compact,
 });
 
 export const structuralRule = style({
   boxSizing: 'border-box',
   width: '100%',
-  height: `calc(${vars.border.hairline} * 2 + ${vars.size.ruleGap})`,
-  marginBlock: vars.space.sm,
-  borderTop: `${vars.border.hairline} solid ${vars.color.rule}`,
-  borderBottom: `${vars.border.hairline} solid ${vars.color.rule}`,
+  height: `calc(${semanticVars.border.width.hairline} * 2 + ${componentVars.rule.gap})`,
+  marginBlock: semanticVars.space.sm,
+  borderTop: `${semanticVars.border.width.hairline} solid ${semanticVars.color.border.strong}`,
+  borderBottom: `${semanticVars.border.width.hairline} solid ${semanticVars.color.border.strong}`,
 });
 
 export const grid = style({
   display: 'grid',
   minWidth: 0,
-  gap: `${vars.space.md} ${vars.space.lg}`,
+  gap: `${semanticVars.space.md} ${semanticVars.space.lg}`,
 });
 
 const responsiveSingleColumn = {

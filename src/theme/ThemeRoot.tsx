@@ -4,12 +4,23 @@ import clsx from 'clsx';
 
 import { root, themeClass } from './theme.css';
 
-export type ThemeRootProps = ComponentPropsWithoutRef<'div'>;
+export type ThemeRootProps = ComponentPropsWithoutRef<'div'> & {
+  themeClassName?: string | null;
+};
 
 export const ThemeRoot = forwardRef<HTMLDivElement, ThemeRootProps>(
-  ({ className, ...props }, ref): ReactElement => (
-    <div ref={ref} className={clsx(themeClass, root, className)} {...props} />
-  ),
+  ({ className, themeClassName, ...props }, ref): ReactElement => {
+    const activeThemeClass =
+      themeClassName === undefined ? themeClass : themeClassName;
+
+    return (
+      <div
+        ref={ref}
+        className={clsx(activeThemeClass, root, className)}
+        {...props}
+      />
+    );
+  },
 );
 
 ThemeRoot.displayName = 'ThemeRoot';

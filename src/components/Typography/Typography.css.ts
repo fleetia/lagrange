@@ -1,45 +1,45 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { semanticVars } from '../../theme/themeContract.css';
 
 export const text = style({
   margin: 0,
-  color: vars.color.ink,
+  color: semanticVars.color.content.primary,
 });
 
 export const textVariant = styleVariants({
   body: {
-    fontFamily: vars.font.ui,
-    fontSize: vars.fontSize.body,
-    lineHeight: vars.lineHeight.body,
+    fontFamily: semanticVars.typography.family.ui,
+    fontSize: semanticVars.typography.size.body,
+    lineHeight: semanticVars.typography.lineHeight.body,
   },
   label: {
-    fontFamily: vars.font.ui,
-    fontSize: vars.fontSize.label,
+    fontFamily: semanticVars.typography.family.ui,
+    fontSize: semanticVars.typography.size.label,
     fontWeight: 650,
-    lineHeight: vars.lineHeight.compact,
+    lineHeight: semanticVars.typography.lineHeight.compact,
     letterSpacing: '0.045em',
   },
   caption: {
-    fontFamily: vars.font.ui,
-    fontSize: vars.fontSize.caption,
-    lineHeight: vars.lineHeight.compact,
+    fontFamily: semanticVars.typography.family.ui,
+    fontSize: semanticVars.typography.size.caption,
+    lineHeight: semanticVars.typography.lineHeight.compact,
   },
   data: {
-    fontFamily: vars.font.data,
-    fontSize: vars.fontSize.data,
+    fontFamily: semanticVars.typography.family.data,
+    fontSize: semanticVars.typography.size.data,
     fontVariantNumeric: 'tabular-nums slashed-zero',
-    lineHeight: vars.lineHeight.compact,
+    lineHeight: semanticVars.typography.lineHeight.compact,
     letterSpacing: '-0.015em',
   },
 });
 
 export const tone = styleVariants({
-  default: { color: vars.color.ink },
-  muted: { color: vars.color.inkMuted },
-  accent: { color: vars.color.aubergine },
-  positive: { color: vars.color.olive },
-  critical: { color: vars.color.vermilion },
+  default: { color: semanticVars.color.content.primary },
+  muted: { color: semanticVars.color.content.secondary },
+  accent: { color: semanticVars.color.content.accent },
+  positive: { color: semanticVars.color.status.positive },
+  critical: { color: semanticVars.color.status.critical },
 });
 
 export const weight = styleVariants({
@@ -57,36 +57,36 @@ export const truncate = style({
 
 export const heading = style({
   margin: 0,
-  color: vars.color.aubergine,
+  color: semanticVars.color.content.accent,
   textWrap: 'balance',
 });
 
 export const headingVariant = styleVariants({
   display: {
-    fontFamily: vars.font.display,
-    fontSize: vars.fontSize.headingLg,
+    fontFamily: semanticVars.typography.family.display,
+    fontSize: semanticVars.typography.size.headingLg,
     fontWeight: 600,
-    lineHeight: vars.lineHeight.tight,
+    lineHeight: semanticVars.typography.lineHeight.tight,
     letterSpacing: '-0.025em',
   },
   section: {
-    fontFamily: vars.font.display,
-    fontSize: vars.fontSize.headingMd,
+    fontFamily: semanticVars.typography.family.display,
+    fontSize: semanticVars.typography.size.headingMd,
     fontWeight: 600,
-    lineHeight: vars.lineHeight.tight,
+    lineHeight: semanticVars.typography.lineHeight.tight,
     letterSpacing: '-0.015em',
   },
   subsection: {
-    fontFamily: vars.font.display,
-    fontSize: vars.fontSize.headingSm,
+    fontFamily: semanticVars.typography.family.display,
+    fontSize: semanticVars.typography.size.headingSm,
     fontWeight: 650,
-    lineHeight: vars.lineHeight.compact,
+    lineHeight: semanticVars.typography.lineHeight.compact,
   },
   label: {
-    fontFamily: vars.font.ui,
-    fontSize: vars.fontSize.label,
+    fontFamily: semanticVars.typography.family.ui,
+    fontSize: semanticVars.typography.size.label,
     fontWeight: 700,
-    lineHeight: vars.lineHeight.compact,
+    lineHeight: semanticVars.typography.lineHeight.compact,
     letterSpacing: '0.075em',
     textTransform: 'uppercase',
   },

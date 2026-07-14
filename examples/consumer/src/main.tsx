@@ -11,11 +11,15 @@ import {
 } from '@fleetia/lagrange';
 
 import '@fleetia/lagrange/styles.css';
+import { brandThemeClass } from './brandTheme.css';
 import './consumer.css';
 
 export function ConsumerApp(): ReactElement {
   return (
-    <ThemeRoot className="consumer-shell">
+    <ThemeRoot
+      className="consumer-shell"
+      themeClassName={brandThemeClass}
+    >
       <Stack gap="lg">
         <Stack gap="xs">
           <Text tone="muted" variant="caption" weight="strong">

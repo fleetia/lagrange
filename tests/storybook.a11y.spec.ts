@@ -75,6 +75,10 @@ const STORY_CASES: readonly StoryA11yCase[] = [
     name: 'ThemeRoot accessibility',
   },
   {
+    id: 'components-themeroot--theming',
+    name: 'ThemeRoot theming',
+  },
+  {
     id: 'components-visuallyhidden--accessibility',
     name: 'VisuallyHidden accessibility',
   },

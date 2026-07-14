@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { semanticVars } from '../../theme/themeContract.css';
 
 export const hidden = style({
   position: 'absolute',
@@ -21,13 +21,13 @@ export const focusable = style({
       position: 'static',
       width: 'auto',
       height: 'auto',
-      padding: vars.space.xs,
+      padding: semanticVars.space.xs,
       margin: 0,
       overflow: 'visible',
       clip: 'auto',
       clipPath: 'none',
-      color: vars.color.aubergine,
-      backgroundColor: vars.color.periwinkleWash,
+      color: semanticVars.color.content.accent,
+      backgroundColor: semanticVars.color.interaction.focusSurface,
       whiteSpace: 'normal',
     },
   },

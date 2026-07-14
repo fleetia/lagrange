@@ -10,7 +10,9 @@ export default defineConfig({
     vanillaExtractPlugin(),
     dts({
       exclude: [
+        'src/**/__stories__/**',
         'src/**/*.stories.tsx',
+        'src/**/*.stories.css.ts',
         'src/**/*.test.ts',
         'src/**/*.test.tsx',
       ],
@@ -20,9 +22,12 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(import.meta.dirname, 'src/index.ts'),
+      entry: {
+        index: resolve(import.meta.dirname, 'src/index.ts'),
+        'theme-entry': resolve(import.meta.dirname, 'src/theme-entry.ts'),
+      },
       formats: ['es'],
-      fileName: 'index',
+      fileName: (_format, entryName) => `${entryName}.js`,
       cssFileName: 'styles',
     },
     rollupOptions: {

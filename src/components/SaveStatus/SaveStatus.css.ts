@@ -1,18 +1,18 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const root = style({
   display: 'grid',
-  minHeight: vars.size.control,
+  minHeight: componentVars.control.height,
   gridTemplateColumns: 'minmax(0, 1fr) auto',
   alignItems: 'center',
-  gap: vars.space.sm,
-  padding: `${vars.space.xs} 0`,
-  borderTop: `${vars.border.hairline} dotted ${vars.color.ruleMuted}`,
-  borderBottom: `${vars.border.hairline} dotted ${vars.color.ruleMuted}`,
-  fontSize: vars.fontSize.caption,
-  lineHeight: vars.lineHeight.compact,
+  gap: semanticVars.space.sm,
+  padding: `${semanticVars.space.xs} 0`,
+  borderTop: `${semanticVars.border.width.hairline} dotted ${componentVars.rule.subtle}`,
+  borderBottom: `${semanticVars.border.width.hairline} dotted ${componentVars.rule.subtle}`,
+  fontSize: semanticVars.typography.size.caption,
+  lineHeight: semanticVars.typography.lineHeight.compact,
 });
 
 export const announcement = style({
@@ -20,12 +20,12 @@ export const announcement = style({
   minWidth: 0,
   gridTemplateColumns: 'auto minmax(0, 1fr)',
   alignItems: 'center',
-  gap: vars.space.sm,
+  gap: semanticVars.space.sm,
 });
 
 export const marker = style({
-  fontFamily: vars.font.data,
-  fontSize: vars.fontSize.caption,
+  fontFamily: semanticVars.typography.family.data,
+  fontSize: semanticVars.typography.size.caption,
 });
 
 export const message = style({
@@ -39,8 +39,8 @@ export const action = style({
 });
 
 export const tone = styleVariants({
-  idle: { color: vars.color.inkMuted },
-  saving: { color: vars.color.aubergine },
-  saved: { color: vars.color.olive },
-  error: { color: vars.color.vermilion },
+  idle: { color: semanticVars.color.content.secondary },
+  saving: { color: semanticVars.color.content.accent },
+  saved: { color: semanticVars.color.status.positive },
+  error: { color: semanticVars.color.status.critical },
 });

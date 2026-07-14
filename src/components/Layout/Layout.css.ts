@@ -1,6 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { semanticVars } from '../../theme/themeContract.css';
 
 export const stack = style({
   display: 'flex',
@@ -14,7 +14,9 @@ export const inline = style({
   flexDirection: 'row',
 });
 
-export const gap = styleVariants(vars.space, (value) => ({ gap: value }));
+export const gap = styleVariants(semanticVars.space, (value) => ({
+  gap: value,
+}));
 
 export const align = styleVariants({
   start: { alignItems: 'flex-start' },

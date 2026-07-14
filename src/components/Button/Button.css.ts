@@ -1,6 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-import { vars } from '../../theme/theme.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const button = style({
   display: 'inline-flex',
@@ -8,13 +8,13 @@ export const button = style({
   width: 'fit-content',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: vars.space.xs,
+  gap: semanticVars.space.xs,
   margin: 0,
-  border: `${vars.border.hairline} solid transparent`,
-  borderRadius: vars.radius.none,
-  fontFamily: vars.font.ui,
+  border: `${semanticVars.border.width.hairline} solid transparent`,
+  borderRadius: semanticVars.shape.radius.none,
+  fontFamily: semanticVars.typography.family.ui,
   fontWeight: 700,
-  lineHeight: vars.lineHeight.compact,
+  lineHeight: semanticVars.typography.lineHeight.compact,
   letterSpacing: '0.025em',
   cursor: 'pointer',
   transition: 'background-color 100ms ease, color 100ms ease',
@@ -23,12 +23,12 @@ export const button = style({
       outline: 'none',
     },
     '&:focus-visible': {
-      boxShadow: `inset 3px 0 ${vars.color.periwinkle}`,
+      boxShadow: `inset 3px 0 ${componentVars.button.focusIndicator}`,
     },
     '&:disabled': {
-      color: vars.color.inkMuted,
-      backgroundColor: vars.color.paperMuted,
-      borderColor: vars.color.ruleMuted,
+      color: componentVars.button.disabledText,
+      backgroundColor: componentVars.button.disabledBackground,
+      borderColor: componentVars.button.disabledBorder,
       cursor: 'not-allowed',
       opacity: 0.68,
     },
@@ -37,46 +37,46 @@ export const button = style({
 
 export const variant = styleVariants({
   primary: {
-    color: vars.color.paperRaised,
-    backgroundColor: vars.color.aubergine,
-    borderColor: vars.color.aubergine,
+    color: componentVars.button.primaryText,
+    backgroundColor: componentVars.button.primaryBackground,
+    borderColor: componentVars.button.primaryBackground,
     selectors: {
       '&:hover:not(:disabled)': {
-        backgroundColor: vars.color.olive,
-        borderColor: vars.color.olive,
+        backgroundColor: componentVars.button.primaryHoverBackground,
+        borderColor: componentVars.button.primaryHoverBackground,
       },
     },
   },
   secondary: {
-    color: vars.color.aubergine,
+    color: componentVars.button.secondaryText,
     backgroundColor: 'transparent',
-    borderColor: vars.color.rule,
+    borderColor: semanticVars.color.border.strong,
     selectors: {
       '&:hover:not(:disabled)': {
-        backgroundColor: vars.color.periwinkleWash,
+        backgroundColor: componentVars.button.secondaryHoverBackground,
       },
     },
   },
   quiet: {
-    color: vars.color.inkMuted,
+    color: componentVars.button.quietText,
     backgroundColor: 'transparent',
     borderColor: 'transparent',
-    borderBottomColor: vars.color.ruleMuted,
+    borderBottomColor: semanticVars.color.border.subtle,
     borderBottomStyle: 'dotted',
     selectors: {
       '&:hover:not(:disabled)': {
-        color: vars.color.aubergine,
-        backgroundColor: vars.color.periwinkleWash,
+        color: componentVars.button.quietHoverText,
+        backgroundColor: componentVars.button.quietHoverBackground,
       },
     },
   },
   critical: {
-    color: vars.color.vermilion,
+    color: componentVars.button.criticalText,
     backgroundColor: 'transparent',
-    borderColor: vars.color.vermilion,
+    borderColor: componentVars.button.criticalText,
     selectors: {
       '&:hover:not(:disabled)': {
-        backgroundColor: vars.color.vermilionWash,
+        backgroundColor: componentVars.button.criticalHoverBackground,
       },
     },
   },
@@ -84,13 +84,13 @@ export const variant = styleVariants({
 
 export const size = styleVariants({
   compact: {
-    minHeight: vars.size.row,
-    padding: `${vars.space.xxs} ${vars.space.sm}`,
-    fontSize: vars.fontSize.caption,
+    minHeight: componentVars.control.compactHeight,
+    padding: `${semanticVars.space.xxs} ${semanticVars.space.sm}`,
+    fontSize: semanticVars.typography.size.caption,
   },
   default: {
-    minHeight: vars.size.control,
-    padding: `${vars.space.xs} ${vars.space.md}`,
-    fontSize: vars.fontSize.label,
+    minHeight: componentVars.control.height,
+    padding: `${semanticVars.space.xs} ${semanticVars.space.md}`,
+    fontSize: semanticVars.typography.size.label,
   },
 });
