@@ -104,6 +104,7 @@ async function verifyReact18() {
 
     run('pnpm', ['install', '--ignore-workspace'], consumer);
     run('pnpm', ['exec', 'tsc', '--noEmit'], consumer);
+    run('node', ['runtime.mjs'], consumer);
   } finally {
     await rm(temporaryRoot, { force: true, recursive: true });
   }

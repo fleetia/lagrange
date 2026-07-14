@@ -19,6 +19,15 @@ describe('theme contract', () => {
     expect(themeVars.semantic.colorScheme).toBe(
       'var(--lagrange-semantic-color-scheme)',
     );
+    expect(themeVars.component.overlay.backdrop).toBe(
+      'var(--lagrange-component-overlay-backdrop)',
+    );
+    expect(themeVars.component.navigation.selectedIndicator).toBe(
+      'var(--lagrange-component-navigation-selected-indicator)',
+    );
+    expect(themeVars.component.range.activeTrack).toBe(
+      'var(--lagrange-component-range-active-track)',
+    );
   });
 
   it('keeps legacy variables connected to derived theme roles', () => {
@@ -49,6 +58,12 @@ describe('theme contract', () => {
     );
     expect(componentVars.button.primaryBackground).toBe(
       'var(--lagrange-component-button-primary-background, var(--lagrange-semantic-color-interaction-primary, var(--lagrange-semantic-color-content-accent)))',
+    );
+    expect(componentVars.navigation.selectedSurface).toBe(
+      'var(--lagrange-component-navigation-selected-surface, var(--lagrange-semantic-color-selection-surface, var(--lagrange-semantic-color-interaction-focus-surface)))',
+    );
+    expect(componentVars.range.activeTrack).toBe(
+      'var(--lagrange-component-range-active-track, var(--lagrange-semantic-color-interaction-primary, var(--lagrange-semantic-color-content-accent)))',
     );
   });
 });

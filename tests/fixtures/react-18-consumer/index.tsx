@@ -1,11 +1,22 @@
 import {
+  Breadcrumb,
   Button,
+  ColorField,
   Combobox,
+  ContextMenu,
+  ContextMenuItem,
   DataGrid,
   DataTable,
+  Dialog,
   FormField,
   NumberField,
+  PlacementPicker,
   RadialBreakdownChart,
+  RangeField,
+  Tab,
+  TabList,
+  TabPanel,
+  Tabs,
   Text,
   TextField,
   ThemeRoot,
@@ -79,6 +90,12 @@ export const fixture = (
     themeClassName={lagrangeThemeClass}
   >
     <Text>Lagrange React 18 consumer</Text>
+    <Breadcrumb
+      items={[
+        { href: '/', label: 'Home' },
+        { label: 'Current' },
+      ]}
+    />
     <FormField label="Memo">
       <TextField />
     </FormField>
@@ -89,6 +106,36 @@ export const fixture = (
       aria-label="Category"
       options={[{ label: 'Food', value: 'food' }]}
     />
+    <FormField label="Opacity">
+      <RangeField defaultValue={50} />
+    </FormField>
+    <FormField label="Accent">
+      <ColorField defaultValue="#4d2d57" />
+    </FormField>
+    <PlacementPicker label="Placement" />
+    <Tabs defaultValue="general">
+      <TabList aria-label="Settings">
+        <Tab value="general">General</Tab>
+        <Tab value="appearance">Appearance</Tab>
+      </TabList>
+      <TabPanel value="general">General settings</TabPanel>
+      <TabPanel value="appearance">Appearance settings</TabPanel>
+    </Tabs>
+    <Dialog
+      isOpen={false}
+      onOpenChange={() => undefined}
+      title="Settings"
+    >
+      Dialog content
+    </Dialog>
+    <ContextMenu
+      anchorPoint={{ x: 0, y: 0 }}
+      isOpen={false}
+      label="Actions"
+      onOpenChange={() => undefined}
+    >
+      <ContextMenuItem>Open</ContextMenuItem>
+    </ContextMenu>
     <Button>Save</Button>
     <DataTable
       columns={columns}

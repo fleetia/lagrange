@@ -450,6 +450,21 @@ const DESKTOP_CASES: readonly Omit<StoryVisualCase, 'viewport'>[] = [
     name: 'Recent Records composition',
     snapshot: 'recent-records.png',
   },
+  ...[
+    ['breadcrumb', 'Breadcrumb'],
+    ['dialog', 'Dialog'],
+    ['tabs', 'Tabs'],
+    ['contextmenu', 'ContextMenu'],
+    ['rangefield', 'RangeField'],
+    ['colorfield', 'ColorField'],
+    ['placementpicker', 'PlacementPicker'],
+  ].flatMap(([id, name]) =>
+    ['default', 'variants', 'states'].map((story) => ({
+      id: `components-${id}--${story}`,
+      name: `${name} ${story}`,
+      snapshot: `${id}-${story}-desktop.png`,
+    })),
+  ),
 ] as const;
 
 const MOBILE_CASES: readonly Omit<StoryVisualCase, 'viewport'>[] = [
@@ -467,6 +482,26 @@ const MOBILE_CASES: readonly Omit<StoryVisualCase, 'viewport'>[] = [
     id: 'components-datagrid--default',
     name: 'DataGrid responsive overflow',
     snapshot: 'data-grid-default-mobile.png',
+  },
+  {
+    id: 'components-dialog--default',
+    name: 'Dialog narrow viewport',
+    snapshot: 'dialog-default-mobile.png',
+  },
+  {
+    id: 'components-tabs--default',
+    name: 'Tabs narrow viewport',
+    snapshot: 'tabs-default-mobile.png',
+  },
+  {
+    id: 'components-colorfield--default',
+    name: 'ColorField narrow viewport',
+    snapshot: 'colorfield-default-mobile.png',
+  },
+  {
+    id: 'components-placementpicker--default',
+    name: 'PlacementPicker narrow viewport',
+    snapshot: 'placementpicker-default-mobile.png',
   },
 ] as const;
 

@@ -24,6 +24,8 @@ themeVars (raw authoring contract)
 
 Application code는 layout 계산처럼 raw scale이 필요한 경우를 제외하면 semantic 또는 component 역할을 선택합니다. 새 component stylesheet에서 legacy `tokens`와 `vars`를 직접 사용하지 않습니다.
 
+Navigation, overlay, range control은 각각 `component.navigation`, `component.overlay`, `component.range` contract를 공유합니다. 이 slot은 Breadcrumb/Tabs, Dialog/ContextMenu, RangeField처럼 같은 시각 역할을 공유하는 component 사이의 theme 일관성을 유지합니다.
+
 ## Public API
 
 Theme authoring API는 React component와 분리된 subpath에서 가져올 수 있습니다.

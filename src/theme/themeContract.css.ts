@@ -171,6 +171,29 @@ const themeTokenShape = {
       pigmentLight: null,
       pigmentFiber: null,
     },
+    overlay: {
+      backdrop: null,
+      surface: null,
+      border: null,
+      text: null,
+    },
+    navigation: {
+      text: null,
+      hoverText: null,
+      hoverSurface: null,
+      selectedText: null,
+      selectedSurface: null,
+      selectedIndicator: null,
+      separator: null,
+    },
+    range: {
+      track: null,
+      activeTrack: null,
+      thumb: null,
+      focusIndicator: null,
+      disabledTrack: null,
+      disabledThumb: null,
+    },
   },
 } as const;
 
@@ -504,6 +527,80 @@ export const componentVars = {
     ),
     pigmentFiber: withFallback(
       themeVars.component.chart.pigmentFiber,
+      semanticVars.color.content.secondary,
+    ),
+  },
+  overlay: {
+    backdrop: withFallback(
+      themeVars.component.overlay.backdrop,
+      `color-mix(in srgb, ${semanticVars.color.content.accent} 42%, transparent)`,
+    ),
+    surface: withFallback(
+      themeVars.component.overlay.surface,
+      semanticVars.color.surface.raised,
+    ),
+    border: withFallback(
+      themeVars.component.overlay.border,
+      semanticVars.color.border.strong,
+    ),
+    text: withFallback(
+      themeVars.component.overlay.text,
+      semanticVars.color.content.primary,
+    ),
+  },
+  navigation: {
+    text: withFallback(
+      themeVars.component.navigation.text,
+      semanticVars.color.content.secondary,
+    ),
+    hoverText: withFallback(
+      themeVars.component.navigation.hoverText,
+      semanticVars.color.content.accent,
+    ),
+    hoverSurface: withFallback(
+      themeVars.component.navigation.hoverSurface,
+      semanticVars.color.interaction.focusSurface,
+    ),
+    selectedText: withFallback(
+      themeVars.component.navigation.selectedText,
+      semanticVars.color.content.accent,
+    ),
+    selectedSurface: withFallback(
+      themeVars.component.navigation.selectedSurface,
+      semanticVars.color.selection.surface,
+    ),
+    selectedIndicator: withFallback(
+      themeVars.component.navigation.selectedIndicator,
+      semanticVars.color.selection.indicator,
+    ),
+    separator: withFallback(
+      themeVars.component.navigation.separator,
+      semanticVars.color.border.subtle,
+    ),
+  },
+  range: {
+    track: withFallback(
+      themeVars.component.range.track,
+      semanticVars.color.border.subtle,
+    ),
+    activeTrack: withFallback(
+      themeVars.component.range.activeTrack,
+      semanticVars.color.interaction.primary,
+    ),
+    thumb: withFallback(
+      themeVars.component.range.thumb,
+      semanticVars.color.interaction.primary,
+    ),
+    focusIndicator: withFallback(
+      themeVars.component.range.focusIndicator,
+      semanticVars.color.interaction.focus,
+    ),
+    disabledTrack: withFallback(
+      themeVars.component.range.disabledTrack,
+      semanticVars.color.border.subtle,
+    ),
+    disabledThumb: withFallback(
+      themeVars.component.range.disabledThumb,
       semanticVars.color.content.secondary,
     ),
   },

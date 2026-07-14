@@ -8,6 +8,62 @@ type StoryPlayCase = {
 
 const STORY_PLAY_CASES: readonly StoryPlayCase[] = [
   {
+    id: 'components-breadcrumb--accessibility',
+    name: 'Breadcrumb keyboard navigation',
+    assertComplete: async (page) => {
+      await expect(page.getByRole('button', { name: 'Lagrange' })).toBeFocused();
+    },
+  },
+  {
+    id: 'components-dialog--accessibility',
+    name: 'Dialog focus restoration',
+    assertComplete: async (page) => {
+      await expect(
+        page.getByRole('dialog', { name: 'Keyboard settings' }),
+      ).toBeVisible();
+    },
+  },
+  {
+    id: 'components-tabs--accessibility',
+    name: 'Tabs roving focus',
+    assertComplete: async (page) => {
+      await expect(page.getByRole('tab', { name: 'General' })).toBeFocused();
+    },
+  },
+  {
+    id: 'components-contextmenu--accessibility',
+    name: 'ContextMenu keyboard selection',
+    assertComplete: async (page) => {
+      await expect(page.getByRole('button', { name: '북마크 메뉴 열기' })).toBeFocused();
+      await expect(page.getByRole('status')).toHaveText('선택: 아이콘 초기화');
+    },
+  },
+  {
+    id: 'components-rangefield--accessibility',
+    name: 'RangeField keyboard adjustment',
+    assertComplete: async (page) => {
+      const slider = page.getByRole('slider', { name: 'Keyboard scale' });
+      await expect(slider).toBeFocused();
+      await expect(slider).toHaveAttribute('aria-describedby');
+    },
+  },
+  {
+    id: 'components-colorfield--accessibility',
+    name: 'ColorField keyboard commit',
+    assertComplete: async (page) => {
+      await expect(page.getByRole('textbox', { name: '오버레이 색' })).toHaveValue('#ff634780');
+    },
+  },
+  {
+    id: 'components-placementpicker--accessibility',
+    name: 'PlacementPicker spatial navigation',
+    assertComplete: async (page) => {
+      const placement = page.getByRole('radio', { name: 'center-center' });
+      await expect(placement).toBeFocused();
+      await expect(placement).toBeChecked();
+    },
+  },
+  {
     id: 'components-button--accessibility',
     name: 'Button keyboard activation',
     assertComplete: async (page) => {
