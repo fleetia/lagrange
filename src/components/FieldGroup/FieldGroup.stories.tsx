@@ -21,8 +21,10 @@ const DEFAULT_FIELDS = (
 );
 
 const meta = {
-  title: 'Components/FieldGroup',
+  title: 'Components/Structure/FieldGroup',
+  id: 'components-fieldgroup',
   component: FieldGroup,
+  subcomponents: { FieldGrid },
   decorators: [
     (Story) => (
       <ThemeRoot className="lagrange-story lagrange-story--compact">

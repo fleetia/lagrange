@@ -21,7 +21,8 @@ const LABEL_STYLE: CSSProperties = {
 };
 
 const meta = {
-  title: 'Components/Section',
+  title: 'Components/Structure/Section',
+  id: 'components-section',
   component: Section,
   args: {
     children: '한 섹션 안의 정보는 같은 spacing rhythm을 공유합니다.',

@@ -41,7 +41,8 @@ function AccessibleToolbarStory(): ReactElement {
 }
 
 const meta = {
-  title: 'Components/Toolbar',
+  title: 'Components/Structure/Toolbar',
+  id: 'components-toolbar',
   component: Toolbar,
   args: {
     children: [

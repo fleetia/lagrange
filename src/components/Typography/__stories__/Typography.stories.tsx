@@ -51,7 +51,8 @@ const HEADING_VARIANTS: readonly {
 ];
 
 const meta = {
-  title: 'Components/Typography',
+  title: 'Foundations/Typography',
+  id: 'components-typography',
   component: Text,
   subcomponents: { Heading },
   parameters: {

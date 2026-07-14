@@ -10,10 +10,17 @@ import { Text } from '../Typography/Typography';
 import { NumberField } from './NumberField';
 
 const meta = {
-  title: 'Components/NumberField',
+  title: 'Components/Input/NumberField',
+  id: 'components-numberfield',
   component: NumberField,
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component:
+          'Editing 중에는 raw numeric string을 보존하고 blur 뒤 읽기 쉬운 숫자로 format하는 FormField-compatible input입니다. Prefix와 suffix는 값과 분리해 표시합니다.',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {

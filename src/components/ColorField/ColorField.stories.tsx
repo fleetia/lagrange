@@ -9,10 +9,17 @@ import { Stack } from '../Layout/Layout';
 import { ColorField } from './ColorField';
 
 const meta = {
-  title: 'Components/ColorField',
+  title: 'Components/Input/ColorField',
+  id: 'components-colorfield',
   component: ColorField,
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component:
+          'CSS color 입력, native color picker, optional alpha control을 하나의 FormField-compatible value contract로 묶습니다. Commit된 값은 normalized hex string으로 전달합니다.',
+      },
+    },
   },
   decorators: [
     (Story): ReactElement => (

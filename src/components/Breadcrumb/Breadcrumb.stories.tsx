@@ -6,7 +6,8 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { Breadcrumb } from './Breadcrumb';
 
 const meta = {
-  title: 'Components/Breadcrumb',
+  title: 'Components/Structure/Breadcrumb',
+  id: 'components-breadcrumb',
   component: Breadcrumb,
   decorators: [
     (Story) => (

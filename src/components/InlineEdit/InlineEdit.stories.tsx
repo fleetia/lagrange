@@ -8,7 +8,8 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { InlineEdit } from './InlineEdit';
 
 const meta = {
-  title: 'Components/InlineEdit',
+  title: 'Components/Input/InlineEdit',
+  id: 'components-inlineedit',
   component: InlineEdit,
   decorators: [
     (Story): ReactElement => (
@@ -18,6 +19,14 @@ const meta = {
     ),
   ],
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '읽기 상태와 compact text input을 같은 자리에서 전환하는 inline editor입니다. Enter 또는 blur로 commit하고 Escape로 이전 값에 복귀합니다.',
+      },
+    },
+  },
   args: {
     ariaLabel: '내용',
     onCommit: () => undefined,

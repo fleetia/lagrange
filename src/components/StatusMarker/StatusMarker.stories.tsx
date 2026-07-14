@@ -25,7 +25,8 @@ const GRID_STYLE: CSSProperties = {
 };
 
 const meta = {
-  title: 'Components/StatusMarker',
+  title: 'Components/Feedback/StatusMarker',
+  id: 'components-statusmarker',
   component: StatusMarker,
   args: {
     children: '동기화 완료',

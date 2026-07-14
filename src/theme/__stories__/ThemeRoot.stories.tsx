@@ -27,7 +27,8 @@ const BOUNDARY_STYLE: CSSProperties = {
 };
 
 const meta = {
-  title: 'Components/ThemeRoot',
+  title: 'Foundations/ThemeRoot',
+  id: 'components-themeroot',
   component: ThemeRoot,
   parameters: {
     layout: 'padded',

@@ -5,10 +5,17 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { VisuallyHidden } from './VisuallyHidden';
 
 const meta = {
-  title: 'Components/VisuallyHidden',
+  title: 'Foundations/VisuallyHidden',
+  id: 'components-visuallyhidden',
   component: VisuallyHidden,
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component:
+          'Visual layout에는 영향을 주지 않으면서 assistive technology에 text를 제공하는 accessibility primitive입니다. Skip link처럼 focus 시 보여야 하는 content는 isFocusable을 사용합니다.',
+      },
+    },
   },
   tags: ['autodocs'],
 } satisfies Meta<typeof VisuallyHidden>;

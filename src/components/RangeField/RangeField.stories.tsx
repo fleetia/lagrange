@@ -7,7 +7,8 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { RangeField } from './RangeField';
 
 const meta = {
-  title: 'Components/RangeField',
+  title: 'Components/Input/RangeField',
+  id: 'components-rangefield',
   component: RangeField,
   decorators: [
     (Story) => (

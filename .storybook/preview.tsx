@@ -21,11 +21,31 @@ const preview: Preview = {
     layout: 'fullscreen',
     options: {
       storySort: {
+        method: 'alphabetical',
         order: [
           'Foundations',
-          ['Palette & Type', 'Rules'],
+          [
+            'Visual Language',
+            'ThemeRoot',
+            'Typography',
+            'Layout',
+            'Rule',
+            'VisuallyHidden',
+            '*',
+          ],
           'Components',
+          [
+            'Structure',
+            'Command',
+            'Input',
+            'Choice',
+            'Overlay',
+            'Feedback',
+            'Data',
+            '*',
+          ],
           'Compositions',
+          '*',
         ],
       },
     },

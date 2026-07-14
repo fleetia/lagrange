@@ -39,7 +39,8 @@ function Marker({ children }: { children: string }): ReactElement {
 }
 
 const meta = {
-  title: 'Components/Layout',
+  title: 'Foundations/Layout',
+  id: 'components-layout',
   component: Stack,
   subcomponents: { Inline },
   parameters: {

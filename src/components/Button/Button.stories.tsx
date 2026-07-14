@@ -6,10 +6,17 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { Button } from './Button';
 
 const meta = {
-  title: 'Components/Button',
+  title: 'Components/Command/Button',
+  id: 'components-button',
   component: Button,
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component:
+          'Primary, secondary, quiet, critical command hierarchy를 제공하는 native button입니다. Pending과 disabled 상태에서도 control geometry를 유지합니다.',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {

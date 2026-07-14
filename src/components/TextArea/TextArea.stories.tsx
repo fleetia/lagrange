@@ -7,10 +7,17 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { TextArea } from './TextArea';
 
 const meta = {
-  title: 'Components/TextArea',
+  title: 'Components/Input/TextArea',
+  id: 'components-textarea',
   component: TextArea,
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component:
+          '여러 줄 입력을 위한 FormField-compatible native textarea입니다. Resize policy와 invalid state를 제공하면서 native form props를 유지합니다.',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {

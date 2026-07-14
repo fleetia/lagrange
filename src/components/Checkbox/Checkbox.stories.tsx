@@ -6,7 +6,8 @@ import { ThemeRoot } from '../../theme/ThemeRoot';
 import { Checkbox } from './Checkbox';
 
 const meta = {
-  title: 'Components/Checkbox',
+  title: 'Components/Choice/Checkbox',
+  id: 'components-checkbox',
   component: Checkbox,
   decorators: [
     (Story) => (
