@@ -315,3 +315,30 @@ export function applyColorAlpha(
 
   return `${normalizedOpaqueColor}${normalizedSourceColor.slice(7, 9)}`;
 }
+
+export function getColorAlphaPercentage(value: string): number | null {
+  const normalizedColor = normalizeColor(value, true);
+
+  if (!normalizedColor) {
+    return null;
+  }
+
+  const alphaByte = Number.parseInt(normalizedColor.slice(7, 9), 16);
+
+  return Math.round((alphaByte / 255) * 100);
+}
+
+export function applyColorAlphaPercentage(
+  value: string,
+  percentage: number,
+): string | null {
+  const normalizedColor = normalizeColor(value, true);
+
+  if (!normalizedColor || !Number.isFinite(percentage)) {
+    return null;
+  }
+
+  const alphaByte = toHexByte((clamp(percentage, 0, 100) / 100) * 255);
+
+  return `${normalizedColor.slice(0, 7)}${alphaByte}`;
+}

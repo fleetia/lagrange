@@ -51,7 +51,14 @@ const STORY_PLAY_CASES: readonly StoryPlayCase[] = [
     id: 'components-colorfield--accessibility',
     name: 'ColorField keyboard commit',
     assertComplete: async (page) => {
-      await expect(page.getByRole('textbox', { name: '오버레이 색' })).toHaveValue('#ff634780');
+      const input = page.getByRole('textbox', { name: '오버레이 색' });
+      const alpha = page.getByRole('slider', { name: '투명도' });
+
+      await expect(input).toHaveValue('#ff634780');
+      await expect(alpha).toBeFocused();
+      await alpha.press('ArrowLeft');
+      await expect(alpha).toHaveValue('49');
+      await expect(input).toHaveValue('#ff63477d');
     },
   },
   {

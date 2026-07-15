@@ -48,7 +48,11 @@ export const Variants: Story = {
         <ColorField defaultValue="hsl(270, 50%, 40%)" />
       </FormField>
       <FormField label="Alpha 색">
-        <ColorField defaultValue="rgba(102, 51, 153, 0.5)" showAlpha />
+        <ColorField
+          alphaLabel="투명도"
+          defaultValue="rgba(102, 51, 153, 0.5)"
+          showAlpha
+        />
       </FormField>
     </Stack>
   ),
@@ -73,7 +77,12 @@ function AccessibleColorField(): ReactElement {
   return (
     <Stack gap="sm">
       <FormField label="오버레이 색">
-        <ColorField onValueChange={setValue} showAlpha value={value} />
+        <ColorField
+          alphaLabel="투명도"
+          onValueChange={setValue}
+          showAlpha
+          value={value}
+        />
       </FormField>
       <output aria-live="polite">normalized: {value}</output>
     </Stack>
@@ -96,5 +105,9 @@ export const Accessibility: Story = {
     await userEvent.clear(input);
     await userEvent.type(input, '#12{Escape}');
     await expect(input).toHaveValue('#ff634780');
+
+    const alpha = canvas.getByRole('slider', { name: '투명도' });
+    await userEvent.tab();
+    await expect(alpha).toHaveFocus();
   },
 };
