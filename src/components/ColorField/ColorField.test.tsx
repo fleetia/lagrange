@@ -97,6 +97,34 @@ describe('ColorField', () => {
     ).toBe('#ff634780');
   });
 
+  it('edits alpha as a percentage while preserving RGB channels', () => {
+    const handleValueChange = vi.fn();
+    render(
+      <ColorField
+        alphaLabel="배경 투명도"
+        aria-label="배경색"
+        defaultValue="rgba(102, 51, 153, 0.5)"
+        onValueChange={handleValueChange}
+        showAlpha
+      />,
+    );
+    const alpha = screen.getByRole<HTMLInputElement>('slider', {
+      name: '배경 투명도',
+    });
+
+    expect(alpha.value).toBe('50');
+    expect(alpha.getAttribute('aria-valuetext')).toBe('50%');
+
+    fireEvent.change(alpha, { target: { value: '25' } });
+
+    expect(handleValueChange).toHaveBeenLastCalledWith('#66339940');
+    expect(alpha.value).toBe('25');
+    expect(screen.getByText('배경 투명도: 25%')).toBeDefined();
+    expect(
+      screen.getByRole<HTMLInputElement>('textbox', { name: '배경색' }).value,
+    ).toBe('#66339940');
+  });
+
   it('keeps controlled display and form values aligned until the parent updates', () => {
     const handleValueChange = vi.fn();
     const { container, rerender } = render(
@@ -144,9 +172,11 @@ describe('ColorField', () => {
   it('disables the native swatch for a read-only field', () => {
     render(
       <ColorField
+        alphaLabel="고정 색 투명도"
         aria-label="고정 색"
         defaultValue="#663399"
         readOnly
+        showAlpha
         swatchLabel="고정 색상 선택"
       />,
     );
@@ -156,6 +186,11 @@ describe('ColorField', () => {
     );
     expect(
       screen.getByRole('textbox', { name: '고정 색' }).hasAttribute('readonly'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByRole('slider', { name: '고정 색 투명도' })
+        .hasAttribute('disabled'),
     ).toBe(true);
   });
 });

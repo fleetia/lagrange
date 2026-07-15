@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { applyColorAlpha, normalizeColor } from './helpers';
+import {
+  applyColorAlpha,
+  applyColorAlphaPercentage,
+  getColorAlphaPercentage,
+  normalizeColor,
+} from './helpers';
 
 describe('normalizeColor', () => {
   it.each([
@@ -44,5 +49,20 @@ describe('applyColorAlpha', () => {
     expect(applyColorAlpha('#ff6347', 'rgba(0, 0, 0, 0.5)')).toBe(
       '#ff634780',
     );
+  });
+});
+
+describe('alpha percentage', () => {
+  it('reads the normalized alpha byte as a percentage', () => {
+    expect(getColorAlphaPercentage('rgba(102, 51, 153, 0.5)')).toBe(50);
+    expect(getColorAlphaPercentage('#66339940')).toBe(25);
+    expect(getColorAlphaPercentage('not-a-color')).toBeNull();
+  });
+
+  it('applies and clamps a percentage while preserving RGB channels', () => {
+    expect(applyColorAlphaPercentage('#663399', 25)).toBe('#66339940');
+    expect(applyColorAlphaPercentage('#66339980', -10)).toBe('#66339900');
+    expect(applyColorAlphaPercentage('#66339980', 110)).toBe('#663399ff');
+    expect(applyColorAlphaPercentage('#66339980', Number.NaN)).toBeNull();
   });
 });
