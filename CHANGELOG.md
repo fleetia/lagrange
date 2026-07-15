@@ -1,5 +1,11 @@
 # @fleetia/lagrange
 
+## 0.1.1
+
+### Patch Changes
+
+- 958e186: Add an accessible alpha percentage control to ColorField when showAlpha is enabled.
+
 ## 0.1.0
 
 ### Minor Changes
