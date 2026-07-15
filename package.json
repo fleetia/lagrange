@@ -1,6 +1,6 @@
 {
   "name": "@fleetia/lagrange",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Editorial React design system for dense, precise interfaces.",
   "type": "module",
   "license": "AGPL-3.0-only",
