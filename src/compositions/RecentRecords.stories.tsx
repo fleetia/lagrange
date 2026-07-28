@@ -189,24 +189,38 @@ const COLUMNS: readonly DataTableColumn<LedgerRecord>[] = [
     id: 'account',
     header: '계좌',
     width: 118,
-    renderCell: (record) => <Text truncate variant="caption">{record.account}</Text>,
+    renderCell: (record) => (
+      <Text truncate variant="caption">
+        {record.account}
+      </Text>
+    ),
   },
   {
     id: 'tag',
     header: '태그',
     width: 62,
-    renderCell: (record) => <Text tone="muted" variant="caption">{record.tag}</Text>,
+    renderCell: (record) => (
+      <Text tone="muted" variant="caption">
+        {record.tag}
+      </Text>
+    ),
   },
 ];
 
 const TOTALS = [
-  <Text key="label" variant="label" weight="strong">최근 합계</Text>,
+  <Text key="label" variant="label" weight="strong">
+    최근 합계
+  </Text>,
   null,
   null,
   null,
-  <Text key="amount" variant="data" weight="strong">+ ₩ 3,312,700</Text>,
+  <Text key="amount" variant="data" weight="strong">
+    + ₩ 3,312,700
+  </Text>,
   null,
-  <Text key="count" tone="muted" variant="caption">8건</Text>,
+  <Text key="count" tone="muted" variant="caption">
+    8건
+  </Text>,
 ] as const;
 
 function getRowTone(record: LedgerRecord): DataTableRowTone {
@@ -225,7 +239,9 @@ function RecentRecordsStory(): ReactElement {
     >
       <header className="lagrange-story__header">
         <div>
-          <p className="lagrange-story__kicker">Household ledger · records 04</p>
+          <p className="lagrange-story__kicker">
+            Household ledger · records 04
+          </p>
           <Heading level={1} variant="display">
             최근 거래
           </Heading>
@@ -237,17 +253,26 @@ function RecentRecordsStory(): ReactElement {
 
       <Rule variant="structural" />
 
-      <div className="lagrange-story__section lagrange-story__summary" aria-label="7월 요약">
+      <div
+        className="lagrange-story__section lagrange-story__summary"
+        aria-label="7월 요약"
+      >
         <div className="lagrange-story__summary-item">
-          <Text variant="label" tone="positive" weight="strong">수입</Text>
+          <Text variant="label" tone="positive" weight="strong">
+            수입
+          </Text>
           <span className="lagrange-story__summary-value">₩ 3,200,000</span>
         </div>
         <div className="lagrange-story__summary-item">
-          <Text variant="label" tone="critical" weight="strong">지출</Text>
+          <Text variant="label" tone="critical" weight="strong">
+            지출
+          </Text>
           <span className="lagrange-story__summary-value">₩ 187,300</span>
         </div>
         <div className="lagrange-story__summary-item">
-          <Text variant="label" tone="accent" weight="strong">차액</Text>
+          <Text variant="label" tone="accent" weight="strong">
+            차액
+          </Text>
           <span className="lagrange-story__summary-value">₩ 3,012,700</span>
         </div>
       </div>
@@ -267,7 +292,8 @@ function RecentRecordsStory(): ReactElement {
       </div>
 
       <p className="lagrange-story__note">
-        선택 행은 geometry를 바꾸지 않고 periwinkle wash와 marker로만 구분합니다.
+        선택 행은 geometry를 바꾸지 않고 periwinkle wash와 marker로만
+        구분합니다.
       </p>
     </ThemeRoot>
   );

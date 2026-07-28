@@ -92,11 +92,7 @@ export const States: Story = {
       >
         <TextField defaultValue="정기 지출" readOnly />
       </FormField>
-      <FormField
-        description="현재 사용할 수 없음"
-        label="비활성"
-        marker="S4"
-      >
+      <FormField description="현재 사용할 수 없음" label="비활성" marker="S4">
         <TextField defaultValue="잠긴 계정" disabled />
       </FormField>
     </div>

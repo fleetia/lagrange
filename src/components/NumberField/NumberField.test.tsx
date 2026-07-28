@@ -1,4 +1,10 @@
-import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { FormField } from '../FormField/FormField';
@@ -29,10 +35,10 @@ describe('NumberField', () => {
   });
 
   it('formats on blur and restores the raw string while editing', () => {
-    render(
-      <NumberField aria-label="금액" defaultValue="12345.00" />,
-    );
-    const input = screen.getByRole<HTMLInputElement>('textbox', { name: '금액' });
+    render(<NumberField aria-label="금액" defaultValue="12345.00" />);
+    const input = screen.getByRole<HTMLInputElement>('textbox', {
+      name: '금액',
+    });
 
     expect(input.value).toBe('12,345.00');
 
@@ -100,7 +106,10 @@ describe('NumberField', () => {
 
     render(
       <FormField error="0 이상의 값을 입력하세요." label="수량" required>
-        <NumberField allowNegative={false} onRawValueChange={handleRawValueChange} />
+        <NumberField
+          allowNegative={false}
+          onRawValueChange={handleRawValueChange}
+        />
       </FormField>,
     );
     const input = screen.getByLabelText('수량*');

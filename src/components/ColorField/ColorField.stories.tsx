@@ -57,9 +57,15 @@ export const Variants: Story = {
 export const States: Story = {
   render: (): ReactElement => (
     <Stack gap="md">
-      <FormField label="기본"><ColorField defaultValue="#663399" /></FormField>
-      <FormField label="읽기 전용"><ColorField defaultValue="#667744" readOnly /></FormField>
-      <FormField label="비활성"><ColorField defaultValue="#9b4635" disabled /></FormField>
+      <FormField label="기본">
+        <ColorField defaultValue="#663399" />
+      </FormField>
+      <FormField label="읽기 전용">
+        <ColorField defaultValue="#667744" readOnly />
+      </FormField>
+      <FormField label="비활성">
+        <ColorField defaultValue="#9b4635" disabled />
+      </FormField>
       <FormField error="지원하는 CSS color 형식을 입력하세요." label="오류">
         <ColorField defaultValue="#663399" />
       </FormField>

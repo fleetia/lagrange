@@ -1,8 +1,5 @@
 import { createTheme } from '@vanilla-extract/css';
-import {
-  createThemeTokens,
-  themeVars,
-} from '@fleetia/lagrange/theme';
+import { createThemeTokens, themeVars } from '@fleetia/lagrange/theme';
 
 export const brandThemeClass = createTheme(
   themeVars,

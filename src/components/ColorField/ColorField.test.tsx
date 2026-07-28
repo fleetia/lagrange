@@ -84,9 +84,8 @@ describe('ColorField', () => {
         swatchLabel="오버레이 색상 선택"
       />,
     );
-    const swatch = screen.getByLabelText<HTMLInputElement>(
-      '오버레이 색상 선택',
-    );
+    const swatch =
+      screen.getByLabelText<HTMLInputElement>('오버레이 색상 선택');
 
     fireEvent.change(swatch, { target: { value: '#ff6347' } });
 
@@ -121,8 +120,9 @@ describe('ColorField', () => {
 
     expect(handleValueChange).toHaveBeenCalledWith('#abcdef');
     expect(input.value).toBe('#123456');
-    expect(new FormData(container.querySelector('form') ?? undefined).get('accent'))
-      .toBe('#123456');
+    expect(
+      new FormData(container.querySelector('form') ?? undefined).get('accent'),
+    ).toBe('#123456');
 
     rerender(
       <form>
@@ -137,8 +137,9 @@ describe('ColorField', () => {
     );
 
     expect(input.value).toBe('#abcdef');
-    expect(new FormData(container.querySelector('form') ?? undefined).get('accent'))
-      .toBe('#abcdef');
+    expect(
+      new FormData(container.querySelector('form') ?? undefined).get('accent'),
+    ).toBe('#abcdef');
   });
 
   it('disables the native swatch for a read-only field', () => {
@@ -151,9 +152,9 @@ describe('ColorField', () => {
       />,
     );
 
-    expect(screen.getByLabelText('고정 색상 선택').hasAttribute('disabled')).toBe(
-      true,
-    );
+    expect(
+      screen.getByLabelText('고정 색상 선택').hasAttribute('disabled'),
+    ).toBe(true);
     expect(
       screen.getByRole('textbox', { name: '고정 색' }).hasAttribute('readonly'),
     ).toBe(true);

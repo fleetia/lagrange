@@ -4,13 +4,7 @@ import type {
   ReactElement,
   ReactNode,
 } from 'react';
-import {
-  createContext,
-  forwardRef,
-  useContext,
-  useId,
-  useMemo,
-} from 'react';
+import { createContext, forwardRef, useContext, useId, useMemo } from 'react';
 import clsx from 'clsx';
 
 import * as styles from './ChoiceGroup.css';
@@ -68,9 +62,10 @@ export const ChoiceGroup = forwardRef<HTMLFieldSetElement, ChoiceGroupProps>(
     const descriptionId = description
       ? `lagrange-choice-${generatedId}-description`
       : undefined;
-    const describedBy = [ariaDescribedBy, descriptionId]
-      .filter((id): id is string => Boolean(id))
-      .join(' ') || undefined;
+    const describedBy =
+      [ariaDescribedBy, descriptionId]
+        .filter((id): id is string => Boolean(id))
+        .join(' ') || undefined;
     const contextValue = useMemo<ChoiceGroupContextValue>(
       () => ({
         defaultValue,
@@ -148,14 +143,7 @@ export type ChoiceProps = Omit<
 
 export const Choice = forwardRef<HTMLInputElement, ChoiceProps>(
   (
-    {
-      children,
-      className,
-      disabled = false,
-      onChange,
-      value,
-      ...props
-    },
+    { children, className, disabled = false, onChange, value, ...props },
     ref,
   ): ReactElement => {
     const group = useContext(ChoiceGroupContext);

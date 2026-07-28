@@ -105,12 +105,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
         orientation,
         value: selectedValue,
       }),
-      [
-        baseId,
-        orientation,
-        selectedValue,
-        updateValue,
-      ],
+      [baseId, orientation, selectedValue, updateValue],
     );
 
     return (
@@ -340,13 +335,7 @@ export type TabPanelProps = Omit<
 
 export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(
   (
-    {
-      children,
-      className,
-      tabIndex = 0,
-      value,
-      ...props
-    },
+    { children, className, tabIndex = 0, value, ...props },
     ref,
   ): ReactElement => {
     const context = useTabsContext('TabPanel');

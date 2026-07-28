@@ -41,8 +41,6 @@ describe('normalizeColor', () => {
 
 describe('applyColorAlpha', () => {
   it('preserves alpha when a native swatch changes the opaque channels', () => {
-    expect(applyColorAlpha('#ff6347', 'rgba(0, 0, 0, 0.5)')).toBe(
-      '#ff634780',
-    );
+    expect(applyColorAlpha('#ff6347', 'rgba(0, 0, 0, 0.5)')).toBe('#ff634780');
   });
 });

@@ -45,10 +45,7 @@ export const Variants: Story = {
   },
   render: () => (
     <Stack gap="xl">
-      <PlacementPicker
-        defaultValue="top-left"
-        label="Top aligned placement"
-      />
+      <PlacementPicker defaultValue="top-left" label="Top aligned placement" />
       <PlacementPicker
         defaultValue="bottom-right"
         getItemLabel={(placement) => `Layout ${placement}`}

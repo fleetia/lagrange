@@ -62,8 +62,9 @@ function assignRef<T>(ref: ForwardedRef<T>, value: T | null): void {
 }
 
 function getEnabledMenuItems(menu: HTMLElement): readonly HTMLButtonElement[] {
-  return [...menu.querySelectorAll<HTMLButtonElement>('[role="menuitem"]')]
-    .filter((item) => !item.disabled);
+  return [
+    ...menu.querySelectorAll<HTMLButtonElement>('[role="menuitem"]'),
+  ].filter((item) => !item.disabled);
 }
 
 function isPopoverOpen(element: HTMLElement): boolean {
@@ -118,9 +119,10 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
       }
 
       if (!previousFocusRef.current?.isConnected) {
-        previousFocusRef.current = document.activeElement instanceof HTMLElement
-          ? document.activeElement
-          : null;
+        previousFocusRef.current =
+          document.activeElement instanceof HTMLElement
+            ? document.activeElement
+            : null;
       }
       shouldRestoreFocusRef.current = true;
 
@@ -168,10 +170,7 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
       (firstEnabledItem ?? menu).focus();
 
       return () => {
-        if (
-          typeof menu.hidePopover === 'function' &&
-          isPopoverOpen(menu)
-        ) {
+        if (typeof menu.hidePopover === 'function' && isPopoverOpen(menu)) {
           menu.hidePopover();
         }
       };
@@ -194,19 +193,21 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
           { height: window.innerHeight, width: window.innerWidth },
         );
 
-        setPosition((currentPosition): ContextMenuPosition =>
-          currentPosition.left === nextPosition.left &&
-          currentPosition.top === nextPosition.top
-            ? currentPosition
-            : nextPosition,
+        setPosition(
+          (currentPosition): ContextMenuPosition =>
+            currentPosition.left === nextPosition.left &&
+            currentPosition.top === nextPosition.top
+              ? currentPosition
+              : nextPosition,
         );
       }
 
       updatePosition();
       window.addEventListener('resize', updatePosition);
-      const resizeObserver = typeof ResizeObserver === 'function'
-        ? new ResizeObserver(updatePosition)
-        : null;
+      const resizeObserver =
+        typeof ResizeObserver === 'function'
+          ? new ResizeObserver(updatePosition)
+          : null;
       resizeObserver?.observe(openMenu);
 
       return () => {
@@ -261,9 +262,7 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
         return;
       }
 
-      const items = menuRef.current
-        ? getEnabledMenuItems(menuRef.current)
-        : [];
+      const items = menuRef.current ? getEnabledMenuItems(menuRef.current) : [];
 
       if (items.length === 0) {
         return;
@@ -279,9 +278,10 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
           nextIndex = currentIndex < 0 ? 0 : (currentIndex + 1) % items.length;
           break;
         case 'ArrowUp':
-          nextIndex = currentIndex < 0
-            ? items.length - 1
-            : (currentIndex - 1 + items.length) % items.length;
+          nextIndex =
+            currentIndex < 0
+              ? items.length - 1
+              : (currentIndex - 1 + items.length) % items.length;
           break;
         case 'End':
           nextIndex = items.length - 1;

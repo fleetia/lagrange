@@ -14,23 +14,23 @@ Lagrange는 촘촘하고 정확한 data interface를 위한 editorial React desi
 
 GitHub Packages는 package를 읽을 때도 GitHub token을 요구합니다. consumer repository에는 registry mapping만 저장합니다.
 
-~~~ini
+```ini
 @fleetia:registry=https://npm.pkg.github.com
 always-auth=true
-~~~
+```
 
 pnpm 11은 committed project configuration의 registry credential을 신뢰하지 않으므로 token은 user-level configuration에만 설정합니다. GitHub의 <code>personal access token (classic)</code>을 사용하고, 설치 token에는 최소 <code>read:packages</code> 권한만 부여하세요.
 
-~~~bash
+```bash
 export NODE_AUTH_TOKEN="YOUR_GITHUB_PACKAGES_TOKEN"
 pnpm config set --location=user //npm.pkg.github.com/:_authToken "$NODE_AUTH_TOKEN"
-~~~
+```
 
 CI에서는 <code>actions/setup-node</code>의 <code>registry-url</code>과 secret <code>NODE_AUTH_TOKEN</code>을 사용합니다.
 
-~~~bash
+```bash
 pnpm add @fleetia/lagrange
-~~~
+```
 
 실제 token, <code>.env</code>, user-level <code>~/.npmrc</code>를 repository에 commit하지 마세요. token이 노출되면 즉시 revoke하고 새 token으로 교체해야 합니다.
 
@@ -38,7 +38,7 @@ pnpm add @fleetia/lagrange
 
 application entry에서 global stylesheet를 한 번 불러오고, UI root를 <code>ThemeRoot</code>로 감쌉니다.
 
-~~~tsx
+```tsx
 import type { ReactElement } from 'react';
 import { ThemeRoot } from '@fleetia/lagrange';
 import '@fleetia/lagrange/styles.css';
@@ -52,7 +52,7 @@ export function Root(): ReactElement {
     </ThemeRoot>
   );
 }
-~~~
+```
 
 <code>styles.css</code>는 theme와 component styles를 포함합니다. application의 reset은 consumer가 소유하며, Lagrange stylesheet는 entry에서 한 번만 import합니다.
 
@@ -62,18 +62,15 @@ Lagrange theme은 raw value인 <code>primitiveTokens</code>, UI 역할을 표현
 
 전체 brand theme은 consumer의 Vanilla Extract build에서 미리 compile하고 <code>themeClassName</code>으로 기본 theme을 교체합니다.
 
-~~~bash
+```bash
 pnpm add -D @vanilla-extract/css @vanilla-extract/vite-plugin
-~~~
+```
 
 Consumer bundler에도 Vanilla Extract integration을 등록해야 합니다. 아래는 theme 작성 API이며, Vite 설정을 포함한 전체 예시는 [Theming guide](./docs/theming.md)를 참고하세요.
 
-~~~ts
+```ts
 import { createTheme } from '@vanilla-extract/css';
-import {
-  createThemeTokens,
-  themeVars,
-} from '@fleetia/lagrange/theme';
+import { createThemeTokens, themeVars } from '@fleetia/lagrange/theme';
 
 export const brandThemeClass = createTheme(
   themeVars,
@@ -89,28 +86,28 @@ export const brandThemeClass = createTheme(
     },
   }),
 );
-~~~
+```
 
-~~~tsx
+```tsx
 <ThemeRoot themeClassName={brandThemeClass}>
   <App />
 </ThemeRoot>
-~~~
+```
 
 작은 brand 조정은 stable CSS variable을 application stylesheet에서 override하고 기존 default theme을 유지할 수 있습니다.
 
-~~~css
+```css
 .brand-surface {
   --lagrange-semantic-color-content-accent: #294f59;
   --lagrange-semantic-color-interaction-primary: #294f59;
 }
-~~~
+```
 
-~~~tsx
+```tsx
 <ThemeRoot className="brand-surface">
   <App />
 </ThemeRoot>
-~~~
+```
 
 두 방식의 contract와 token 선택 기준은 [Theming guide](./docs/theming.md)에 정리되어 있습니다. 기존 <code>tokens</code>, <code>vars</code>, <code>themeClass</code> export는 호환성을 위해 유지됩니다.
 
@@ -120,16 +117,16 @@ export const brandThemeClass = createTheme(
 
 Lagrange는 app domain을 포함하지 않는 generic component만 제공합니다.
 
-| Family | Components |
-| --- | --- |
-| Foundation | <code>ThemeRoot</code>, <code>Text</code>, <code>Heading</code>, <code>Rule</code>, <code>Stack</code>, <code>Inline</code>, <code>VisuallyHidden</code> |
-| Structure | <code>Section</code>, <code>SectionHeader</code>, <code>Toolbar</code>, <code>FieldGroup</code>, <code>FieldGrid</code>, <code>Breadcrumb</code>, <code>Tabs</code>, <code>TabList</code>, <code>Tab</code>, <code>TabPanel</code> |
-| Command | <code>Action</code>, <code>Button</code>, <code>Icon</code>, <code>IconButton</code> |
-| Input | <code>FormField</code>, <code>TextField</code>, <code>TextArea</code>, <code>NumberField</code>, <code>DateField</code>, <code>Select</code>, <code>Combobox</code>, <code>RangeField</code>, <code>ColorField</code>, <code>PlacementPicker</code>, <code>InlineEdit</code> |
-| Choice | <code>Checkbox</code>, <code>RadioGroup</code>, <code>Radio</code>, <code>Switch</code>, <code>ChoiceGroup</code>, <code>Choice</code> |
-| Overlay | <code>Dialog</code>, <code>ContextMenu</code>, <code>ContextMenuItem</code> |
-| Feedback | <code>SaveStatus</code>, <code>StatusMarker</code> |
-| Data | <code>Metric</code>, <code>DataTable</code>, <code>DataGrid</code>, <code>RadialBreakdownChart</code> |
+| Family     | Components                                                                                                                                                                                                                                                                   |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Foundation | <code>ThemeRoot</code>, <code>Text</code>, <code>Heading</code>, <code>Rule</code>, <code>Stack</code>, <code>Inline</code>, <code>VisuallyHidden</code>                                                                                                                     |
+| Structure  | <code>Section</code>, <code>SectionHeader</code>, <code>Toolbar</code>, <code>FieldGroup</code>, <code>FieldGrid</code>, <code>Breadcrumb</code>, <code>Tabs</code>, <code>TabList</code>, <code>Tab</code>, <code>TabPanel</code>                                           |
+| Command    | <code>Action</code>, <code>Button</code>, <code>Icon</code>, <code>IconButton</code>                                                                                                                                                                                         |
+| Input      | <code>FormField</code>, <code>TextField</code>, <code>TextArea</code>, <code>NumberField</code>, <code>DateField</code>, <code>Select</code>, <code>Combobox</code>, <code>RangeField</code>, <code>ColorField</code>, <code>PlacementPicker</code>, <code>InlineEdit</code> |
+| Choice     | <code>Checkbox</code>, <code>RadioGroup</code>, <code>Radio</code>, <code>Switch</code>, <code>ChoiceGroup</code>, <code>Choice</code>                                                                                                                                       |
+| Overlay    | <code>Dialog</code>, <code>ContextMenu</code>, <code>ContextMenuItem</code>                                                                                                                                                                                                  |
+| Feedback   | <code>SaveStatus</code>, <code>StatusMarker</code>                                                                                                                                                                                                                           |
+| Data       | <code>Metric</code>, <code>DataTable</code>, <code>DataGrid</code>, <code>RadialBreakdownChart</code>                                                                                                                                                                        |
 
 <code>DataTable</code>은 semantic read-only data에 사용합니다. keyboard cell navigation, sorting, row selection, inline editing이 필요하면 <code>DataGrid</code>를 사용합니다. <code>RadialBreakdownChart</code>에는 자산·부채 같은 domain 의미를 넣지 않고 segment와 formatter만 전달합니다.
 
@@ -149,42 +146,45 @@ Lagrange는 generic SaaS dashboard보다 편집물과 technical ledger에 가까
 
 Rule은 단순한 장식이 아니라 정보 구조를 표현합니다.
 
-| Semantic | 표현 | 사용처 |
-| --- | --- | --- |
-| <code>weak</code> | dotted hairline | body row, 같은 group 내부의 약한 구분 |
-| <code>boundary</code> | single 1px rule | 일반 section 경계, editable field baseline |
+| Semantic                | 표현                       | 사용처                                                                                    |
+| ----------------------- | -------------------------- | ----------------------------------------------------------------------------------------- |
+| <code>weak</code>       | dotted hairline            | body row, 같은 group 내부의 약한 구분                                                     |
+| <code>boundary</code>   | single 1px rule            | 일반 section 경계, editable field baseline                                                |
 | <code>structural</code> | 1px rule 두 개와 2–3px gap | <code>thead</code>/<code>tbody</code>, subtotal/total, form/action처럼 구조가 바뀌는 경계 |
 
 <code>structural</code>을 두꺼운 2px border 한 줄로 대체하지 않습니다. double rule의 두 선과 사이 공간이 구조적 의미의 일부입니다.
 
 ## 개발
 
-~~~bash
+```bash
 corepack enable
 corepack install --global pnpm@11.9.0
 pnpm install
 pnpm dev
-~~~
+```
 
 주요 command:
 
-| Command | 역할 |
-| --- | --- |
-| <code>pnpm lint</code> | ESLint |
-| <code>pnpm typecheck</code> | TypeScript type check |
-| <code>pnpm test</code> | Vitest unit tests |
-| <code>pnpm build</code> | package build와 type declarations 생성 |
-| <code>pnpm verify:react-18</code> | packed package의 React 18.2 type compatibility 검증 |
-| <code>pnpm storybook:build</code> | static Storybook build |
-| <code>pnpm test:visual</code> | Playwright accessibility와 visual checks |
-| <code>pnpm check</code> | lint, typecheck, unit, React 18 compatibility, package/consumer/Storybook build |
+| Command                           | 역할                                                                                    |
+| --------------------------------- | --------------------------------------------------------------------------------------- |
+| <code>pnpm lint</code>            | Oxlint                                                                                  |
+| <code>pnpm lint:fix</code>        | Oxlint 자동 수정                                                                        |
+| <code>pnpm format</code>          | Oxfmt 자동 포맷팅                                                                       |
+| <code>pnpm format:check</code>    | Oxfmt 포맷 검증                                                                         |
+| <code>pnpm typecheck</code>       | TypeScript type check                                                                   |
+| <code>pnpm test</code>            | Vitest unit tests                                                                       |
+| <code>pnpm build</code>           | package build와 type declarations 생성                                                  |
+| <code>pnpm verify:react-18</code> | packed package의 React 18.2 type compatibility 검증                                     |
+| <code>pnpm storybook:build</code> | static Storybook build                                                                  |
+| <code>pnpm test:visual</code>     | Playwright accessibility와 visual checks                                                |
+| <code>pnpm check</code>           | lint, format, typecheck, unit, React 18 compatibility, package/consumer/Storybook build |
 
 Playwright를 처음 실행하는 machine에서는 browser를 설치합니다.
 
-~~~bash
+```bash
 pnpm exec playwright install chromium
 pnpm test:visual
-~~~
+```
 
 자세한 contribution 규칙은 [CONTRIBUTING.md](./CONTRIBUTING.md)를 참고하세요.
 

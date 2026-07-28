@@ -7,9 +7,7 @@ afterEach(cleanup);
 
 describe('Checkbox', () => {
   it('connects its visible label and description to the native checkbox', () => {
-    render(
-      <Checkbox description="월말에 다시 알림">반복 거래</Checkbox>,
-    );
+    render(<Checkbox description="월말에 다시 알림">반복 거래</Checkbox>);
 
     const checkbox = screen.getByRole('checkbox', { name: '반복 거래' });
     const descriptionId = checkbox.getAttribute('aria-describedby');

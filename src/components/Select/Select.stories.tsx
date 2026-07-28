@@ -104,9 +104,7 @@ export const Accessibility: Story = {
   ),
   play: async ({ canvas, userEvent }): Promise<void> => {
     const select = canvas.getByRole('combobox', { name: '거래 카테고리' });
-    const description = canvas.getByText(
-      '한 가지 거래 카테고리를 선택하세요.',
-    );
+    const description = canvas.getByText('한 가지 거래 카테고리를 선택하세요.');
 
     await userEvent.tab();
     await expect(select).toHaveFocus();

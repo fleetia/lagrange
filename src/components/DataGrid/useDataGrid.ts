@@ -17,11 +17,7 @@ type UseDataGridOptions<TData> = {
   containerId: string;
   getRowKey: (row: TData, rowIndex: number) => Key;
   onCellCommit?: (change: DataGridCellCommit<TData>) => void;
-  onRowSelectionChange?: (
-    rowKey: Key,
-    row: TData,
-    isSelected: boolean,
-  ) => void;
+  onRowSelectionChange?: (rowKey: Key, row: TData, isSelected: boolean) => void;
   rows: readonly TData[];
   selectedRowKeys: ReadonlySet<Key>;
   selectionMode: DataGridSelectionMode;
@@ -227,11 +223,7 @@ export function useDataGrid<TData>({
     if (event.key === ' ' && selectionMode !== 'none') {
       event.preventDefault();
       const rowKey = getRowKey(row, rowIndex);
-      onRowSelectionChange?.(
-        rowKey,
-        row,
-        !selectedRowKeys.has(rowKey),
-      );
+      onRowSelectionChange?.(rowKey, row, !selectedRowKeys.has(rowKey));
       return;
     }
 

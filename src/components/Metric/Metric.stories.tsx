@@ -3,11 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ThemeRoot } from '../../theme/ThemeRoot';
 import { tokens } from '../../theme/tokens';
-import {
-  Metric,
-  type MetricSize,
-  type MetricTone,
-} from './Metric';
+import { Metric, type MetricSize, type MetricTone } from './Metric';
 
 const SIZES: readonly MetricSize[] = ['compact', 'default', 'prominent'];
 const TONES: readonly MetricTone[] = [
@@ -110,9 +106,23 @@ export const Accessibility: Story = {
     <section aria-labelledby="july-summary-heading">
       <h2 id="july-summary-heading">7월 요약</h2>
       <div style={GRID_STYLE}>
-        <Metric detail="급여 포함" label="수입" tone="positive" value="₩ 3,200,000" />
-        <Metric detail="예산 대비 82%" label="지출" tone="critical" value="₩ 1,248,500" />
-        <Metric detail="수입에서 지출을 제외" label="차액" value="₩ 1,951,500" />
+        <Metric
+          detail="급여 포함"
+          label="수입"
+          tone="positive"
+          value="₩ 3,200,000"
+        />
+        <Metric
+          detail="예산 대비 82%"
+          label="지출"
+          tone="critical"
+          value="₩ 1,248,500"
+        />
+        <Metric
+          detail="수입에서 지출을 제외"
+          label="차액"
+          value="₩ 1,951,500"
+        />
       </div>
     </section>
   ),

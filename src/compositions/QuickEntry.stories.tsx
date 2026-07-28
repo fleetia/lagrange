@@ -53,10 +53,15 @@ function QuickEntryStory(): ReactElement {
   }
 
   return (
-    <ThemeRoot className="lagrange-story lagrange-story--compact" data-testid="quick-entry-story">
+    <ThemeRoot
+      className="lagrange-story lagrange-story--compact"
+      data-testid="quick-entry-story"
+    >
       <header className="lagrange-story__header">
         <div>
-          <p className="lagrange-story__kicker">Daily ledger · input specimen 03</p>
+          <p className="lagrange-story__kicker">
+            Daily ledger · input specimen 03
+          </p>
           <Heading level={1} variant="display">
             빠른 입력
           </Heading>
@@ -136,7 +141,10 @@ function QuickEntryStory(): ReactElement {
         {savedMessage}
       </Text>
 
-      <section className="lagrange-story__section" aria-labelledby="state-heading">
+      <section
+        className="lagrange-story__section"
+        aria-labelledby="state-heading"
+      >
         <div className="lagrange-story__section-heading">
           <Heading id="state-heading" level={2} variant="subsection">
             Field states
@@ -150,12 +158,20 @@ function QuickEntryStory(): ReactElement {
             </FormField>
           </div>
           <div className="lagrange-story__state-example">
-            <FormField description="Geometry remains unchanged" label="내용" marker="S2">
+            <FormField
+              description="Geometry remains unchanged"
+              label="내용"
+              marker="S2"
+            >
               <TextField autoFocus defaultValue="카페라떼" />
             </FormField>
           </div>
           <div className="lagrange-story__state-example">
-            <FormField error="카테고리를 선택하세요" label="카테고리" marker="S3">
+            <FormField
+              error="카테고리를 선택하세요"
+              label="카테고리"
+              marker="S3"
+            >
               <Select defaultValue="">
                 <option disabled value="">
                   선택하세요

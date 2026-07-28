@@ -10,14 +10,18 @@ describe('IconButton', () => {
   it('requires an accessible name while keeping its icon decorative', () => {
     render(
       <IconButton label="거래 수정">
-        <Icon><path d="M4 20h4L19 9l-4-4L4 16v4Z" /></Icon>
+        <Icon>
+          <path d="M4 20h4L19 9l-4-4L4 16v4Z" />
+        </Icon>
       </IconButton>,
     );
 
     const button = screen.getByRole('button', { name: '거래 수정' });
 
     expect(button.getAttribute('type')).toBe('button');
-    expect(button.querySelector('svg')?.getAttribute('aria-hidden')).toBe('true');
+    expect(button.querySelector('svg')?.getAttribute('aria-hidden')).toBe(
+      'true',
+    );
   });
 
   it('forwards activation and visual options', () => {

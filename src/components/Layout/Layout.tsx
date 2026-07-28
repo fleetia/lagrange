@@ -18,13 +18,7 @@ export type StackProps = SharedLayoutProps;
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>(
   (
-    {
-      align = 'stretch',
-      className,
-      gap = 'sm',
-      justify = 'start',
-      ...props
-    },
+    { align = 'stretch', className, gap = 'sm', justify = 'start', ...props },
     ref,
   ): ReactElement => (
     <div

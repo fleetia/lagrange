@@ -63,7 +63,9 @@ export function DataTable<TData>({
   return (
     <div className={clsx(styles.container, containerClassName)}>
       <table className={clsx(styles.table, className)} {...tableProps}>
-        {caption ? <caption className={styles.caption}>{caption}</caption> : null}
+        {caption ? (
+          <caption className={styles.caption}>{caption}</caption>
+        ) : null}
         <thead>
           <tr>
             {columns.map((column) => (

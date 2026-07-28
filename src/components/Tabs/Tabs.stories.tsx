@@ -5,13 +5,7 @@ import { expect } from 'storybook/test';
 import { ThemeRoot } from '../../theme/ThemeRoot';
 import { Stack } from '../Layout/Layout';
 import { Text } from '../Typography/Typography';
-import {
-  Tab,
-  TabList,
-  TabPanel,
-  Tabs,
-  type TabsOrientation,
-} from './Tabs';
+import { Tab, TabList, TabPanel, Tabs, type TabsOrientation } from './Tabs';
 
 type SettingsTabsProps = {
   hasDisabledAppearance?: boolean;
@@ -85,9 +79,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (): ReactElement => (
-    <SettingsTabs label="Settings sections" />
-  ),
+  render: (): ReactElement => <SettingsTabs label="Settings sections" />,
 };
 
 export const Variants: Story = {
@@ -105,12 +97,7 @@ export const Variants: Story = {
         <SettingsTabs label="Horizontal settings sections" />
       </section>
       <section aria-labelledby="vertical-tabs-heading">
-        <Text
-          as="p"
-          id="vertical-tabs-heading"
-          variant="label"
-          weight="strong"
-        >
+        <Text as="p" id="vertical-tabs-heading" variant="label" weight="strong">
           Vertical
         </Text>
         <SettingsTabs
@@ -133,10 +120,7 @@ export const States: Story = {
 
 export const Accessibility: Story = {
   render: (): ReactElement => (
-    <SettingsTabs
-      hasDisabledAppearance
-      label="Keyboard settings sections"
-    />
+    <SettingsTabs hasDisabledAppearance label="Keyboard settings sections" />
   ),
   play: async ({ canvas, userEvent }): Promise<void> => {
     const generalTab = canvas.getByRole('tab', { name: 'General' });

@@ -8,11 +8,7 @@ afterEach(cleanup);
 describe('Metric', () => {
   it('renders one semantic term and definition with supporting detail', () => {
     const { container } = render(
-      <Metric
-        detail="전월 대비 +4.2%"
-        label="총 자산"
-        value="₩ 28,450,000"
-      />,
+      <Metric detail="전월 대비 +4.2%" label="총 자산" value="₩ 28,450,000" />,
     );
 
     const metric = container.querySelector('dl');

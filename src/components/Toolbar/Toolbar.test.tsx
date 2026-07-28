@@ -26,7 +26,12 @@ describe('Toolbar', () => {
     const handleDelete = vi.fn();
 
     render(
-      <Toolbar align="between" boundary="structural" label="편집 도구" wrap={false}>
+      <Toolbar
+        align="between"
+        boundary="structural"
+        label="편집 도구"
+        wrap={false}
+      >
         <button onClick={handleAdd} type="button">
           추가
         </button>

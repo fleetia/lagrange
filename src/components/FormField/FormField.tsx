@@ -1,8 +1,4 @@
-import type {
-  ComponentPropsWithoutRef,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
 import { Children, forwardRef, Fragment, useId, useMemo } from 'react';
 import clsx from 'clsx';
 
@@ -13,7 +9,10 @@ import {
   type FormFieldContextValue,
 } from './FormFieldContext';
 
-export type FormFieldProps = Omit<ComponentPropsWithoutRef<'div'>, 'children'> & {
+export type FormFieldProps = Omit<
+  ComponentPropsWithoutRef<'div'>,
+  'children'
+> & {
   children: ReactElement;
   description?: ReactNode;
   error?: ReactNode;
@@ -40,9 +39,7 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
   ): ReactElement => {
     const generatedId = useId();
     const controlId = id ?? `lagrange-field-${generatedId}`;
-    const descriptionId = description
-      ? `${controlId}-description`
-      : undefined;
+    const descriptionId = description ? `${controlId}-description` : undefined;
     const errorId = error ? `${controlId}-error` : undefined;
     const isInvalid = Boolean(error);
     const contextValue = useMemo<FormFieldContextValue>(

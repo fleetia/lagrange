@@ -10,11 +10,7 @@ describe('InlineEdit', () => {
   it('commits a changed value with Enter', () => {
     const handleCommit = vi.fn();
     render(
-      <InlineEdit
-        ariaLabel="내용"
-        onCommit={handleCommit}
-        value="카페라떼"
-      />,
+      <InlineEdit ariaLabel="내용" onCommit={handleCommit} value="카페라떼" />,
     );
 
     fireEvent.click(screen.getByRole('button', { name: '내용 수정' }));
@@ -55,7 +51,12 @@ describe('InlineEdit', () => {
 
   it('keeps read-only values out of the editing state', () => {
     render(
-      <InlineEdit ariaLabel="내용" onCommit={vi.fn()} readOnly value="고정값" />,
+      <InlineEdit
+        ariaLabel="내용"
+        onCommit={vi.fn()}
+        readOnly
+        value="고정값"
+      />,
     );
 
     const trigger = screen.getByRole('button', { name: '내용 수정' });
@@ -89,9 +90,9 @@ describe('InlineEdit', () => {
       expect(screen.queryByRole('textbox', { name: '내용' })).toBeNull();
       expect(handleCommit).not.toHaveBeenCalled();
       expect(
-        screen.getByRole('button', { name: '내용 수정' }).hasAttribute(
-          'disabled',
-        ),
+        screen
+          .getByRole('button', { name: '내용 수정' })
+          .hasAttribute('disabled'),
       ).toBe(true);
     },
   );

@@ -1,4 +1,1 @@
-export {
-  VisuallyHidden,
-  type VisuallyHiddenProps,
-} from './VisuallyHidden';
+export { VisuallyHidden, type VisuallyHiddenProps } from './VisuallyHidden';

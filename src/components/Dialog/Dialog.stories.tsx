@@ -29,14 +29,14 @@ function DialogExample({
       <Button onClick={() => setIsOpen(true)}>Open dialog</Button>
       <Dialog
         closeLabel="Close dialog"
-        footer={(
+        footer={
           <>
             <Button onClick={() => setIsOpen(false)} variant="quiet">
               Cancel
             </Button>
             <Button onClick={() => setIsOpen(false)}>Save changes</Button>
           </>
-        )}
+        }
         isOpen={isOpen}
         onOpenChange={setIsOpen}
         size={size}
@@ -58,7 +58,7 @@ function ConfirmationDialogExample(): ReactElement {
       <Button onClick={() => setIsOpen(true)}>Reset theme</Button>
       <Dialog
         aria-describedby={descriptionId}
-        footer={(
+        footer={
           <>
             <Button
               ref={cancelButtonRef}
@@ -67,14 +67,11 @@ function ConfirmationDialogExample(): ReactElement {
             >
               Keep theme
             </Button>
-            <Button
-              onClick={() => setIsOpen(false)}
-              variant="critical"
-            >
+            <Button onClick={() => setIsOpen(false)} variant="critical">
               Reset theme
             </Button>
           </>
-        )}
+        }
         initialFocusRef={cancelButtonRef}
         isOpen={isOpen}
         onOpenChange={setIsOpen}

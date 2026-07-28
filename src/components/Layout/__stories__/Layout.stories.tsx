@@ -105,7 +105,11 @@ export const States: Story = {
     <Stack gap="xl">
       <div>
         <code>wrap=true</code>
-        <Inline gap="sm" style={{ marginTop: tokens.space.xs, width: '13rem' }} wrap>
+        <Inline
+          gap="sm"
+          style={{ marginTop: tokens.space.xs, width: '13rem' }}
+          wrap
+        >
           <Marker>ONE</Marker>
           <Marker>TWO</Marker>
           <Marker>THREE</Marker>
@@ -196,7 +200,11 @@ export const Wrapping: Story = {
         <Marker>THREE</Marker>
         <Marker>FOUR</Marker>
       </Inline>
-      <Inline gap="sm" style={{ width: '13rem', overflowX: 'auto' }} wrap={false}>
+      <Inline
+        gap="sm"
+        style={{ width: '13rem', overflowX: 'auto' }}
+        wrap={false}
+      >
         <Marker>ONE</Marker>
         <Marker>TWO</Marker>
         <Marker>THREE</Marker>

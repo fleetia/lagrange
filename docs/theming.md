@@ -13,14 +13,14 @@ themeVars (raw authoring contract)
             └─ component styles
 ```
 
-| Layer | 책임 | 예시 |
-| --- | --- | --- |
-| `primitiveTokens` | 의미가 없는 raw scale과 palette | `palette.aubergine`, `space.sm` |
-| `semanticTokens` | 화면 전체에서 공유하는 역할 | `color.surface.canvas`, `color.status.critical` |
-| `componentTokens` | component가 semantic 역할을 사용하는 방식 | `button.primaryBackground`, `table.headerSurface` |
-| `themeVars` | stable CSS variable contract | `--lagrange-semantic-color-surface-canvas` |
-| `semanticVars` | derived semantic 역할을 use site에서 해석하는 값 | `interaction.primary` → `content.accent` |
-| `componentVars` | component override와 semantic 기본값을 합성한 값 | `button.primaryBackground` → `interaction.primary` |
+| Layer             | 책임                                             | 예시                                               |
+| ----------------- | ------------------------------------------------ | -------------------------------------------------- |
+| `primitiveTokens` | 의미가 없는 raw scale과 palette                  | `palette.aubergine`, `space.sm`                    |
+| `semanticTokens`  | 화면 전체에서 공유하는 역할                      | `color.surface.canvas`, `color.status.critical`    |
+| `componentTokens` | component가 semantic 역할을 사용하는 방식        | `button.primaryBackground`, `table.headerSurface`  |
+| `themeVars`       | stable CSS variable contract                     | `--lagrange-semantic-color-surface-canvas`         |
+| `semanticVars`    | derived semantic 역할을 use site에서 해석하는 값 | `interaction.primary` → `content.accent`           |
+| `componentVars`   | component override와 semantic 기본값을 합성한 값 | `button.primaryBackground` → `interaction.primary` |
 
 Application code는 layout 계산처럼 raw scale이 필요한 경우를 제외하면 semantic 또는 component 역할을 선택합니다. 새 component stylesheet에서 legacy `tokens`와 `vars`를 직접 사용하지 않습니다.
 

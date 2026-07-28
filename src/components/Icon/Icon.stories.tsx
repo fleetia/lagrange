@@ -42,9 +42,15 @@ export const Default: Story = {
 export const Variants: Story = {
   render: (): ReactElement => (
     <ThemeRoot>
-      <Icon size="sm"><path d="M4 12h16" /></Icon>{' '}
-      <Icon size="md"><path d="M4 12h16" /></Icon>{' '}
-      <Icon size="lg"><path d="M4 12h16" /></Icon>
+      <Icon size="sm">
+        <path d="M4 12h16" />
+      </Icon>{' '}
+      <Icon size="md">
+        <path d="M4 12h16" />
+      </Icon>{' '}
+      <Icon size="lg">
+        <path d="M4 12h16" />
+      </Icon>
     </ThemeRoot>
   ),
 };
@@ -53,10 +59,14 @@ export const States: Story = {
   render: (): ReactElement => (
     <ThemeRoot>
       <span style={{ color: 'currentColor' }}>
-        <Icon><circle cx="12" cy="12" r="8" /></Icon>
+        <Icon>
+          <circle cx="12" cy="12" r="8" />
+        </Icon>
       </span>{' '}
       <span style={{ color: themeVars.semantic.color.status.critical }}>
-        <Icon><path d="M12 4v10m0 4v.01" /></Icon>
+        <Icon>
+          <path d="M12 4v10m0 4v.01" />
+        </Icon>
       </span>
     </ThemeRoot>
   ),

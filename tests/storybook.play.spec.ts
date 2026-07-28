@@ -11,7 +11,9 @@ const STORY_PLAY_CASES: readonly StoryPlayCase[] = [
     id: 'components-breadcrumb--accessibility',
     name: 'Breadcrumb keyboard navigation',
     assertComplete: async (page) => {
-      await expect(page.getByRole('button', { name: 'Lagrange' })).toBeFocused();
+      await expect(
+        page.getByRole('button', { name: 'Lagrange' }),
+      ).toBeFocused();
     },
   },
   {
@@ -34,7 +36,9 @@ const STORY_PLAY_CASES: readonly StoryPlayCase[] = [
     id: 'components-contextmenu--accessibility',
     name: 'ContextMenu keyboard selection',
     assertComplete: async (page) => {
-      await expect(page.getByRole('button', { name: '북마크 메뉴 열기' })).toBeFocused();
+      await expect(
+        page.getByRole('button', { name: '북마크 메뉴 열기' }),
+      ).toBeFocused();
       await expect(page.getByRole('status')).toHaveText('선택: 아이콘 초기화');
     },
   },
@@ -51,7 +55,9 @@ const STORY_PLAY_CASES: readonly StoryPlayCase[] = [
     id: 'components-colorfield--accessibility',
     name: 'ColorField keyboard commit',
     assertComplete: async (page) => {
-      await expect(page.getByRole('textbox', { name: '오버레이 색' })).toHaveValue('#ff634780');
+      await expect(
+        page.getByRole('textbox', { name: '오버레이 색' }),
+      ).toHaveValue('#ff634780');
     },
   },
   {
@@ -211,9 +217,9 @@ test('resolves nested legacy and component theme overrides at the use site', asy
   );
 
   const buttonBackground = async (name: string): Promise<string> =>
-    page.getByRole('button', { name }).evaluate(
-      (button) => getComputedStyle(button).backgroundColor,
-    );
+    page
+      .getByRole('button', { name })
+      .evaluate((button) => getComputedStyle(button).backgroundColor);
   const defaultBackground = await buttonBackground('Default reference');
 
   expect(defaultBackground).toBe('rgb(77, 45, 87)');

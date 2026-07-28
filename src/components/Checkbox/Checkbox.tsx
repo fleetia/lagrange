@@ -33,9 +33,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const descriptionId = description
       ? `lagrange-checkbox-${generatedId}-description`
       : undefined;
-    const describedBy = [ariaDescribedBy, descriptionId]
-      .filter((id): id is string => Boolean(id))
-      .join(' ') || undefined;
+    const describedBy =
+      [ariaDescribedBy, descriptionId]
+        .filter((id): id is string => Boolean(id))
+        .join(' ') || undefined;
     const hasAriaError =
       ariaInvalid !== undefined &&
       ariaInvalid !== false &&

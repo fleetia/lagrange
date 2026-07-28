@@ -171,9 +171,10 @@ export function useCombobox({
     handleFocus,
     handleInputChange,
     handleKeyDown,
-    inputValue: isOpen && !disabled && !readOnly
-      ? inputValue
-      : selectedOption?.label ?? '',
+    inputValue:
+      isOpen && !disabled && !readOnly
+        ? inputValue
+        : (selectedOption?.label ?? ''),
     isOpen: isOpen && !disabled && !readOnly,
     selectOption,
     selectedValue,

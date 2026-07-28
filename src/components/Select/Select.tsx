@@ -3,10 +3,7 @@ import { forwardRef } from 'react';
 import clsx from 'clsx';
 
 import { control, select } from '../controls.css';
-import {
-  joinIds,
-  useFormFieldContext,
-} from '../FormField/FormFieldContext';
+import { joinIds, useFormFieldContext } from '../FormField/FormFieldContext';
 
 export type SelectProps = ComponentPropsWithoutRef<'select'> & {
   isInvalid?: boolean;

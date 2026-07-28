@@ -46,7 +46,11 @@ export const Variants: Story = {
       <FormField label="기본 날짜" marker="D1">
         <DateField defaultValue="2026-07-14" />
       </FormField>
-      <FormField description="회계 기간 안에서만 선택할 수 있습니다." label="범위 제한" marker="D2">
+      <FormField
+        description="회계 기간 안에서만 선택할 수 있습니다."
+        label="범위 제한"
+        marker="D2"
+      >
         <DateField
           defaultValue="2026-07-14"
           max="2026-07-31"
@@ -66,7 +70,11 @@ export const States: Story = {
       <FormField label="읽기 전용" marker="S2">
         <DateField defaultValue="2026-07-14" readOnly />
       </FormField>
-      <FormField error="회계 기간에 포함된 날짜를 선택하세요" label="오류 상태" marker="S3">
+      <FormField
+        error="회계 기간에 포함된 날짜를 선택하세요"
+        label="오류 상태"
+        marker="S3"
+      >
         <DateField defaultValue="2025-12-31" />
       </FormField>
       <FormField label="비활성 상태" marker="S4">

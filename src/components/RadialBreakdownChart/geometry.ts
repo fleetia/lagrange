@@ -154,9 +154,7 @@ export function getRingRadii(
   });
 }
 
-export function getCardinalTickIndexes(
-  tickCount: number,
-): ReadonlySet<number> {
+export function getCardinalTickIndexes(tickCount: number): ReadonlySet<number> {
   const safeCount = Number.isFinite(tickCount)
     ? Math.max(0, Math.floor(tickCount))
     : 0;
@@ -182,9 +180,10 @@ function distributeSide(
   const sortedCandidates = [...candidates].sort(
     (first, second) => first.targetY - second.targetY,
   );
-  const effectiveGap = sortedCandidates.length < 2
-    ? 0
-    : Math.min(minGap, (maxY - minY) / (sortedCandidates.length - 1));
+  const effectiveGap =
+    sortedCandidates.length < 2
+      ? 0
+      : Math.min(minGap, (maxY - minY) / (sortedCandidates.length - 1));
   let previousY = minY - effectiveGap;
   const forwardLayouts = sortedCandidates.map((candidate) => {
     const clampedTarget = Math.min(maxY, Math.max(minY, candidate.targetY));

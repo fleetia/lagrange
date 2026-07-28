@@ -1,10 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 
-import {
-  DataTable,
-  type DataTableColumn,
-} from './DataTable';
+import { DataTable, type DataTableColumn } from './DataTable';
 
 type Transaction = {
   amount: string;

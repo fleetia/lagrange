@@ -89,9 +89,7 @@ function parseRgbChannel(value: string): number | null {
     return null;
   }
 
-  const channelValue = isPercentage
-    ? (numericValue / 100) * 255
-    : numericValue;
+  const channelValue = isPercentage ? (numericValue / 100) * 255 : numericValue;
 
   return Math.round(clamp(channelValue, 0, 255));
 }
@@ -160,15 +158,14 @@ function parseHexColor(value: string): ParsedColor | null {
     return null;
   }
 
-  const expandedValue = hexValue.length <= 4
-    ? [...hexValue].map((character) => character.repeat(2)).join('')
-    : hexValue;
+  const expandedValue =
+    hexValue.length <= 4
+      ? [...hexValue].map((character) => character.repeat(2)).join('')
+      : hexValue;
   const hasAlpha = expandedValue.length === 8;
 
   return {
-    alpha: hasAlpha
-      ? Number.parseInt(expandedValue.slice(6, 8), 16) / 255
-      : 1,
+    alpha: hasAlpha ? Number.parseInt(expandedValue.slice(6, 8), 16) / 255 : 1,
     blue: Number.parseInt(expandedValue.slice(4, 6), 16),
     green: Number.parseInt(expandedValue.slice(2, 4), 16),
     red: Number.parseInt(expandedValue.slice(0, 2), 16),
@@ -282,7 +279,9 @@ function parseColor(value: string): ParsedColor | null {
 }
 
 function toHexByte(value: number): string {
-  return Math.round(clamp(value, 0, 255)).toString(16).padStart(2, '0');
+  return Math.round(clamp(value, 0, 255))
+    .toString(16)
+    .padStart(2, '0');
 }
 
 export function normalizeColor(

@@ -1,8 +1,4 @@
-import type {
-  ComponentPropsWithoutRef,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
 import { forwardRef, useId } from 'react';
 import clsx from 'clsx';
 
@@ -66,13 +62,13 @@ type LabelLayout = {
 
 type RadialBreakdownChartDataProps =
   | {
-    rings: readonly RadialBreakdownRing[];
-    segments?: never;
-  }
+      rings: readonly RadialBreakdownRing[];
+      segments?: never;
+    }
   | {
-    rings?: never;
-    segments?: readonly RadialBreakdownSegment[];
-  };
+      rings?: never;
+      segments?: readonly RadialBreakdownSegment[];
+    };
 
 export type RadialBreakdownChartProps = Omit<
   ComponentPropsWithoutRef<'figure'>,
@@ -100,18 +96,14 @@ function defaultFormatValue(value: number, total: number): string {
 function getValidSegments(
   segments: readonly RadialBreakdownSegment[],
 ): readonly RadialBreakdownSegment[] {
-  return segments.filter(
-    ({ value }) => Number.isFinite(value) && value > 0,
-  );
+  return segments.filter(({ value }) => Number.isFinite(value) && value > 0);
 }
 
 function getTotal(segments: readonly RadialBreakdownSegment[]): number {
   return segments.reduce((sum, { value }) => sum + value, 0);
 }
 
-function getBoundaryRadii(
-  ringRadii: readonly RingRadii[],
-): readonly number[] {
+function getBoundaryRadii(ringRadii: readonly RingRadii[]): readonly number[] {
   const singleRing = ringRadii[0];
 
   if (ringRadii.length === 1 && singleRing) {
@@ -125,12 +117,14 @@ function getBoundaryRadii(
     ];
   }
 
-  return [...new Set(
-    ringRadii.flatMap(({ innerRadius, outerRadius }) => [
-      innerRadius,
-      outerRadius,
-    ]),
-  )].sort((first, second) => first - second);
+  return [
+    ...new Set(
+      ringRadii.flatMap(({ innerRadius, outerRadius }) => [
+        innerRadius,
+        outerRadius,
+      ]),
+    ),
+  ].sort((first, second) => first - second);
 }
 
 function getAccessibleDetail(
@@ -181,19 +175,13 @@ export const RadialBreakdownChart = forwardRef<
       }))
       .filter((ring) => ring.segments.length > 0);
     const resolvedStartAngle = Number.isFinite(startAngle) ? startAngle : -90;
-    const ringRadii = validRings.length <= MAX_RING_COUNT
-      ? getRingRadii(
-        validRings.length,
-        INNER_RADIUS,
-        OUTER_RADIUS,
-        RING_GAP,
-      )
-      : [];
+    const ringRadii =
+      validRings.length <= MAX_RING_COUNT
+        ? getRingRadii(validRings.length, INNER_RADIUS, OUTER_RADIUS, RING_GAP)
+        : [];
     const hasRenderableData =
       validRings.length > 0 && ringRadii.length === validRings.length;
-    const boundaryRadii = hasRenderableData
-      ? getBoundaryRadii(ringRadii)
-      : [];
+    const boundaryRadii = hasRenderableData ? getBoundaryRadii(ringRadii) : [];
     const safeTickCount = Number.isFinite(outerTickCount)
       ? Math.min(120, Math.max(0, Math.floor(outerTickCount)))
       : 0;
@@ -202,36 +190,36 @@ export const RadialBreakdownChart = forwardRef<
     const outerRingTotal = outerRing ? getTotal(outerRing.segments) : 0;
     const outerAngles = outerRing
       ? getSegmentAngles(
-        outerRing.segments.map(({ value }) => value),
-        resolvedStartAngle,
-      )
+          outerRing.segments.map(({ value }) => value),
+          resolvedStartAngle,
+        )
       : [];
     const leaderCandidates: readonly LeaderCandidate[] = outerRing
       ? outerRing.segments.map((segment, index) => {
-        const angles = outerAngles[index];
-        const midAngle = Number.isFinite(segment.labelAngle)
-          ? segment.labelAngle ?? -90
-          : angles?.midAngle ?? -90;
-        const source = polarToCartesian(
-          CENTER_X,
-          CENTER_Y,
-          OUTER_RADIUS + 2,
-          midAngle,
-        );
-        const target = polarToCartesian(
-          CENTER_X,
-          CENTER_Y,
-          OUTER_RADIUS + 15,
-          midAngle,
-        );
+          const angles = outerAngles[index];
+          const midAngle = Number.isFinite(segment.labelAngle)
+            ? (segment.labelAngle ?? -90)
+            : (angles?.midAngle ?? -90);
+          const source = polarToCartesian(
+            CENTER_X,
+            CENTER_Y,
+            OUTER_RADIUS + 2,
+            midAngle,
+          );
+          const target = polarToCartesian(
+            CENTER_X,
+            CENTER_Y,
+            OUTER_RADIUS + 15,
+            midAngle,
+          );
 
-        return {
-          id: segment.id,
-          side: Math.cos((midAngle * Math.PI) / 180) < 0 ? 'left' : 'right',
-          source,
-          targetY: target.y,
-        };
-      })
+          return {
+            id: segment.id,
+            side: Math.cos((midAngle * Math.PI) / 180) < 0 ? 'left' : 'right',
+            source,
+            targetY: target.y,
+          };
+        })
       : [];
     const distributedLabels = distributeLeaderLabels(
       leaderCandidates,
@@ -244,20 +232,18 @@ export const RadialBreakdownChart = forwardRef<
     );
     const labelLayouts: readonly LabelLayout[] = outerRing
       ? distributedLabels.map((layout) => {
-        const segment = outerSegmentsById.get(layout.id);
+          const segment = outerSegmentsById.get(layout.id);
 
-        return {
-          detail: segment?.detail,
-          id: layout.id,
-          label: segment?.label ?? '',
-          labelY: layout.labelY,
-          side: layout.side,
-          source: layout.source,
-          value: segment
-            ? formatValue(segment.value, outerRingTotal)
-            : '',
-        };
-      })
+          return {
+            detail: segment?.detail,
+            id: layout.id,
+            label: segment?.label ?? '',
+            labelY: layout.labelY,
+            side: layout.side,
+            source: layout.source,
+            value: segment ? formatValue(segment.value, outerRingTotal) : '',
+          };
+        })
       : [];
     const resolvedDataTableLabels: RadialBreakdownChartDataTableLabels = {
       caption: `${title} data`,
@@ -292,13 +278,46 @@ export const RadialBreakdownChart = forwardRef<
                   patternUnits="userSpaceOnUse"
                   width="13"
                 >
-                  <circle className={styles.pigmentGrainDark} cx="1.5" cy="2.1" r="0.55" />
-                  <circle className={styles.pigmentGrainDark} cx="10.8" cy="4.2" r="0.35" />
-                  <circle className={styles.pigmentGrainDark} cx="6.1" cy="12.4" r="0.7" />
-                  <circle className={styles.pigmentGrainDark} cx="12.1" cy="15.8" r="0.25" />
-                  <circle className={styles.pigmentGrainLight} cx="4.2" cy="7.9" r="0.6" />
-                  <circle className={styles.pigmentGrainLight} cx="8.8" cy="15.3" r="0.4" />
-                  <path className={styles.pigmentGrainFiber} d="M2.8 14.8h2.2M8.1 8.7h1.6" />
+                  <circle
+                    className={styles.pigmentGrainDark}
+                    cx="1.5"
+                    cy="2.1"
+                    r="0.55"
+                  />
+                  <circle
+                    className={styles.pigmentGrainDark}
+                    cx="10.8"
+                    cy="4.2"
+                    r="0.35"
+                  />
+                  <circle
+                    className={styles.pigmentGrainDark}
+                    cx="6.1"
+                    cy="12.4"
+                    r="0.7"
+                  />
+                  <circle
+                    className={styles.pigmentGrainDark}
+                    cx="12.1"
+                    cy="15.8"
+                    r="0.25"
+                  />
+                  <circle
+                    className={styles.pigmentGrainLight}
+                    cx="4.2"
+                    cy="7.9"
+                    r="0.6"
+                  />
+                  <circle
+                    className={styles.pigmentGrainLight}
+                    cx="8.8"
+                    cy="15.3"
+                    r="0.4"
+                  />
+                  <path
+                    className={styles.pigmentGrainFiber}
+                    d="M2.8 14.8h2.2M8.1 8.7h1.6"
+                  />
                 </pattern>
               </defs>
             ) : null}
@@ -315,34 +334,34 @@ export const RadialBreakdownChart = forwardRef<
 
             {hasRenderableData
               ? Array.from({ length: safeTickCount }, (_, index) => {
-                const angle = -90 + (index / safeTickCount) * 360;
-                const isMajor = majorTickIndexes.has(index);
-                const start = polarToCartesian(
-                  CENTER_X,
-                  CENTER_Y,
-                  TICK_INNER_RADIUS,
-                  angle,
-                );
-                const end = polarToCartesian(
-                  CENTER_X,
-                  CENTER_Y,
-                  isMajor ? TICK_OUTER_RADIUS + 2 : TICK_OUTER_RADIUS,
-                  angle,
-                );
+                  const angle = -90 + (index / safeTickCount) * 360;
+                  const isMajor = majorTickIndexes.has(index);
+                  const start = polarToCartesian(
+                    CENTER_X,
+                    CENTER_Y,
+                    TICK_INNER_RADIUS,
+                    angle,
+                  );
+                  const end = polarToCartesian(
+                    CENTER_X,
+                    CENTER_Y,
+                    isMajor ? TICK_OUTER_RADIUS + 2 : TICK_OUTER_RADIUS,
+                    angle,
+                  );
 
-                return (
-                  <line
-                    aria-hidden="true"
-                    className={clsx(styles.tick, isMajor && styles.majorTick)}
-                    data-tick="true"
-                    key={index}
-                    x1={start.x}
-                    x2={end.x}
-                    y1={start.y}
-                    y2={end.y}
-                  />
-                );
-              })
+                  return (
+                    <line
+                      aria-hidden="true"
+                      className={clsx(styles.tick, isMajor && styles.majorTick)}
+                      data-tick="true"
+                      key={index}
+                      x1={start.x}
+                      x2={end.x}
+                      y1={start.y}
+                      y2={end.y}
+                    />
+                  );
+                })
               : null}
 
             {validRings.map((ring, ringIndex) => {
@@ -447,112 +466,112 @@ export const RadialBreakdownChart = forwardRef<
 
             {hasRenderableData
               ? CARDINAL_MARKERS.map(({ angle, tone }) => {
-                const point = polarToCartesian(
-                  CENTER_X,
-                  CENTER_Y,
-                  ORBIT_RADIUS,
-                  angle,
-                );
+                  const point = polarToCartesian(
+                    CENTER_X,
+                    CENTER_Y,
+                    ORBIT_RADIUS,
+                    angle,
+                  );
 
-                return (
-                  <circle
-                    aria-hidden="true"
-                    className={clsx(
-                      styles.anchor,
-                      tone === 'olive' && styles.oliveAnchor,
-                    )}
-                    cx={point.x}
-                    cy={point.y}
-                    data-orbit-anchor={angle}
-                    key={angle}
-                    r={4.75}
-                  />
-                );
-              })
+                  return (
+                    <circle
+                      aria-hidden="true"
+                      className={clsx(
+                        styles.anchor,
+                        tone === 'olive' && styles.oliveAnchor,
+                      )}
+                      cx={point.x}
+                      cy={point.y}
+                      data-orbit-anchor={angle}
+                      key={angle}
+                      r={4.75}
+                    />
+                  );
+                })
               : null}
 
             {hasRenderableData
               ? SATELLITE_ANGLES.map((angle) => {
-                const point = polarToCartesian(
-                  CENTER_X,
-                  CENTER_Y,
-                  ORBIT_RADIUS,
-                  angle,
-                );
+                  const point = polarToCartesian(
+                    CENTER_X,
+                    CENTER_Y,
+                    ORBIT_RADIUS,
+                    angle,
+                  );
 
-                return (
-                  <circle
-                    aria-hidden="true"
-                    className={styles.satellite}
-                    cx={point.x}
-                    cy={point.y}
-                    data-orbit-satellite={angle}
-                    key={angle}
-                    r={2.6}
-                  />
-                );
-              })
+                  return (
+                    <circle
+                      aria-hidden="true"
+                      className={styles.satellite}
+                      cx={point.x}
+                      cy={point.y}
+                      data-orbit-satellite={angle}
+                      key={angle}
+                      r={2.6}
+                    />
+                  );
+                })
               : null}
 
             {hasRenderableData && showLabels
               ? labelLayouts.map((layout) => {
-                const isLeft = layout.side === 'left';
-                const elbowX = isLeft ? 228 : 532;
-                const lineEndX = isLeft ? 171 : 570;
-                const textX = isLeft ? 120 : 580;
-                const labelBaseline = layout.labelY + 3;
+                  const isLeft = layout.side === 'left';
+                  const elbowX = isLeft ? 228 : 532;
+                  const lineEndX = isLeft ? 171 : 570;
+                  const textX = isLeft ? 120 : 580;
+                  const labelBaseline = layout.labelY + 3;
 
-                return (
-                  <g
-                    aria-hidden="true"
-                    data-label-id={layout.id}
-                    data-label-side={layout.side}
-                    key={`label-${layout.id}`}
-                  >
-                    <polyline
-                      className={styles.leader}
-                      points={[
-                        `${layout.source.x},${layout.source.y}`,
-                        `${elbowX},${labelBaseline}`,
-                        `${lineEndX},${labelBaseline}`,
-                      ].join(' ')}
-                    />
-                    <circle
-                      className={styles.leaderDot}
-                      cx={layout.source.x}
-                      cy={layout.source.y}
-                      r={2.25}
-                      stroke={outerSegmentsById.get(layout.id)?.color}
-                    />
-                    <text
-                      className={styles.label}
-                      textAnchor="start"
-                      x={textX}
-                      y={layout.labelY}
+                  return (
+                    <g
+                      aria-hidden="true"
+                      data-label-id={layout.id}
+                      data-label-side={layout.side}
+                      key={`label-${layout.id}`}
                     >
-                      {layout.label}
-                    </text>
-                    <text
-                      className={styles.labelValue}
-                      textAnchor="start"
-                      x={textX}
-                      y={layout.labelY + 20}
-                    >
-                      {layout.value}
-                    </text>
-                    {layout.detail ? (
+                      <polyline
+                        className={styles.leader}
+                        points={[
+                          `${layout.source.x},${layout.source.y}`,
+                          `${elbowX},${labelBaseline}`,
+                          `${lineEndX},${labelBaseline}`,
+                        ].join(' ')}
+                      />
+                      <circle
+                        className={styles.leaderDot}
+                        cx={layout.source.x}
+                        cy={layout.source.y}
+                        r={2.25}
+                        stroke={outerSegmentsById.get(layout.id)?.color}
+                      />
                       <text
-                        className={styles.detail}
+                        className={styles.label}
                         textAnchor="start"
                         x={textX}
-                        y={layout.labelY + 38}
+                        y={layout.labelY}
                       >
-                        {layout.detail}
+                        {layout.label}
                       </text>
-                    ) : null}
-                  </g>
-                );
-              })
+                      <text
+                        className={styles.labelValue}
+                        textAnchor="start"
+                        x={textX}
+                        y={layout.labelY + 20}
+                      >
+                        {layout.value}
+                      </text>
+                      {layout.detail ? (
+                        <text
+                          className={styles.detail}
+                          textAnchor="start"
+                          x={textX}
+                          y={layout.labelY + 38}
+                        >
+                          {layout.detail}
+                        </text>
+                      ) : null}
+                    </g>
+                  );
+                })
               : null}
           </svg>
 
@@ -560,7 +579,9 @@ export const RadialBreakdownChart = forwardRef<
             <div className={styles.center}>{centerContent}</div>
           ) : null}
           {!hasRenderableData ? (
-            <div className={styles.empty} role="status">{emptyState}</div>
+            <div className={styles.empty} role="status">
+              {emptyState}
+            </div>
           ) : null}
         </div>
 

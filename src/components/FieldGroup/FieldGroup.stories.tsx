@@ -106,10 +106,17 @@ export const States: Story = {
   },
   render: () => (
     <Stack gap="xxl">
-      <FieldGroup description="모든 하위 control을 함께 비활성화합니다." disabled legend="잠긴 정보">
+      <FieldGroup
+        description="모든 하위 control을 함께 비활성화합니다."
+        disabled
+        legend="잠긴 정보"
+      >
         {DEFAULT_FIELDS}
       </FieldGroup>
-      <FieldGroup description="개별 FormField가 자신의 오류를 설명합니다." legend="검토 필요">
+      <FieldGroup
+        description="개별 FormField가 자신의 오류를 설명합니다."
+        legend="검토 필요"
+      >
         <FieldGrid>
           <FormField error="날짜를 확인하세요" label="거래일">
             <DateField defaultValue="2025-12-31" />

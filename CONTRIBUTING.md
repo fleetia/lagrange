@@ -10,12 +10,12 @@ Lagrange에 기여해 주셔서 감사합니다. 모든 contribution은 reposito
 - pnpm 11.9.0
 - Chromium 기반 visual test를 실행할 수 있는 환경
 
-~~~bash
+```bash
 corepack enable
 corepack install --global pnpm@11.9.0
 pnpm install
 pnpm dev
-~~~
+```
 
 ## 변경 원칙
 
@@ -44,22 +44,23 @@ component를 추가하거나 public behavior를 바꿀 때 다음 항목을 포�
 
 pull request를 열기 전에 다음 command를 실행합니다.
 
-~~~bash
+```bash
 pnpm check
 pnpm exec playwright install chromium
 pnpm test:visual
-~~~
+```
 
 CI에서는 다음 순서로 검증합니다.
 
-1. ESLint
-2. TypeScript
-3. Vitest
-4. package build
-5. packed package의 React 18.2 type compatibility
-6. React 19 external consumer build
-7. Storybook build
-8. Playwright interaction, accessibility, visual checks
+1. Oxlint
+2. Oxfmt
+3. TypeScript
+4. Vitest
+5. package build
+6. packed package의 React 18.2 type compatibility
+7. React 19 external consumer build
+8. Storybook build
+9. Playwright interaction, accessibility, visual checks
 
 visual snapshot을 갱신할 때는 의도한 변경만 포함되었는지 직접 비교하고, pull request에 변경 이유를 적습니다.
 
@@ -67,9 +68,9 @@ visual snapshot을 갱신할 때는 의도한 변경만 포함되었는지 직�
 
 consumer에게 영향을 주는 변경에는 Changeset이 필요합니다.
 
-~~~bash
+```bash
 pnpm changeset
-~~~
+```
 
 version 기준:
 

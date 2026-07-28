@@ -4,13 +4,7 @@ import type {
   ReactElement,
   ReactNode,
 } from 'react';
-import {
-  createContext,
-  forwardRef,
-  useContext,
-  useId,
-  useMemo,
-} from 'react';
+import { createContext, forwardRef, useContext, useId, useMemo } from 'react';
 import clsx from 'clsx';
 
 import * as styles from './RadioGroup.css';
@@ -72,9 +66,10 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(
       ? `lagrange-radio-${generatedId}-description`
       : undefined;
     const errorId = error ? `lagrange-radio-${generatedId}-error` : undefined;
-    const describedBy = [ariaDescribedBy, descriptionId, errorId]
-      .filter((id): id is string => Boolean(id))
-      .join(' ') || undefined;
+    const describedBy =
+      [ariaDescribedBy, descriptionId, errorId]
+        .filter((id): id is string => Boolean(id))
+        .join(' ') || undefined;
     const contextValue = useMemo<RadioGroupContextValue>(
       () => ({
         defaultValue,
@@ -188,9 +183,10 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     const descriptionId = description
       ? `lagrange-radio-${generatedId}-description`
       : undefined;
-    const describedBy = [group.describedBy, descriptionId]
-      .filter((id): id is string => Boolean(id))
-      .join(' ') || undefined;
+    const describedBy =
+      [group.describedBy, descriptionId]
+        .filter((id): id is string => Boolean(id))
+        .join(' ') || undefined;
     const isControlled = group.value !== undefined;
     const isDisabled = group.disabled || disabled;
     const onValueChange = group.onValueChange;

@@ -1,1 +1,5 @@
-export { SaveStatus, type SaveStatusProps, type SaveStatusState } from './SaveStatus';
+export {
+  SaveStatus,
+  type SaveStatusProps,
+  type SaveStatusState,
+} from './SaveStatus';

@@ -2,10 +2,7 @@ import type { ComponentPropsWithoutRef, ReactElement } from 'react';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
 
-import {
-  joinIds,
-  useFormFieldContext,
-} from '../FormField/FormFieldContext';
+import { joinIds, useFormFieldContext } from '../FormField/FormFieldContext';
 import * as styles from './TextArea.css';
 
 export type TextAreaResize = 'none' | 'vertical' | 'both';

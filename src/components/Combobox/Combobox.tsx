@@ -1,16 +1,9 @@
-import type {
-  FocusEvent,
-  KeyboardEvent,
-  ReactElement,
-} from 'react';
+import type { FocusEvent, KeyboardEvent, ReactElement } from 'react';
 import { forwardRef, useEffect, useId, useRef } from 'react';
 import clsx from 'clsx';
 
 import { control } from '../controls.css';
-import {
-  joinIds,
-  useFormFieldContext,
-} from '../FormField/FormFieldContext';
+import { joinIds, useFormFieldContext } from '../FormField/FormFieldContext';
 import * as styles from './Combobox.css';
 import type { ComboboxProps } from './types';
 import { useCombobox } from './useCombobox';
@@ -44,7 +37,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     const field = useFormFieldContext();
     const generatedId = useId();
     const inputRef = useRef<HTMLInputElement | null>(null);
-    const controlId = field?.controlId ?? id ?? `lagrange-combobox-${generatedId}`;
+    const controlId =
+      field?.controlId ?? id ?? `lagrange-combobox-${generatedId}`;
     const listboxId = `${controlId}-listbox`;
     const hasAriaError =
       ariaInvalid !== undefined &&
@@ -76,7 +70,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       readOnly,
       value,
     });
-    const activeOption = activeIndex >= 0 ? filteredOptions[activeIndex] : undefined;
+    const activeOption =
+      activeIndex >= 0 ? filteredOptions[activeIndex] : undefined;
     const activeOptionId = activeOption
       ? `${listboxId}-option-${activeIndex}`
       : undefined;
@@ -139,7 +134,11 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             aria-expanded={isOpen}
             aria-haspopup="listbox"
             aria-invalid={resolvedAriaInvalid}
-            aria-required={field ? isRequired || undefined : isRequired || ariaRequired || undefined}
+            aria-required={
+              field
+                ? isRequired || undefined
+                : isRequired || ariaRequired || undefined
+            }
             autoComplete={autoComplete}
             className={clsx(control, styles.input, className)}
             data-invalid={isInvalid || undefined}
@@ -153,7 +152,9 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             role="combobox"
             value={inputValue}
           />
-          <span aria-hidden="true" className={styles.indicator}>⌄</span>
+          <span aria-hidden="true" className={styles.indicator}>
+            ⌄
+          </span>
         </div>
         {name ? (
           <input
@@ -168,11 +169,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         {isOpen ? (
           <ul className={styles.listbox} id={listboxId} role="listbox">
             {filteredOptions.length === 0 ? (
-              <li
-                aria-disabled="true"
-                className={styles.empty}
-                role="option"
-              >
+              <li aria-disabled="true" className={styles.empty} role="option">
                 {emptyMessage}
               </li>
             ) : (

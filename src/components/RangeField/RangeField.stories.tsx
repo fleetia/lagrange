@@ -59,7 +59,10 @@ export const States: Story = {
       <FormField label="Default" marker="50%">
         <RangeField defaultValue={50} />
       </FormField>
-      <FormField error="Choose a value inside the supported range." label="Invalid">
+      <FormField
+        error="Choose a value inside the supported range."
+        label="Invalid"
+      >
         <RangeField defaultValue={90} isInvalid />
       </FormField>
       <FormField label="Disabled" marker="40%">

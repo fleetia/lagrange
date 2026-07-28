@@ -39,7 +39,9 @@ describe('ThemeRoot', () => {
   });
 
   it('can inherit a theme from an ancestor', () => {
-    render(<ThemeRoot data-testid="inherited-theme-root" themeClassName={null} />);
+    render(
+      <ThemeRoot data-testid="inherited-theme-root" themeClassName={null} />,
+    );
 
     expect(
       screen.getByTestId('inherited-theme-root').className.includes(themeClass),

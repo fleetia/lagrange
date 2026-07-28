@@ -52,7 +52,9 @@ describe('DataGrid', () => {
     expect(grid.getAttribute('aria-readonly')).toBe('false');
     expect(screen.getAllByRole('columnheader')).toHaveLength(2);
     expect(screen.getAllByRole('gridcell')).toHaveLength(6);
-    expect(document.querySelectorAll('[data-boundary="structural"]')).toHaveLength(2);
+    expect(
+      document.querySelectorAll('[data-boundary="structural"]'),
+    ).toHaveLength(2);
   });
 
   it('sorts a sortable column through a controlled callback', () => {
@@ -129,11 +131,7 @@ describe('DataGrid', () => {
     const firstCell = screen.getAllByRole('gridcell')[0] as HTMLElement;
     fireEvent.keyDown(firstCell, { key: ' ' });
 
-    expect(handleSelectionChange).toHaveBeenCalledWith(
-      'row-1',
-      ROWS[0],
-      true,
-    );
+    expect(handleSelectionChange).toHaveBeenCalledWith('row-1', ROWS[0], true);
   });
 
   it('cancels an edit with Escape', () => {

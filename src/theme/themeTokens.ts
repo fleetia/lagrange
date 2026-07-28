@@ -187,8 +187,7 @@ export const createThemeTokens = (
   overrides: LagrangeThemeOverrides = {},
 ): LagrangeTheme => ({
   semantic: {
-    colorScheme:
-      overrides.semantic?.colorScheme ?? semanticTokens.colorScheme,
+    colorScheme: overrides.semantic?.colorScheme ?? semanticTokens.colorScheme,
     color: {
       surface: mergeTokenGroup(
         semanticTokens.color.surface,
@@ -229,10 +228,7 @@ export const createThemeTokens = (
         overrides.semantic?.typography?.lineHeight,
       ),
     },
-    space: mergeTokenGroup(
-      semanticTokens.space,
-      overrides.semantic?.space,
-    ),
+    space: mergeTokenGroup(semanticTokens.space, overrides.semantic?.space),
     dimension: mergeTokenGroup(
       semanticTokens.dimension,
       overrides.semantic?.dimension,
@@ -267,18 +263,9 @@ export const createThemeTokens = (
       componentTokens.choice,
       overrides.component?.choice,
     ),
-    table: mergeTokenGroup(
-      componentTokens.table,
-      overrides.component?.table,
-    ),
-    rule: mergeTokenGroup(
-      componentTokens.rule,
-      overrides.component?.rule,
-    ),
-    chart: mergeTokenGroup(
-      componentTokens.chart,
-      overrides.component?.chart,
-    ),
+    table: mergeTokenGroup(componentTokens.table, overrides.component?.table),
+    rule: mergeTokenGroup(componentTokens.rule, overrides.component?.rule),
+    chart: mergeTokenGroup(componentTokens.chart, overrides.component?.chart),
     overlay: mergeTokenGroup(
       componentTokens.overlay,
       overrides.component?.overlay,
@@ -287,9 +274,6 @@ export const createThemeTokens = (
       componentTokens.navigation,
       overrides.component?.navigation,
     ),
-    range: mergeTokenGroup(
-      componentTokens.range,
-      overrides.component?.range,
-    ),
+    range: mergeTokenGroup(componentTokens.range, overrides.component?.range),
   },
 });
