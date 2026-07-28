@@ -158,7 +158,11 @@ export const VerticalVariants: Story = {
       {VARIANTS.map((variant) => (
         <div
           key={variant}
-          style={{ display: 'flex', alignItems: 'stretch', gap: tokens.space.sm }}
+          style={{
+            display: 'flex',
+            alignItems: 'stretch',
+            gap: tokens.space.sm,
+          }}
         >
           <span style={LABEL_STYLE}>{variant}</span>
           <Rule orientation="vertical" variant={variant} />

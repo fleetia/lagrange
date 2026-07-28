@@ -1,8 +1,4 @@
-import type {
-  ComponentPropsWithoutRef,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
 
@@ -27,13 +23,7 @@ export type StatusMarkerProps = Omit<
 
 export const StatusMarker = forwardRef<HTMLSpanElement, StatusMarkerProps>(
   (
-    {
-      children,
-      className,
-      shape = 'line',
-      tone = 'default',
-      ...props
-    },
+    { children, className, shape = 'line', tone = 'default', ...props },
     ref,
   ): ReactElement => (
     <span
@@ -43,7 +33,10 @@ export const StatusMarker = forwardRef<HTMLSpanElement, StatusMarkerProps>(
       data-shape={shape}
       data-tone={tone}
     >
-      <span aria-hidden="true" className={clsx(styles.indicator, styles.shape[shape])} />
+      <span
+        aria-hidden="true"
+        className={clsx(styles.indicator, styles.shape[shape])}
+      />
       <span className={styles.label}>{children}</span>
     </span>
   ),

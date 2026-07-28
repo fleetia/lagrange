@@ -19,7 +19,10 @@ describe('SaveStatus', () => {
 
   it('announces errors assertively and renders an action', () => {
     render(
-      <SaveStatus action={<button type="button">다시 시도</button>} state="error" />,
+      <SaveStatus
+        action={<button type="button">다시 시도</button>}
+        state="error"
+      />,
     );
 
     const alert = screen.getByRole('alert');

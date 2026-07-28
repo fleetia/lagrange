@@ -26,7 +26,9 @@ describe('SectionHeader', () => {
 
     expect(heading.id).toBe('assets-heading');
     expect(screen.getByText('Assets · 01')).toBeDefined();
-    expect(screen.getByText('계좌와 투자 자산을 합산한 현재 구성입니다.')).toBeDefined();
+    expect(
+      screen.getByText('계좌와 투자 자산을 합산한 현재 구성입니다.'),
+    ).toBeDefined();
     expect(screen.getByRole('button', { name: '기간 변경' })).toBeDefined();
     expect(screen.getByRole('separator').dataset.variant).toBe('structural');
   });

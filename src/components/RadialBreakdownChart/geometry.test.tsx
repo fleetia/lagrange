@@ -20,9 +20,7 @@ describe('RadialBreakdownChart geometry', () => {
       startAngle: -90,
     });
     expect(angles[2]?.endAngle).toBe(270);
-    expect(
-      (angles[2]?.endAngle ?? 0) - (angles[0]?.startAngle ?? 0),
-    ).toBe(360);
+    expect((angles[2]?.endAngle ?? 0) - (angles[0]?.startAngle ?? 0)).toBe(360);
   });
 
   it('builds a stable annular path for a full-ring segment', () => {

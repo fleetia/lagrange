@@ -100,7 +100,8 @@ const ThemeSpecimen = ({ label }: { label: string }): ReactElement => (
 
 export const Default: Story = {
   args: {
-    children: 'ThemeRoot 안의 모든 Lagrange component가 같은 visual language를 공유합니다.',
+    children:
+      'ThemeRoot 안의 모든 Lagrange component가 같은 visual language를 공유합니다.',
     style: {
       minHeight: '12rem',
       padding: '1.5rem',
@@ -129,10 +130,7 @@ export const Theming: Story = {
       <ThemeRoot className={themeSpecimen}>
         <ThemeSpecimen label="Lagrange paper" />
       </ThemeRoot>
-      <ThemeRoot
-        className={themeSpecimen}
-        themeClassName={archiveThemeClass}
-      >
+      <ThemeRoot className={themeSpecimen} themeClassName={archiveThemeClass}>
         <ThemeSpecimen label="Archive blue" />
       </ThemeRoot>
     </div>

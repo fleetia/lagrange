@@ -1,11 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { vars } from './theme.css';
-import {
-  componentVars,
-  semanticVars,
-  themeVars,
-} from './themeContract.css';
+import { componentVars, semanticVars, themeVars } from './themeContract.css';
 import { componentTokens, semanticTokens } from './themeTokens';
 
 describe('theme contract', () => {
@@ -31,15 +27,9 @@ describe('theme contract', () => {
   });
 
   it('keeps legacy variables connected to derived theme roles', () => {
-    expect(vars.color.aubergine).toBe(
-      themeVars.semantic.color.content.accent,
-    );
-    expect(semanticTokens.color.interaction.primary).toBe(
-      vars.color.aubergine,
-    );
-    expect(semanticTokens.color.content.onAccent).toBe(
-      vars.color.paperRaised,
-    );
+    expect(vars.color.aubergine).toBe(themeVars.semantic.color.content.accent);
+    expect(semanticTokens.color.interaction.primary).toBe(vars.color.aubergine);
+    expect(semanticTokens.color.content.onAccent).toBe(vars.color.paperRaised);
     expect(semanticTokens.color.interaction.primaryHover).toBe(
       vars.color.olive,
     );

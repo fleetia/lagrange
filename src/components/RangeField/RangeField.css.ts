@@ -1,9 +1,6 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 
-import {
-  componentVars,
-  semanticVars,
-} from '../../theme/themeContract.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 const progress = 'var(--lagrange-range-progress, 50%)';
 const activeTrack = componentVars.range.activeTrack;

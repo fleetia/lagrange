@@ -52,7 +52,9 @@ function ControlledNumberField(): ReactElement {
 
 export const Default: Story = {
   render: (args): ReactElement => (
-    <ThemeRoot><NumberField {...args} /></ThemeRoot>
+    <ThemeRoot>
+      <NumberField {...args} />
+    </ThemeRoot>
   ),
 };
 
@@ -60,9 +62,15 @@ export const Variants: Story = {
   render: (): ReactElement => (
     <ThemeRoot>
       <Stack gap="md">
-        <FormField label="접두·접미"><NumberField defaultValue="12500" prefix="≈" suffix="units" /></FormField>
-        <FormField label="음수"><NumberField defaultValue="-42.75" /></FormField>
-        <FormField label="포맷 없음"><NumberField defaultValue="12500.50" formatOnBlur={false} /></FormField>
+        <FormField label="접두·접미">
+          <NumberField defaultValue="12500" prefix="≈" suffix="units" />
+        </FormField>
+        <FormField label="음수">
+          <NumberField defaultValue="-42.75" />
+        </FormField>
+        <FormField label="포맷 없음">
+          <NumberField defaultValue="12500.50" formatOnBlur={false} />
+        </FormField>
       </Stack>
     </ThemeRoot>
   ),
@@ -72,10 +80,18 @@ export const States: Story = {
   render: (): ReactElement => (
     <ThemeRoot>
       <Stack gap="md">
-        <FormField label="기본"><NumberField defaultValue="12500" /></FormField>
-        <FormField label="읽기 전용"><NumberField defaultValue="12500" readOnly /></FormField>
-        <FormField label="비활성"><NumberField defaultValue="12500" disabled /></FormField>
-        <FormField error="숫자를 확인하세요." label="오류"><NumberField defaultValue="-12" /></FormField>
+        <FormField label="기본">
+          <NumberField defaultValue="12500" />
+        </FormField>
+        <FormField label="읽기 전용">
+          <NumberField defaultValue="12500" readOnly />
+        </FormField>
+        <FormField label="비활성">
+          <NumberField defaultValue="12500" disabled />
+        </FormField>
+        <FormField error="숫자를 확인하세요." label="오류">
+          <NumberField defaultValue="-12" />
+        </FormField>
       </Stack>
     </ThemeRoot>
   ),
@@ -85,7 +101,9 @@ export const Accessibility: Story = {
   render: (): ReactElement => (
     <Stack gap="sm">
       <ControlledNumberField />
-      <Text variant="caption">포커스 중에는 raw string, blur 후에는 formatted string을 표시합니다.</Text>
+      <Text variant="caption">
+        포커스 중에는 raw string, blur 후에는 formatted string을 표시합니다.
+      </Text>
     </Stack>
   ),
   play: async ({ canvas, userEvent }): Promise<void> => {

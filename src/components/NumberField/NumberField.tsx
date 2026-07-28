@@ -10,10 +10,7 @@ import type {
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 
-import {
-  joinIds,
-  useFormFieldContext,
-} from '../FormField/FormFieldContext';
+import { joinIds, useFormFieldContext } from '../FormField/FormFieldContext';
 import * as styles from './NumberField.css';
 
 export type NumberFieldProps = Omit<
@@ -32,7 +29,10 @@ export type NumberFieldProps = Omit<
   value?: string;
 };
 
-function getRawNumericValue(inputValue: string, allowNegative: boolean): string {
+function getRawNumericValue(
+  inputValue: string,
+  allowNegative: boolean,
+): string {
   const compactValue = inputValue.replace(/[\s,]/g, '');
   const isNegative = allowNegative && compactValue.startsWith('-');
   const unsignedValue = compactValue.replaceAll('-', '');
@@ -58,7 +58,10 @@ function formatNumericValue(rawValue: string): string {
   const unsignedValue = isNegative ? rawValue.slice(1) : rawValue;
   const [integerPart = '', fractionPart] = unsignedValue.split('.');
   const normalizedInteger = integerPart || '0';
-  const groupedInteger = normalizedInteger.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const groupedInteger = normalizedInteger.replace(
+    /\B(?=(\d{3})+(?!\d))/g,
+    ',',
+  );
   const sign = isNegative ? '-' : '';
   const decimal = fractionPart === undefined ? '' : `.${fractionPart}`;
 
@@ -116,9 +119,8 @@ export const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>(
       isControlled ? value : uncontrolledRawValue,
       allowNegative,
     );
-    const displayValue = isFocused || !formatOnBlur
-      ? rawValue
-      : formatValue(rawValue);
+    const displayValue =
+      isFocused || !formatOnBlur ? rawValue : formatValue(rawValue);
     const hasAriaError =
       ariaInvalid !== undefined &&
       ariaInvalid !== false &&
@@ -197,13 +199,14 @@ export const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>(
         data-disabled={disabled || undefined}
         data-invalid={isInvalid || undefined}
       >
-        {prefix ? <span aria-hidden="true" className={styles.affix}>{prefix}</span> : null}
+        {prefix ? (
+          <span aria-hidden="true" className={styles.affix}>
+            {prefix}
+          </span>
+        ) : null}
         <input
           ref={setInputRef}
-          aria-describedby={joinIds(
-            fieldContext?.describedBy,
-            ariaDescribedBy,
-          )}
+          aria-describedby={joinIds(fieldContext?.describedBy, ariaDescribedBy)}
           aria-invalid={resolvedAriaInvalid}
           aria-required={resolvedAriaRequired}
           className={styles.input}
@@ -221,7 +224,11 @@ export const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>(
           value={displayValue}
           {...props}
         />
-        {suffix ? <span aria-hidden="true" className={styles.affix}>{suffix}</span> : null}
+        {suffix ? (
+          <span aria-hidden="true" className={styles.affix}>
+            {suffix}
+          </span>
+        ) : null}
         {usesHiddenRawInput ? (
           <input
             disabled={disabled}

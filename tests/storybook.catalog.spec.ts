@@ -39,9 +39,9 @@ test('each component family exposes the standard story catalog', async ({
   const componentStories = Object.values(index.entries).filter(
     ({ title, type }) => type === 'story' && title.startsWith('Components/'),
   );
-  const componentTitles = [...new Set(
-    componentStories.map(({ title }) => title),
-  )];
+  const componentTitles = [
+    ...new Set(componentStories.map(({ title }) => title)),
+  ];
 
   for (const title of componentTitles) {
     const titleSegments = title.split('/');
@@ -89,11 +89,11 @@ test('each story family exposes one generated Docs entry', async ({
 
   const index = (await response.json()) as StorybookIndex;
   const entries = Object.values(index.entries);
-  const storyTitles = [...new Set(
-    entries
-      .filter(({ type }) => type === 'story')
-      .map(({ title }) => title),
-  )];
+  const storyTitles = [
+    ...new Set(
+      entries.filter(({ type }) => type === 'story').map(({ title }) => title),
+    ),
+  ];
   const docsByTitle = new Map<string, StorybookEntry[]>();
 
   for (const entry of entries.filter(({ type }) => type === 'docs')) {
@@ -105,7 +105,10 @@ test('each story family exposes one generated Docs entry', async ({
   for (const title of storyTitles) {
     const docsEntries = docsByTitle.get(title) ?? [];
 
-    expect(docsEntries, `${title} must expose one generated Docs entry`).toHaveLength(1);
+    expect(
+      docsEntries,
+      `${title} must expose one generated Docs entry`,
+    ).toHaveLength(1);
     expect(docsEntries[0]?.name).toBe('Docs');
   }
 });
@@ -129,9 +132,13 @@ test('RadialBreakdownChart Docs explains usage and API', async ({
   const docs = page.locator('#storybook-docs');
 
   await expect(docs).toBeVisible();
-  await expect(docs.locator('.sbdocs-title')).toHaveText('RadialBreakdownChart');
+  await expect(docs.locator('.sbdocs-title')).toHaveText(
+    'RadialBreakdownChart',
+  );
   await expect(
-    docs.getByText(/RadialBreakdownChart는 하나 또는 여러 proportional dataset/),
+    docs.getByText(
+      /RadialBreakdownChart는 하나 또는 여러 proportional dataset/,
+    ),
   ).toBeVisible();
   await expect(docs.getByText('centerContent', { exact: true })).toBeVisible();
   await expect(docs.getByText(/Desktop에서는 5–8개 항목/)).toBeVisible();

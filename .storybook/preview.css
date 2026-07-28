@@ -42,7 +42,13 @@ textarea {
 .lagrange-story__kicker {
   margin: 0 0 6px;
   color: #62556f;
-  font: 600 10px/1.25 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font:
+    600 10px/1.25 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -57,7 +63,13 @@ textarea {
 
 .lagrange-story__meta {
   color: #6f6970;
-  font: 500 10px/1.45 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font:
+    500 10px/1.45 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
   letter-spacing: 0.06em;
   text-align: right;
   text-transform: uppercase;
@@ -77,7 +89,13 @@ textarea {
 
 .lagrange-story__index {
   color: #6a5a7a;
-  font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font:
+    600 11px/1 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
   letter-spacing: 0.08em;
 }
 
@@ -101,7 +119,13 @@ textarea {
 .lagrange-story__swatch-name,
 .lagrange-story__swatch-value {
   display: block;
-  font: 600 9px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font:
+    600 9px/1.4 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -176,14 +200,23 @@ textarea {
 .lagrange-story__summary-value {
   justify-self: end;
   color: #4e4358;
-  font: 600 18px/1.1 Georgia, 'Times New Roman', serif;
+  font:
+    600 18px/1.1 Georgia,
+    'Times New Roman',
+    serif;
   font-variant-numeric: tabular-nums;
 }
 
 .lagrange-story__note {
   margin-top: 14px;
   color: #6f6970;
-  font: 500 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font:
+    500 10px/1.5 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
 }
 
 .lagrange-radial-center {
@@ -195,16 +228,31 @@ textarea {
 }
 
 .lagrange-radial-center__title {
-  font: 650 13px/1.35 Pretendard, "IBM Plex Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  font:
+    650 13px/1.35 Pretendard,
+    'IBM Plex Sans KR',
+    'Apple SD Gothic Neo',
+    system-ui,
+    sans-serif;
 }
 
 .lagrange-radial-center__kicker {
-  font: 700 10.5px/1.35 Pretendard, "IBM Plex Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  font:
+    700 10.5px/1.35 Pretendard,
+    'IBM Plex Sans KR',
+    'Apple SD Gothic Neo',
+    system-ui,
+    sans-serif;
   letter-spacing: 0.035em;
 }
 
 .lagrange-radial-center__amount {
-  font: 700 12px/1.35 "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font:
+    700 12px/1.35 'IBM Plex Mono',
+    'SFMono-Regular',
+    Consolas,
+    'Liberation Mono',
+    monospace;
   font-variant-numeric: tabular-nums;
 }
 

@@ -1,9 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import {
-  componentVars,
-  semanticVars,
-} from '../../theme/themeContract.css';
+import { componentVars, semanticVars } from '../../theme/themeContract.css';
 
 export const breadcrumb = style({
   minWidth: 0,

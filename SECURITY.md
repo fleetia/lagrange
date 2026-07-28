@@ -4,10 +4,10 @@
 
 Lagrange는 현재 <code>1.0.0</code> 이전 단계이며 최신 published release만 security fix를 받습니다.
 
-| Version | Supported |
-| --- | --- |
-| Latest published release | Yes |
-| Older releases | No |
+| Version                  | Supported |
+| ------------------------ | --------- |
+| Latest published release | Yes       |
+| Older releases           | No        |
 
 security fix가 release되면 가능한 한 빨리 최신 version으로 갱신하세요.
 

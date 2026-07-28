@@ -1,8 +1,4 @@
-import type {
-  ComponentPropsWithoutRef,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
 import { forwardRef, Fragment } from 'react';
 import clsx from 'clsx';
 
@@ -24,12 +20,7 @@ export type BreadcrumbProps = Omit<
 
 export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
   (
-    {
-      'aria-label': ariaLabel = 'Breadcrumb',
-      className,
-      items,
-      ...props
-    },
+    { 'aria-label': ariaLabel = 'Breadcrumb', className, items, ...props },
     ref,
   ): ReactElement => (
     <nav

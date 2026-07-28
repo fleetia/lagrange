@@ -1,8 +1,4 @@
-import type {
-  ComponentPropsWithoutRef,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
 
@@ -49,7 +45,9 @@ export const Metric = forwardRef<HTMLDListElement, MetricProps>(
     >
       <dt className={styles.label}>{label}</dt>
       <dd className={styles.definition}>
-        <span className={clsx(styles.value, styles.size[size], styles.tone[tone])}>
+        <span
+          className={clsx(styles.value, styles.size[size], styles.tone[tone])}
+        >
           {value}
         </span>
         {detail !== undefined && detail !== null ? (

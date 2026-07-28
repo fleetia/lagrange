@@ -37,7 +37,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args): ReactElement => <ThemeRoot><Button {...args} /></ThemeRoot>,
+  render: (args): ReactElement => (
+    <ThemeRoot>
+      <Button {...args} />
+    </ThemeRoot>
+  ),
 };
 
 export const Variants: Story = {
@@ -54,8 +58,7 @@ export const Variants: Story = {
 export const States: Story = {
   render: (): ReactElement => (
     <ThemeRoot>
-      <Button>기본</Button>{' '}
-      <Button disabled>비활성</Button>{' '}
+      <Button>기본</Button> <Button disabled>비활성</Button>{' '}
       <Button isPending>저장 중</Button>
     </ThemeRoot>
   ),
@@ -66,7 +69,11 @@ export const Accessibility: Story = {
     children: '키보드로 저장',
     onClick: fn(),
   },
-  render: (args): ReactElement => <ThemeRoot><Button {...args} /></ThemeRoot>,
+  render: (args): ReactElement => (
+    <ThemeRoot>
+      <Button {...args} />
+    </ThemeRoot>
+  ),
   play: async ({ args, canvas, userEvent }): Promise<void> => {
     await userEvent.tab();
     const button = canvas.getByRole('button', { name: '키보드로 저장' });

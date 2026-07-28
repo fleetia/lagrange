@@ -71,9 +71,7 @@ export function getNextSortDirection(
   return currentDirection === 'ascending' ? 'descending' : 'ascending';
 }
 
-export function getSortMarker(
-  direction?: DataGridSortDirection,
-): string {
+export function getSortMarker(direction?: DataGridSortDirection): string {
   if (direction === 'ascending') {
     return '↑';
   }

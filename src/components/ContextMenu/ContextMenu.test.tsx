@@ -84,10 +84,9 @@ describe('ContextMenu', () => {
     trigger.focus();
     fireEvent.click(trigger);
 
-    fireEvent.keyDown(
-      screen.getByRole('menuitem', { name: '아이콘 변경' }),
-      { key: 'Escape' },
-    );
+    fireEvent.keyDown(screen.getByRole('menuitem', { name: '아이콘 변경' }), {
+      key: 'Escape',
+    });
 
     expect(screen.queryByRole('menu')).toBeNull();
     await Promise.resolve();
@@ -100,10 +99,9 @@ describe('ContextMenu', () => {
     const nextAction = screen.getByRole('button', { name: '다음 작업' });
 
     fireEvent.click(trigger);
-    fireEvent.keyDown(
-      screen.getByRole('menuitem', { name: '아이콘 변경' }),
-      { key: 'Tab' },
-    );
+    fireEvent.keyDown(screen.getByRole('menuitem', { name: '아이콘 변경' }), {
+      key: 'Tab',
+    });
     expect(screen.queryByRole('menu')).toBeNull();
 
     fireEvent.click(trigger);

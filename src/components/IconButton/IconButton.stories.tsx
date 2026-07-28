@@ -45,15 +45,25 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args): ReactElement => <ThemeRoot><IconButton {...args} /></ThemeRoot>,
+  render: (args): ReactElement => (
+    <ThemeRoot>
+      <IconButton {...args} />
+    </ThemeRoot>
+  ),
 };
 
 export const Variants: Story = {
   render: (): ReactElement => (
     <ThemeRoot>
-      <IconButton label="수정" variant="default">{EDIT_ICON}</IconButton>{' '}
-      <IconButton label="복제" variant="quiet">{EDIT_ICON}</IconButton>{' '}
-      <IconButton label="삭제" variant="critical">×</IconButton>
+      <IconButton label="수정" variant="default">
+        {EDIT_ICON}
+      </IconButton>{' '}
+      <IconButton label="복제" variant="quiet">
+        {EDIT_ICON}
+      </IconButton>{' '}
+      <IconButton label="삭제" variant="critical">
+        ×
+      </IconButton>
     </ThemeRoot>
   ),
 };
@@ -62,7 +72,9 @@ export const States: Story = {
   render: (): ReactElement => (
     <ThemeRoot>
       <IconButton label="기본">{EDIT_ICON}</IconButton>{' '}
-      <IconButton disabled label="비활성">{EDIT_ICON}</IconButton>
+      <IconButton disabled label="비활성">
+        {EDIT_ICON}
+      </IconButton>
     </ThemeRoot>
   ),
 };
@@ -73,7 +85,11 @@ export const Accessibility: Story = {
     label: '선택한 행 수정',
     onClick: fn(),
   },
-  render: (args): ReactElement => <ThemeRoot><IconButton {...args} /></ThemeRoot>,
+  render: (args): ReactElement => (
+    <ThemeRoot>
+      <IconButton {...args} />
+    </ThemeRoot>
+  ),
   play: async ({ args, canvas, userEvent }): Promise<void> => {
     await userEvent.tab();
     const button = canvas.getByRole('button', { name: '선택한 행 수정' });

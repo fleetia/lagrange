@@ -92,27 +92,23 @@ describe('Dialog', () => {
     );
 
     expect(screen.getByRole('button', { name: 'Apply' })).toBeDefined();
-    fireEvent.click(
-      screen.getByRole('button', { name: 'Close preferences' }),
-    );
+    fireEvent.click(screen.getByRole('button', { name: 'Close preferences' }));
 
     expect(handleOpenChange).toHaveBeenCalledWith(false);
   });
 
   it('ignores a delayed internal close event after reopening', async () => {
-    vi.spyOn(
-      HTMLDialogElement.prototype,
-      'showModal',
-    ).mockImplementation(function (this: HTMLDialogElement): void {
-      this.setAttribute('open', '');
-    });
-    vi.spyOn(
-      HTMLDialogElement.prototype,
-      'close',
-    ).mockImplementation(function (this: HTMLDialogElement): void {
-      this.removeAttribute('open');
-      setTimeout(() => this.dispatchEvent(new Event('close')), 0);
-    });
+    vi.spyOn(HTMLDialogElement.prototype, 'showModal').mockImplementation(
+      function (this: HTMLDialogElement): void {
+        this.setAttribute('open', '');
+      },
+    );
+    vi.spyOn(HTMLDialogElement.prototype, 'close').mockImplementation(
+      function (this: HTMLDialogElement): void {
+        this.removeAttribute('open');
+        setTimeout(() => this.dispatchEvent(new Event('close')), 0);
+      },
+    );
     const handleOpenChange = vi.fn();
 
     function renderDialog(isOpen: boolean): ReactElement {
@@ -153,7 +149,7 @@ function ConfirmationComposition({
   return (
     <Dialog
       aria-describedby="discard-description"
-      footer={(
+      footer={
         <>
           <Button
             ref={cancelButtonRef}
@@ -166,7 +162,7 @@ function ConfirmationComposition({
             Discard changes
           </Button>
         </>
-      )}
+      }
       initialFocusRef={cancelButtonRef}
       isOpen
       onOpenChange={onOpenChange}

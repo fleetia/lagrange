@@ -35,7 +35,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args): ReactElement => (
-    <ThemeRoot><TextArea {...args} /></ThemeRoot>
+    <ThemeRoot>
+      <TextArea {...args} />
+    </ThemeRoot>
   ),
 };
 
@@ -43,9 +45,15 @@ export const Variants: Story = {
   render: (): ReactElement => (
     <ThemeRoot>
       <Stack gap="md">
-        <FormField label="고정 높이"><TextArea resize="none" /></FormField>
-        <FormField label="세로 조절"><TextArea resize="vertical" /></FormField>
-        <FormField label="양방향 조절"><TextArea resize="both" /></FormField>
+        <FormField label="고정 높이">
+          <TextArea resize="none" />
+        </FormField>
+        <FormField label="세로 조절">
+          <TextArea resize="vertical" />
+        </FormField>
+        <FormField label="양방향 조절">
+          <TextArea resize="both" />
+        </FormField>
       </Stack>
     </ThemeRoot>
   ),
@@ -55,8 +63,12 @@ export const States: Story = {
   render: (): ReactElement => (
     <ThemeRoot>
       <Stack gap="md">
-        <FormField label="기본"><TextArea defaultValue="수정할 수 있는 메모" /></FormField>
-        <FormField label="비활성"><TextArea defaultValue="잠긴 메모" disabled /></FormField>
+        <FormField label="기본">
+          <TextArea defaultValue="수정할 수 있는 메모" />
+        </FormField>
+        <FormField label="비활성">
+          <TextArea defaultValue="잠긴 메모" disabled />
+        </FormField>
         <FormField error="내용을 다시 확인하세요." label="오류">
           <TextArea defaultValue="검토가 필요한 메모" />
         </FormField>

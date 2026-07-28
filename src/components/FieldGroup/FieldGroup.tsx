@@ -29,9 +29,10 @@ export const FieldGroup = forwardRef<HTMLFieldSetElement, FieldGroupProps>(
     const descriptionId = description
       ? `lagrange-field-group-${generatedId}-description`
       : undefined;
-    const describedBy = [ariaDescribedBy, descriptionId]
-      .filter((id): id is string => Boolean(id))
-      .join(' ') || undefined;
+    const describedBy =
+      [ariaDescribedBy, descriptionId]
+        .filter((id): id is string => Boolean(id))
+        .join(' ') || undefined;
 
     return (
       <fieldset
@@ -62,10 +63,7 @@ export type FieldGridProps = ComponentPropsWithoutRef<'div'> & {
 };
 
 export const FieldGrid = forwardRef<HTMLDivElement, FieldGridProps>(
-  (
-    { className, columns = 'double', ...props },
-    ref,
-  ): ReactElement => (
+  ({ className, columns = 'double', ...props }, ref): ReactElement => (
     <div
       ref={ref}
       className={clsx(styles.grid, styles.columns[columns], className)}

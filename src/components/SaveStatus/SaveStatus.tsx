@@ -51,7 +51,9 @@ export function SaveStatus({
         <span aria-hidden="true" className={styles.marker}>
           {MARKERS[state]}
         </span>
-        <span className={styles.message}>{message ?? DEFAULT_MESSAGES[state]}</span>
+        <span className={styles.message}>
+          {message ?? DEFAULT_MESSAGES[state]}
+        </span>
       </div>
       {action !== undefined && action !== null ? (
         <div className={styles.action}>{action}</div>

@@ -33,7 +33,9 @@ export function InlineEdit({
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const shouldRestoreFocusRef = useRef(false);
   const generatedId = useId();
-  const errorId = error ? `lagrange-inline-edit-${generatedId}-error` : undefined;
+  const errorId = error
+    ? `lagrange-inline-edit-${generatedId}-error`
+    : undefined;
   const {
     'aria-describedby': inputAriaDescribedBy,
     'aria-invalid': inputAriaInvalid,

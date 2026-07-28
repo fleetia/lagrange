@@ -14,7 +14,9 @@ const meta = {
   decorators: [
     (Story): ReactElement => (
       <ThemeRoot style={{ minHeight: 220, padding: 32 }}>
-        <div style={{ maxWidth: 480 }}><Story /></div>
+        <div style={{ maxWidth: 480 }}>
+          <Story />
+        </div>
       </ThemeRoot>
     ),
   ],
@@ -40,15 +42,26 @@ export const Default: Story = {};
 export const Variants: Story = {
   render: () => (
     <Stack gap="sm">
-      <SaveStatus message="입력한 내용은 아직 저장되지 않았습니다." state="idle" />
+      <SaveStatus
+        message="입력한 내용은 아직 저장되지 않았습니다."
+        state="idle"
+      />
       <SaveStatus message="3개 변경 사항을 저장하는 중입니다." state="saving" />
       <SaveStatus
-        action={<Action size="compact" variant="quiet">변경 내역</Action>}
+        action={
+          <Action size="compact" variant="quiet">
+            변경 내역
+          </Action>
+        }
         message="오후 1:04에 저장했습니다."
         state="saved"
       />
       <SaveStatus
-        action={<Action size="compact" variant="critical">다시 시도</Action>}
+        action={
+          <Action size="compact" variant="critical">
+            다시 시도
+          </Action>
+        }
         message="네트워크 연결을 확인해 주세요."
         state="error"
       />
@@ -63,7 +76,11 @@ export const States: Story = {
       <SaveStatus state="saving" />
       <SaveStatus state="saved" />
       <SaveStatus
-        action={<Action size="compact" variant="critical">다시 시도</Action>}
+        action={
+          <Action size="compact" variant="critical">
+            다시 시도
+          </Action>
+        }
         state="error"
       />
     </Stack>
@@ -73,7 +90,11 @@ export const States: Story = {
 export const Accessibility: Story = {
   render: () => (
     <SaveStatus
-      action={<Action size="compact" variant="critical">다시 시도</Action>}
+      action={
+        <Action size="compact" variant="critical">
+          다시 시도
+        </Action>
+      }
       message="저장하지 못했습니다."
       state="error"
     />

@@ -41,7 +41,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-function PreviewMenu({ disabled = false }: { disabled?: boolean }): ReactElement {
+function PreviewMenu({
+  disabled = false,
+}: {
+  disabled?: boolean;
+}): ReactElement {
   return (
     <ContextMenu
       anchorPoint={{ x: 56, y: 72 }}

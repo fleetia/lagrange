@@ -28,7 +28,9 @@ function AccessibleToolbarStory(): ReactElement {
   return (
     <div style={{ display: 'grid', gap: tokens.space.md }}>
       <Toolbar label="거래 편집 도구">
-        <Action onClick={() => setMessage('거래 추가 선택됨')}>거래 추가</Action>
+        <Action onClick={() => setMessage('거래 추가 선택됨')}>
+          거래 추가
+        </Action>
         <Action onClick={() => setMessage('내보내기 선택됨')} variant="quiet">
           내보내기
         </Action>
@@ -134,7 +136,9 @@ export const Accessibility: Story = {
     await userEvent.tab();
     await expect(addAction).toHaveFocus();
     await userEvent.keyboard('{Enter}');
-    await expect(canvas.getByRole('status')).toHaveTextContent('거래 추가 선택됨');
+    await expect(canvas.getByRole('status')).toHaveTextContent(
+      '거래 추가 선택됨',
+    );
     await userEvent.tab();
     await expect(exportAction).toHaveFocus();
   },

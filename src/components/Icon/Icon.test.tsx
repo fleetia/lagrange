@@ -39,11 +39,7 @@ describe('Icon', () => {
     };
 
     render(
-      <Icon
-        {...conflictingSvgProps}
-        decorative={false}
-        label="저장 완료"
-      >
+      <Icon {...conflictingSvgProps} decorative={false} label="저장 완료">
         <path d="m5 12 4 4L19 6" />
       </Icon>,
     );
@@ -56,7 +52,11 @@ describe('Icon', () => {
 
   it('forwards SVG presentation attributes and custom classes', () => {
     const { container } = render(
-      <Icon className="consumer-class" strokeLinecap="round" viewBox="0 0 16 16">
+      <Icon
+        className="consumer-class"
+        strokeLinecap="round"
+        viewBox="0 0 16 16"
+      >
         <path d="M2 8h12" />
       </Icon>,
     );

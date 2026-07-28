@@ -14,7 +14,9 @@ const meta = {
   decorators: [
     (Story): ReactElement => (
       <ThemeRoot style={{ minHeight: 220, padding: 32 }}>
-        <div style={{ maxWidth: 420 }}><Story /></div>
+        <div style={{ maxWidth: 420 }}>
+          <Story />
+        </div>
       </ThemeRoot>
     ),
   ],
@@ -42,7 +44,11 @@ export const Default: Story = {};
 export const Variants: Story = {
   render: () => (
     <Stack gap="md">
-      <InlineEdit ariaLabel="짧은 값" onCommit={() => undefined} value="카페라떼" />
+      <InlineEdit
+        ariaLabel="짧은 값"
+        onCommit={() => undefined}
+        value="카페라떼"
+      />
       <InlineEdit
         ariaLabel="빈 값 안내"
         emptyLabel="클릭하여 입력"
@@ -62,11 +68,30 @@ export const Variants: Story = {
 export const States: Story = {
   render: () => (
     <Stack gap="md">
-      <InlineEdit ariaLabel="기본" onCommit={() => undefined} value="카페라떼" />
+      <InlineEdit
+        ariaLabel="기본"
+        onCommit={() => undefined}
+        value="카페라떼"
+      />
       <InlineEdit ariaLabel="빈 값" onCommit={() => undefined} value="" />
-      <InlineEdit ariaLabel="저장 중" isPending onCommit={() => undefined} value="저장 중" />
-      <InlineEdit ariaLabel="오류" error="저장하지 못했습니다." onCommit={() => undefined} value="오류 값" />
-      <InlineEdit ariaLabel="읽기 전용" onCommit={() => undefined} readOnly value="고정값" />
+      <InlineEdit
+        ariaLabel="저장 중"
+        isPending
+        onCommit={() => undefined}
+        value="저장 중"
+      />
+      <InlineEdit
+        ariaLabel="오류"
+        error="저장하지 못했습니다."
+        onCommit={() => undefined}
+        value="오류 값"
+      />
+      <InlineEdit
+        ariaLabel="읽기 전용"
+        onCommit={() => undefined}
+        readOnly
+        value="고정값"
+      />
     </Stack>
   ),
 };
@@ -89,11 +114,7 @@ function AccessibleEditableExample(): ReactElement {
 
   return (
     <Stack gap="sm">
-      <InlineEdit
-        ariaLabel="키보드 내용"
-        onCommit={setValue}
-        value={value}
-      />
+      <InlineEdit ariaLabel="키보드 내용" onCommit={setValue} value={value} />
       <output aria-live="polite">저장된 값: {value}</output>
     </Stack>
   );

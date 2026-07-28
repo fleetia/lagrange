@@ -1,9 +1,5 @@
 export { ThemeRoot, type ThemeRootProps } from './ThemeRoot';
-export {
-  lagrangeThemeClass,
-  themeClass,
-  vars,
-} from './theme.css';
+export { lagrangeThemeClass, themeClass, vars } from './theme.css';
 export {
   componentVars,
   semanticVars,

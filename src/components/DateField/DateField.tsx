@@ -3,10 +3,7 @@ import { forwardRef } from 'react';
 import clsx from 'clsx';
 
 import { control } from '../controls.css';
-import {
-  joinIds,
-  useFormFieldContext,
-} from '../FormField/FormFieldContext';
+import { joinIds, useFormFieldContext } from '../FormField/FormFieldContext';
 import * as styles from './DateField.css';
 
 export type DateFieldProps = Omit<ComponentPropsWithoutRef<'input'>, 'type'> & {

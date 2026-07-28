@@ -1,9 +1,4 @@
-import type {
-  CSSProperties,
-  Key,
-  ReactNode,
-  TableHTMLAttributes,
-} from 'react';
+import type { CSSProperties, Key, ReactNode, TableHTMLAttributes } from 'react';
 
 export type DataGridAlign = 'start' | 'center' | 'end';
 export type DataGridRowTone = 'default' | 'muted' | 'critical';
@@ -40,9 +35,7 @@ export type DataGridColumn<TData> = {
   id: string;
   isEditable?: boolean | ((row: TData, rowIndex: number) => boolean);
   renderCell: (row: TData, rowIndex: number) => ReactNode;
-  renderEditor?: (
-    editor: DataGridEditorRenderProps<TData>,
-  ) => ReactNode;
+  renderEditor?: (editor: DataGridEditorRenderProps<TData>) => ReactNode;
   sortable?: boolean;
   width?: CSSProperties['width'];
 };
@@ -58,11 +51,7 @@ export type DataGridProps<TData> = Omit<
   getRowKey: (row: TData, rowIndex: number) => Key;
   getRowTone?: (row: TData, rowIndex: number) => DataGridRowTone;
   onCellCommit?: (change: DataGridCellCommit<TData>) => void;
-  onRowSelectionChange?: (
-    rowKey: Key,
-    row: TData,
-    isSelected: boolean,
-  ) => void;
+  onRowSelectionChange?: (rowKey: Key, row: TData, isSelected: boolean) => void;
   onSortChange?: (sort: DataGridSort) => void;
   rows: readonly TData[];
   selectedRowKeys?: ReadonlySet<Key>;

@@ -104,12 +104,7 @@ describe('RangeField', () => {
   it('restores the painted progress after a native form reset', async () => {
     const { container } = render(
       <form>
-        <RangeField
-          aria-label="Zoom"
-          defaultValue={25}
-          max={100}
-          min={0}
-        />
+        <RangeField aria-label="Zoom" defaultValue={25} max={100} min={0} />
       </form>,
     );
     const input = screen.getByRole<HTMLInputElement>('slider', {

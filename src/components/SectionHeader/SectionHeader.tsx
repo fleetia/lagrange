@@ -1,8 +1,4 @@
-import type {
-  ComponentPropsWithoutRef,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
 
@@ -60,11 +56,7 @@ export const SectionHeader = forwardRef<HTMLElement, SectionHeaderProps>(
               {eyebrow}
             </Text>
           ) : null}
-          <Heading
-            id={headingId}
-            level={headingLevel}
-            variant={headingVariant}
-          >
+          <Heading id={headingId} level={headingLevel} variant={headingVariant}>
             {title}
           </Heading>
           {description !== undefined && description !== null ? (

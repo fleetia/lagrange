@@ -39,14 +39,7 @@ describe('useDataGrid', () => {
     expect(result.current.draft).toBe('카페라떼');
 
     act(() => {
-      result.current.finishEditing(
-        ROW,
-        0,
-        COLUMN,
-        0,
-        true,
-        false,
-      );
+      result.current.finishEditing(ROW, 0, COLUMN, 0, true, false);
     });
     expect(handleCellCommit).not.toHaveBeenCalled();
 
@@ -55,14 +48,7 @@ describe('useDataGrid', () => {
       result.current.setDraftValue('점심 식사');
     });
     act(() => {
-      result.current.finishEditing(
-        ROW,
-        0,
-        COLUMN,
-        0,
-        true,
-        false,
-      );
+      result.current.finishEditing(ROW, 0, COLUMN, 0, true, false);
     });
 
     expect(handleCellCommit).toHaveBeenCalledWith({

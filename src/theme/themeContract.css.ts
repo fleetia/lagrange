@@ -1,7 +1,4 @@
-import {
-  createGlobalThemeContract,
-  fallbackVar,
-} from '@vanilla-extract/css';
+import { createGlobalThemeContract, fallbackVar } from '@vanilla-extract/css';
 
 import { selectIndicatorTexture } from './materials';
 
@@ -213,8 +210,7 @@ const toKebabCase = (value: string): string =>
 
 export const themeVars = createGlobalThemeContract(
   themeTokenShape,
-  (_value, path): string =>
-    `lagrange-${path.map(toKebabCase).join('-')}`,
+  (_value, path): string => `lagrange-${path.map(toKebabCase).join('-')}`,
 );
 
 export const themeContract = themeVars;

@@ -2,14 +2,17 @@ import { cleanup, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import { RadialBreakdownChart } from './RadialBreakdownChart';
-import type {
-  RadialBreakdownRing,
-  RadialBreakdownSegment,
-} from './types';
+import type { RadialBreakdownRing, RadialBreakdownSegment } from './types';
 
 const SEGMENTS: readonly RadialBreakdownSegment[] = [
   { color: '#7f83ba', id: 'alpha', label: 'Alpha', value: 60 },
-  { color: '#62663b', detail: '40 units', id: 'beta', label: 'Beta', value: 40 },
+  {
+    color: '#62663b',
+    detail: '40 units',
+    id: 'beta',
+    label: 'Beta',
+    value: 40,
+  },
 ];
 
 afterEach(cleanup);
@@ -33,7 +36,9 @@ describe('RadialBreakdownChart', () => {
       'lagrange-radial-description',
     );
     expect(screen.getByText('Total 100')).toBeDefined();
-    expect(container.querySelector('figure')?.className).toContain('consumer-class');
+    expect(container.querySelector('figure')?.className).toContain(
+      'consumer-class',
+    );
     expect(container.querySelectorAll('[data-segment-id]')).toHaveLength(2);
     expect(container.querySelectorAll('[data-tick="true"]')).toHaveLength(12);
     expect(screen.getAllByText('Alpha').length).toBeGreaterThan(1);
@@ -58,7 +63,9 @@ describe('RadialBreakdownChart', () => {
     );
 
     expect(container.querySelectorAll('[data-segment-id]')).toHaveLength(4);
-    expect(screen.getByRole('table', { name: 'Nested distribution data' })).toBeDefined();
+    expect(
+      screen.getByRole('table', { name: 'Nested distribution data' }),
+    ).toBeDefined();
     expect(screen.getByRole('rowheader', { name: 'Gamma' })).toBeDefined();
     expect(screen.getByRole('cell', { name: '25%' })).toBeDefined();
   });
@@ -73,8 +80,9 @@ describe('RadialBreakdownChart', () => {
     const patterns = container.querySelectorAll('[data-pigment-grain-pattern]');
     const patternIds = [...patterns].map(({ id }) => id);
     const textureFills = new Set(
-      [...container.querySelectorAll('[data-segment-texture-id]')]
-        .map((texture) => texture.getAttribute('fill')),
+      [...container.querySelectorAll('[data-segment-texture-id]')].map(
+        (texture) => texture.getAttribute('fill'),
+      ),
     );
 
     expect(patterns).toHaveLength(2);
@@ -87,15 +95,14 @@ describe('RadialBreakdownChart', () => {
 
   it('uses one non-interactive chart summary and an accessible data table', () => {
     const { container } = render(
-      <RadialBreakdownChart
-        segments={SEGMENTS}
-        title="Distribution summary"
-      />,
+      <RadialBreakdownChart segments={SEGMENTS} title="Distribution summary" />,
     );
     const segments = container.querySelectorAll('[data-segment-id]');
 
     expect(screen.getAllByRole('img')).toHaveLength(1);
-    expect(screen.getByRole('table', { name: 'Distribution summary data' })).toBeDefined();
+    expect(
+      screen.getByRole('table', { name: 'Distribution summary data' }),
+    ).toBeDefined();
     expect(segments).toHaveLength(2);
     expect(segments[0]?.getAttribute('aria-hidden')).toBe('true');
     expect(segments[0]?.getAttribute('role')).toBeNull();
@@ -134,7 +141,8 @@ describe('RadialBreakdownChart', () => {
     );
 
     expect(
-      container.querySelector('[data-label-id="alpha"]')
+      container
+        .querySelector('[data-label-id="alpha"]')
         ?.getAttribute('data-label-side'),
     ).toBe('left');
     expect(screen.getByRole('cell', { name: '100' })).toBeDefined();
@@ -190,7 +198,9 @@ describe('RadialBreakdownChart', () => {
     expect(screen.getByRole('status').textContent).toBe('Too many series');
     expect(screen.queryByText('Center')).toBeNull();
     expect(container.querySelectorAll('[data-segment-id]')).toHaveLength(0);
-    expect(screen.getByRole('table', { name: 'Dense distribution data' })).toBeDefined();
+    expect(
+      screen.getByRole('table', { name: 'Dense distribution data' }),
+    ).toBeDefined();
   });
 
   it('shows a clear empty state and ignores non-positive values', () => {

@@ -10,20 +10,10 @@ import {
 describe('DataGrid helpers', () => {
   it('keeps keyboard navigation inside the available grid', () => {
     expect(
-      getNextCellPosition(
-        { columnIndex: 0, rowIndex: 0 },
-        'ArrowUp',
-        2,
-        3,
-      ),
+      getNextCellPosition({ columnIndex: 0, rowIndex: 0 }, 'ArrowUp', 2, 3),
     ).toEqual({ columnIndex: 0, rowIndex: 0 });
     expect(
-      getNextCellPosition(
-        { columnIndex: 1, rowIndex: 0 },
-        'End',
-        2,
-        3,
-      ),
+      getNextCellPosition({ columnIndex: 1, rowIndex: 0 }, 'End', 2, 3),
     ).toEqual({ columnIndex: 2, rowIndex: 0 });
   });
 

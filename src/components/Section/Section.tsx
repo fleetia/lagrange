@@ -14,12 +14,7 @@ export type SectionProps = ComponentPropsWithoutRef<'section'> & {
 
 export const Section = forwardRef<HTMLElement, SectionProps>(
   (
-    {
-      boundary = 'none',
-      className,
-      spacing = 'default',
-      ...props
-    },
+    { boundary = 'none', className, spacing = 'default', ...props },
     ref,
   ): ReactElement => (
     <section

@@ -1,9 +1,4 @@
-import type {
-  ChangeEvent,
-  Key,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import type { ChangeEvent, Key, ReactElement, ReactNode } from 'react';
 import { useId } from 'react';
 import clsx from 'clsx';
 
@@ -91,22 +86,10 @@ export function DataGrid<TData>({
     const ariaLabel = column.getEditorLabel?.(row, rowIndex) ?? column.id;
     const editorProps: DataGridEditorRenderProps<TData> = {
       ariaLabel,
-      cancel: () => finishEditing(
-        row,
-        rowIndex,
-        column,
-        columnIndex,
-        false,
-        true,
-      ),
-      commit: () => finishEditing(
-        row,
-        rowIndex,
-        column,
-        columnIndex,
-        true,
-        true,
-      ),
+      cancel: () =>
+        finishEditing(row, rowIndex, column, columnIndex, false, true),
+      commit: () =>
+        finishEditing(row, rowIndex, column, columnIndex, true, true),
       onValueChange: setDraftValue,
       row,
       rowIndex,
@@ -128,14 +111,8 @@ export function DataGrid<TData>({
         className={styles.editor}
         onBlur={
           commitOnBlur
-            ? () => finishEditing(
-                row,
-                rowIndex,
-                column,
-                columnIndex,
-                true,
-                false,
-              )
+            ? () =>
+                finishEditing(row, rowIndex, column, columnIndex, true, false)
             : undefined
         }
         onChange={handleChange}
@@ -168,7 +145,9 @@ export function DataGrid<TData>({
 
               return (
                 <th
-                  aria-sort={column.sortable ? sortDirection ?? 'none' : undefined}
+                  aria-sort={
+                    column.sortable ? (sortDirection ?? 'none') : undefined
+                  }
                   className={clsx(
                     styles.headerCell,
                     styles.align[column.align ?? 'start'],
@@ -217,7 +196,9 @@ export function DataGrid<TData>({
 
               return (
                 <tr
-                  aria-selected={selectionMode === 'none' ? undefined : isSelected}
+                  aria-selected={
+                    selectionMode === 'none' ? undefined : isSelected
+                  }
                   className={clsx(
                     styles.row,
                     styles.rowTone[rowTone],

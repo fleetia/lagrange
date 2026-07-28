@@ -16,10 +16,7 @@ import './consumer.css';
 
 export function ConsumerApp(): ReactElement {
   return (
-    <ThemeRoot
-      className="consumer-shell"
-      themeClassName={brandThemeClass}
-    >
+    <ThemeRoot className="consumer-shell" themeClassName={brandThemeClass}>
       <Stack gap="lg">
         <Stack gap="xs">
           <Text tone="muted" variant="caption" weight="strong">
@@ -29,7 +26,8 @@ export function ConsumerApp(): ReactElement {
             Lagrange is connected.
           </Heading>
           <Text as="p" tone="muted">
-            This Vite app imports the public package entry and its exported stylesheet.
+            This Vite app imports the public package entry and its exported
+            stylesheet.
           </Text>
         </Stack>
         <Rule variant="structural" />

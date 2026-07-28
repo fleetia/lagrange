@@ -17,11 +17,15 @@ describe('Breadcrumb', () => {
       />,
     );
 
-    expect(screen.getByRole('navigation', { name: '북마크 경로' })).toBeDefined();
-    expect(screen.getByRole('link', { name: 'Bookmarks' }).getAttribute('href')).toBe(
-      '/bookmarks',
-    );
-    expect(screen.getByRole('button', { name: 'Design systems' })).toBeDefined();
+    expect(
+      screen.getByRole('navigation', { name: '북마크 경로' }),
+    ).toBeDefined();
+    expect(
+      screen.getByRole('link', { name: 'Bookmarks' }).getAttribute('href'),
+    ).toBe('/bookmarks');
+    expect(
+      screen.getByRole('button', { name: 'Design systems' }),
+    ).toBeDefined();
   });
 
   it('marks only the final item as the current page', () => {
@@ -35,11 +39,13 @@ describe('Breadcrumb', () => {
       />,
     );
 
-    expect(screen.getByRole('button', { name: 'Work' }).hasAttribute('aria-current')).toBe(
-      false,
-    );
     expect(
-      screen.getByRole('button', { name: 'Lagrange' }).getAttribute('aria-current'),
+      screen.getByRole('button', { name: 'Work' }).hasAttribute('aria-current'),
+    ).toBe(false);
+    expect(
+      screen
+        .getByRole('button', { name: 'Lagrange' })
+        .getAttribute('aria-current'),
     ).toBe('page');
   });
 

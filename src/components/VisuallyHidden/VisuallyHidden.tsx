@@ -12,7 +12,11 @@ export const VisuallyHidden = forwardRef<HTMLSpanElement, VisuallyHiddenProps>(
   ({ className, isFocusable = false, ...props }, ref): ReactElement => (
     <span
       ref={ref}
-      className={clsx(styles.hidden, isFocusable && styles.focusable, className)}
+      className={clsx(
+        styles.hidden,
+        isFocusable && styles.focusable,
+        className,
+      )}
       data-focusable={isFocusable || undefined}
       {...props}
     />

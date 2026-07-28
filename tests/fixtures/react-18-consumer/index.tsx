@@ -90,12 +90,7 @@ export const fixture = (
     themeClassName={lagrangeThemeClass}
   >
     <Text>Lagrange React 18 consumer</Text>
-    <Breadcrumb
-      items={[
-        { href: '/', label: 'Home' },
-        { label: 'Current' },
-      ]}
-    />
+    <Breadcrumb items={[{ href: '/', label: 'Home' }, { label: 'Current' }]} />
     <FormField label="Memo">
       <TextField />
     </FormField>
@@ -121,11 +116,7 @@ export const fixture = (
       <TabPanel value="general">General settings</TabPanel>
       <TabPanel value="appearance">Appearance settings</TabPanel>
     </Tabs>
-    <Dialog
-      isOpen={false}
-      onOpenChange={() => undefined}
-      title="Settings"
-    >
+    <Dialog isOpen={false} onOpenChange={() => undefined} title="Settings">
       Dialog content
     </Dialog>
     <ContextMenu

@@ -7,10 +7,7 @@ import { tokens } from '../../theme/tokens';
 import { Stack } from '../Layout/Layout';
 import { Heading, Text } from '../Typography/Typography';
 import { RadialBreakdownChart } from './RadialBreakdownChart';
-import type {
-  RadialBreakdownRing,
-  RadialBreakdownSegment,
-} from './types';
+import type { RadialBreakdownRing, RadialBreakdownSegment } from './types';
 
 const ASSET_COLORS = {
   cash: '#aaa7cc',
@@ -194,25 +191,29 @@ const meta = {
     },
     dataTableLabels: {
       control: false,
-      description: 'Screen-reader data table의 caption과 column label을 지역화합니다.',
+      description:
+        'Screen-reader data table의 caption과 column label을 지역화합니다.',
     },
     description: {
       description: 'SVG chart를 설명하는 accessible description입니다.',
     },
     emptyState: {
       control: false,
-      description: '표시 가능한 data가 없을 때 center에 렌더링할 content입니다.',
+      description:
+        '표시 가능한 data가 없을 때 center에 렌더링할 content입니다.',
     },
     formatValue: {
       control: false,
       description: 'Segment value를 label용 문자열로 변환합니다.',
     },
     outerTickCount: {
-      description: 'Outer guide에 표시할 tick 수입니다. 0–120 범위로 제한됩니다.',
+      description:
+        'Outer guide에 표시할 tick 수입니다. 0–120 범위로 제한됩니다.',
     },
     rings: {
       control: false,
-      description: '여러 concentric series를 표시할 때 사용하는 ring dataset입니다.',
+      description:
+        '여러 concentric series를 표시할 때 사용하는 ring dataset입니다.',
     },
     segments: {
       control: false,
@@ -225,7 +226,8 @@ const meta = {
       description: '첫 segment가 시작되는 각도입니다.',
     },
     title: {
-      description: 'Visible context와 accessible SVG title에 사용하는 chart 이름입니다.',
+      description:
+        'Visible context와 accessible SVG title에 사용하는 chart 이름입니다.',
     },
   },
 } satisfies Meta<typeof RadialBreakdownChart>;
@@ -247,8 +249,12 @@ function AssetCenterSummary(): ReactElement {
 function SampleCenterSummary(): ReactElement {
   return (
     <Stack align="center" gap="xxs">
-      <Text tone="muted" variant="caption">TOTAL</Text>
-      <Heading level={3} variant="subsection">100</Heading>
+      <Text tone="muted" variant="caption">
+        TOTAL
+      </Text>
+      <Heading level={3} variant="subsection">
+        100
+      </Heading>
       <Text variant="caption">units</Text>
     </Stack>
   );
@@ -279,7 +285,8 @@ export const EightCategories: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Desktop에서는 5–8개 항목까지 좌우 label을 유지할 수 있습니다. PWA의 compact viewport에서는 작은 label을 그대로 축소하지 말고 `showLabels={false}`와 화면에 보이는 2-column legend를 함께 사용하세요.',
+        story:
+          'Desktop에서는 5–8개 항목까지 좌우 label을 유지할 수 있습니다. PWA의 compact viewport에서는 작은 label을 그대로 축소하지 말고 `showLabels={false}`와 화면에 보이는 2-column legend를 함께 사용하세요.',
       },
     },
   },
@@ -331,7 +338,8 @@ export const States: Story = {
 
 export const Accessibility: Story = {
   args: {
-    description: 'A non-interactive asset summary with a detailed data table for screen readers.',
+    description:
+      'A non-interactive asset summary with a detailed data table for screen readers.',
     segments: ASSET_SEGMENTS,
     startAngle: -180,
     title: 'Accessible asset distribution',
@@ -342,12 +350,18 @@ export const Accessibility: Story = {
     </ThemeRoot>
   ),
   play: async ({ canvas }): Promise<void> => {
-    await expect(canvas.getByRole('img', {
-      name: 'Accessible asset distribution',
-    })).toBeInTheDocument();
-    await expect(canvas.getByRole('table', {
-      name: 'Accessible asset distribution data',
-    })).toBeInTheDocument();
-    await expect(canvas.getByRole('rowheader', { name: '현금성' })).toBeInTheDocument();
+    await expect(
+      canvas.getByRole('img', {
+        name: 'Accessible asset distribution',
+      }),
+    ).toBeInTheDocument();
+    await expect(
+      canvas.getByRole('table', {
+        name: 'Accessible asset distribution data',
+      }),
+    ).toBeInTheDocument();
+    await expect(
+      canvas.getByRole('rowheader', { name: '현금성' }),
+    ).toBeInTheDocument();
   },
 };

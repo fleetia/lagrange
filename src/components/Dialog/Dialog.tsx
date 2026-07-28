@@ -6,12 +6,7 @@ import type {
   RefObject,
   SyntheticEvent,
 } from 'react';
-import {
-  forwardRef,
-  useEffect,
-  useId,
-  useRef,
-} from 'react';
+import { forwardRef, useEffect, useId, useRef } from 'react';
 import clsx from 'clsx';
 
 import { Icon } from '../Icon/Icon';

@@ -50,9 +50,7 @@ describe('TextArea', () => {
   });
 
   it('preserves native disabled and standalone invalid states', () => {
-    render(
-      <TextArea aria-label="설명" disabled isInvalid />,
-    );
+    render(<TextArea aria-label="설명" disabled isInvalid />);
     const textArea = screen.getByRole('textbox', { name: '설명' });
 
     expect(textArea.hasAttribute('disabled')).toBe(true);

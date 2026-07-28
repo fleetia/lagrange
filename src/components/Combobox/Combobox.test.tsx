@@ -51,10 +51,7 @@ describe('Combobox', () => {
 
     expect(input.getAttribute('aria-expanded')).toBe('false');
     expect(input.getAttribute('value')).toBe('교통비 › 대중교통');
-    expect(handleValueChange).toHaveBeenLastCalledWith(
-      'transit',
-      OPTIONS[1],
-    );
+    expect(handleValueChange).toHaveBeenLastCalledWith('transit', OPTIONS[1]);
   });
 
   it('skips disabled options during arrow navigation', () => {
@@ -85,8 +82,7 @@ describe('Combobox', () => {
 
     expect(input.checkValidity()).toBe(false);
     expect(
-      document.querySelector<HTMLInputElement>('input[name="category"]')
-        ?.value,
+      document.querySelector<HTMLInputElement>('input[name="category"]')?.value,
     ).toBe('');
 
     fireEvent.change(input, { target: { value: '카페' } });

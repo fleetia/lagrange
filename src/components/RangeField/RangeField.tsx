@@ -15,10 +15,7 @@ import {
 } from 'react';
 import clsx from 'clsx';
 
-import {
-  joinIds,
-  useFormFieldContext,
-} from '../FormField/FormFieldContext';
+import { joinIds, useFormFieldContext } from '../FormField/FormFieldContext';
 import * as styles from './RangeField.css';
 
 const DEFAULT_MIN = 0;

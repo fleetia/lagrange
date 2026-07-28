@@ -59,9 +59,9 @@ describe('Tabs', () => {
 
     expect(handleValueChange).toHaveBeenCalledWith('layout');
     expect(
-      screen.getByRole('tab', { name: 'General' }).getAttribute(
-        'aria-selected',
-      ),
+      screen
+        .getByRole('tab', { name: 'General' })
+        .getAttribute('aria-selected'),
     ).toBe('true');
   });
 
@@ -106,9 +106,7 @@ describe('Tabs', () => {
 
     expect(document.activeElement).toBe(layoutTab);
     expect(layoutTab.getAttribute('aria-selected')).toBe('true');
-    expect(
-      screen.getByRole('tabpanel', { name: 'Layout' }).hidden,
-    ).toBe(false);
+    expect(screen.getByRole('tabpanel', { name: 'Layout' }).hidden).toBe(false);
 
     fireEvent.keyDown(layoutTab, { key: 'End' });
     expect(document.activeElement).toBe(cssTab);
@@ -142,8 +140,8 @@ describe('Tabs', () => {
 
     expect(generalTab.getAttribute('aria-selected')).toBe('true');
     expect(generalTab.getAttribute('tabindex')).toBe('0');
-    expect(
-      screen.getByRole('tabpanel', { name: 'General' }).hidden,
-    ).toBe(false);
+    expect(screen.getByRole('tabpanel', { name: 'General' }).hidden).toBe(
+      false,
+    );
   });
 });

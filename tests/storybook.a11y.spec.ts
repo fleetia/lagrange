@@ -28,8 +28,14 @@ const STORY_CASES: readonly StoryA11yCase[] = [
     name: 'ContextMenu accessibility',
   },
   { id: 'components-datagrid--accessibility', name: 'DataGrid accessibility' },
-  { id: 'components-datatable--accessibility', name: 'DataTable accessibility' },
-  { id: 'components-datefield--accessibility', name: 'DateField accessibility' },
+  {
+    id: 'components-datatable--accessibility',
+    name: 'DataTable accessibility',
+  },
+  {
+    id: 'components-datefield--accessibility',
+    name: 'DateField accessibility',
+  },
   { id: 'components-dialog--accessibility', name: 'Dialog accessibility' },
   {
     id: 'components-fieldgroup--accessibility',
@@ -123,10 +129,14 @@ const STORY_CASES: readonly StoryA11yCase[] = [
   },
 ] as const;
 
-async function analyzeStory(page: Page): Promise<Awaited<ReturnType<AxeBuilder['analyze']>>> {
+async function analyzeStory(
+  page: Page,
+): Promise<Awaited<ReturnType<AxeBuilder['analyze']>>> {
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
-      return await new AxeBuilder({ page }).include('#storybook-root').analyze();
+      return await new AxeBuilder({ page })
+        .include('#storybook-root')
+        .analyze();
     } catch (error) {
       const canRetry =
         error instanceof Error &&

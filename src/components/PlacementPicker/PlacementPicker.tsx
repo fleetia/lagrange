@@ -49,10 +49,7 @@ function getNextPlacement(current: Placement, key: ArrowKey): Placement {
   }
 }
 
-export const PlacementPicker = forwardRef<
-  HTMLDivElement,
-  PlacementPickerProps
->(
+export const PlacementPicker = forwardRef<HTMLDivElement, PlacementPickerProps>(
   (
     {
       className,
@@ -93,9 +90,10 @@ export const PlacementPicker = forwardRef<
       event.preventDefault();
 
       const nextPlacement = getNextPlacement(placement, event.key);
-      const nextOption = event.currentTarget.parentElement?.querySelector<
-        HTMLButtonElement
-      >(`[data-placement="${nextPlacement}"]`);
+      const nextOption =
+        event.currentTarget.parentElement?.querySelector<HTMLButtonElement>(
+          `[data-placement="${nextPlacement}"]`,
+        );
 
       selectPlacement(nextPlacement);
       nextOption?.focus();

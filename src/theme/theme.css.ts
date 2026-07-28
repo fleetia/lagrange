@@ -6,7 +6,9 @@ import { componentTokens, semanticTokens } from './themeTokens';
 const resetTokenGroup = <Group extends Readonly<Record<string, string>>>(
   group: Group,
 ): Group =>
-  Object.fromEntries(Object.keys(group).map((key) => [key, 'initial'])) as Group;
+  Object.fromEntries(
+    Object.keys(group).map((key) => [key, 'initial']),
+  ) as Group;
 
 const componentResetTokens = {
   control: resetTokenGroup(componentTokens.control),

@@ -98,7 +98,8 @@ export const Accessibility: Story = {
   args: {
     children: PERIOD_CHOICES,
     defaultValue: 'day',
-    description: 'Arrow keys move selection without introducing toolbar semantics.',
+    description:
+      'Arrow keys move selection without introducing toolbar semantics.',
     label: '키보드 조회 단위',
   },
   play: async ({ canvas, userEvent }): Promise<void> => {

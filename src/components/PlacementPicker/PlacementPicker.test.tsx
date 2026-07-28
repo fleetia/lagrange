@@ -7,9 +7,7 @@ afterEach(cleanup);
 
 describe('PlacementPicker', () => {
   it('renders all nine placements as one accessible radio group', () => {
-    render(
-      <PlacementPicker label="Content placement" value="top-left" />,
-    );
+    render(<PlacementPicker label="Content placement" value="top-left" />);
 
     const group = screen.getByRole('radiogroup', {
       name: 'Content placement',
@@ -19,9 +17,9 @@ describe('PlacementPicker', () => {
     expect(group).toBeDefined();
     expect(options).toHaveLength(9);
     expect(
-      screen.getByRole('radio', { name: 'top-left' }).getAttribute(
-        'aria-checked',
-      ),
+      screen
+        .getByRole('radio', { name: 'top-left' })
+        .getAttribute('aria-checked'),
     ).toBe('true');
     expect(screen.getByRole('radio', { name: 'top-left' }).tabIndex).toBe(0);
     expect(screen.getByRole('radio', { name: 'center-center' }).tabIndex).toBe(
@@ -60,9 +58,9 @@ describe('PlacementPicker', () => {
     );
 
     expect(
-      screen.getByRole('radio', { name: '위치 center-center' }).hasAttribute(
-        'disabled',
-      ),
+      screen
+        .getByRole('radio', { name: '위치 center-center' })
+        .hasAttribute('disabled'),
     ).toBe(true);
     expect(screen.getByRole('radiogroup').getAttribute('aria-disabled')).toBe(
       'true',

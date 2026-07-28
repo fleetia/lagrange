@@ -7,19 +7,10 @@ import type {
   KeyboardEvent,
   ReactElement,
 } from 'react';
-import {
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 
-import {
-  joinIds,
-  useFormFieldContext,
-} from '../FormField/FormFieldContext';
+import { joinIds, useFormFieldContext } from '../FormField/FormFieldContext';
 import * as styles from './ColorField.css';
 import {
   applyColorAlpha,
@@ -95,14 +86,13 @@ export const ColorField = forwardRef<HTMLInputElement, ColorFieldProps>(
     const [internalValue, setInternalValue] = useState(normalizedDefaultValue);
     const normalizedInternalValue =
       normalizeColor(internalValue, showAlpha) ?? getFallbackColor(showAlpha);
-    const normalizedControlledValue = value === undefined
-      ? null
-      : normalizeColor(value, showAlpha);
+    const normalizedControlledValue =
+      value === undefined ? null : normalizeColor(value, showAlpha);
     const isControlled = value !== undefined;
     const hasInvalidControlledValue =
       isControlled && normalizedControlledValue === null;
     const committedValue = isControlled
-      ? normalizedControlledValue ?? normalizedInternalValue
+      ? (normalizedControlledValue ?? normalizedInternalValue)
       : normalizedInternalValue;
     const [draft, setDraft] = useState(committedValue);
     const [isFocused, setIsFocused] = useState(false);
@@ -270,10 +260,7 @@ export const ColorField = forwardRef<HTMLInputElement, ColorFieldProps>(
         <input
           {...props}
           ref={setInputRef}
-          aria-describedby={joinIds(
-            fieldContext?.describedBy,
-            ariaDescribedBy,
-          )}
+          aria-describedby={joinIds(fieldContext?.describedBy, ariaDescribedBy)}
           aria-invalid={resolvedAriaInvalid}
           aria-required={resolvedAriaRequired}
           className={styles.input}
