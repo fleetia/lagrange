@@ -1,6 +1,7 @@
 import type {
   ChangeEvent,
   ComponentPropsWithoutRef,
+  CSSProperties,
   FocusEvent,
   ForwardedRef,
   KeyboardEvent,
@@ -11,18 +12,28 @@ import clsx from 'clsx';
 
 import { joinIds, useFormFieldContext } from '../FormField/FormFieldContext';
 import * as styles from './ColorField.css';
-import { applyColorAlpha, normalizeColor } from './helpers';
+import {
+  applyColorAlpha,
+  applyColorAlphaPercentage,
+  getColorAlphaPercentage,
+  normalizeColor,
+} from './helpers';
 
 export type ColorFieldProps = Omit<
   ComponentPropsWithoutRef<'input'>,
   'defaultValue' | 'onChange' | 'type' | 'value'
 > & {
+  alphaLabel?: string;
   defaultValue?: string;
   isInvalid?: boolean;
   onValueChange?: (value: string) => void;
   showAlpha?: boolean;
   swatchLabel?: string;
   value?: string;
+};
+
+type AlphaRangeStyle = CSSProperties & {
+  '--lagrange-color-alpha': string;
 };
 
 function assignRef<T>(ref: ForwardedRef<T>, value: T | null): void {
@@ -46,6 +57,7 @@ export const ColorField = forwardRef<HTMLInputElement, ColorFieldProps>(
       'aria-describedby': ariaDescribedBy,
       'aria-invalid': ariaInvalid,
       'aria-required': ariaRequired,
+      alphaLabel = 'Alpha',
       className,
       defaultValue = '#000000',
       disabled = false,
@@ -108,6 +120,10 @@ export const ColorField = forwardRef<HTMLInputElement, ColorFieldProps>(
         : isInvalid || undefined;
     const displayedColor = normalizedDraft ?? committedValue;
     const nativeColor = normalizeColor(displayedColor) ?? '#000000';
+    const alphaPercentage = getColorAlphaPercentage(displayedColor) ?? 100;
+    const alphaRangeStyle: AlphaRangeStyle = {
+      '--lagrange-color-alpha': nativeColor,
+    };
     const setInputRef = useCallback(
       (node: HTMLInputElement | null): void => {
         inputRef.current = node;
@@ -214,9 +230,21 @@ export const ColorField = forwardRef<HTMLInputElement, ColorFieldProps>(
       }
     }
 
+    function handleAlphaChange(event: ChangeEvent<HTMLInputElement>): void {
+      const nextColor = applyColorAlphaPercentage(
+        displayedColor,
+        event.currentTarget.valueAsNumber,
+      );
+
+      if (nextColor) {
+        commitValue(nextColor);
+      }
+    }
+
     return (
       <span
         className={clsx(styles.field, className)}
+        data-alpha={showAlpha || undefined}
         data-disabled={disabled || undefined}
         data-invalid={isInvalid || undefined}
       >
@@ -250,6 +278,31 @@ export const ColorField = forwardRef<HTMLInputElement, ColorFieldProps>(
           type="text"
           value={draft}
         />
+        {showAlpha ? (
+          <span className={styles.alphaControl}>
+            <input
+              aria-describedby={joinIds(
+                fieldContext?.describedBy,
+                ariaDescribedBy,
+              )}
+              aria-invalid={resolvedAriaInvalid}
+              aria-label={alphaLabel}
+              aria-valuetext={`${alphaPercentage}%`}
+              className={styles.alphaRange}
+              disabled={disabled || readOnly}
+              max={100}
+              min={0}
+              onChange={handleAlphaChange}
+              step={1}
+              style={alphaRangeStyle}
+              type="range"
+              value={alphaPercentage}
+            />
+            <output aria-hidden="true" className={styles.alphaValue}>
+              {alphaLabel}: {alphaPercentage}%
+            </output>
+          </span>
+        ) : null}
         {name ? (
           <input
             disabled={disabled}
