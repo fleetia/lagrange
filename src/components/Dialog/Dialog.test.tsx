@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { useRef, useState, type ReactElement } from 'react';
+import { StrictMode, useRef, useState, type ReactElement } from 'react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { Button } from '../Button/Button';
@@ -7,6 +7,7 @@ import { Dialog } from './Dialog';
 
 afterEach(() => {
   cleanup();
+  document.body.removeAttribute('style');
   vi.restoreAllMocks();
 });
 
@@ -29,6 +30,61 @@ function DialogHarness(): ReactElement {
 }
 
 describe('Dialog', () => {
+  it('restores overflow declarations and their priority after closing', () => {
+    document.body.style.setProperty('overflow-x', 'clip', 'important');
+    document.body.style.setProperty('overflow-y', 'scroll');
+    render(<DialogHarness />);
+
+    expect(document.body.style.overflowY).toBe('scroll');
+    fireEvent.click(screen.getByRole('button', { name: 'Open settings' }));
+    expect(document.body.style.overflow).toBe('hidden');
+    document.body.style.setProperty('color', 'red');
+
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    expect(document.body.style.overflowX).toBe('clip');
+    expect(document.body.style.getPropertyPriority('overflow-x')).toBe(
+      'important',
+    );
+    expect(document.body.style.overflowY).toBe('scroll');
+    expect(document.body.style.getPropertyPriority('overflow-y')).toBe('');
+    expect(document.body.style.color).toBe('red');
+  });
+
+  it('keeps the body locked until the last open dialog unmounts', () => {
+    const onOpenChange = vi.fn();
+    function dialogs(showFirst: boolean, secondOpen: boolean): ReactElement {
+      return (
+        <StrictMode>
+          {showFirst ? (
+            <Dialog isOpen onOpenChange={onOpenChange} title="First">
+              First content
+            </Dialog>
+          ) : null}
+          <Dialog
+            isOpen={secondOpen}
+            onOpenChange={onOpenChange}
+            title="Second"
+          >
+            Second content
+          </Dialog>
+        </StrictMode>
+      );
+    }
+    const { rerender, unmount } = render(dialogs(true, true));
+    expect(document.body.style.overflow).toBe('hidden');
+
+    rerender(dialogs(false, true));
+    expect(document.body.style.overflow).toBe('hidden');
+
+    rerender(dialogs(false, false));
+    expect(document.body.style.getPropertyValue('overflow')).toBe('');
+
+    rerender(dialogs(false, true));
+    expect(document.body.style.overflow).toBe('hidden');
+    unmount();
+    expect(document.body.style.getPropertyValue('overflow')).toBe('');
+  });
+
   it('opens modally, ignores content clicks, and restores trigger focus after backdrop close', () => {
     render(<DialogHarness />);
     const trigger = screen.getByRole('button', { name: 'Open settings' });

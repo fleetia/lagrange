@@ -12,6 +12,7 @@ import clsx from 'clsx';
 import { Icon } from '../Icon/Icon';
 import { IconButton } from '../IconButton/IconButton';
 import { Heading } from '../Typography/Typography';
+import { useBodyScrollLock } from './useBodyScrollLock';
 import * as styles from './Dialog.css';
 
 export type DialogSize = 'small' | 'medium' | 'large';
@@ -83,6 +84,8 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     const previouslyFocusedRef = useRef<HTMLElement | null>(null);
     const wasOpenRef = useRef(false);
     const titleId = `lagrange-dialog-${useId()}-title`;
+
+    useBodyScrollLock(dialogRef, isOpen);
 
     function setDialogRef(node: HTMLDialogElement | null): void {
       dialogRef.current = node;

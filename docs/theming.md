@@ -26,6 +26,8 @@ Application code는 layout 계산처럼 raw scale이 필요한 경우를 제외�
 
 Navigation, overlay, range control은 각각 `component.navigation`, `component.overlay`, `component.range` contract를 공유합니다. 이 slot은 Breadcrumb/Tabs, Dialog/ContextMenu, RangeField처럼 같은 시각 역할을 공유하는 component 사이의 theme 일관성을 유지합니다.
 
+`ColorPicker`도 기존 control·overlay·range contract를 조합합니다. Hue wheel의 spectrum과 선택한 색은 편집하는 색상 데이터이므로 brand accent로 대체하지 않습니다.
+
 ## Public API
 
 Theme authoring API는 React component와 분리된 subpath에서 가져올 수 있습니다.

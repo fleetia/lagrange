@@ -117,20 +117,28 @@ export const brandThemeClass = createTheme(
 
 Lagrange는 app domain을 포함하지 않는 generic component만 제공합니다.
 
-| Family     | Components                                                                                                                                                                                                                                                                   |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Foundation | <code>ThemeRoot</code>, <code>Text</code>, <code>Heading</code>, <code>Rule</code>, <code>Stack</code>, <code>Inline</code>, <code>VisuallyHidden</code>                                                                                                                     |
-| Structure  | <code>Section</code>, <code>SectionHeader</code>, <code>Toolbar</code>, <code>FieldGroup</code>, <code>FieldGrid</code>, <code>Breadcrumb</code>, <code>Tabs</code>, <code>TabList</code>, <code>Tab</code>, <code>TabPanel</code>                                           |
-| Command    | <code>Action</code>, <code>Button</code>, <code>Icon</code>, <code>IconButton</code>                                                                                                                                                                                         |
-| Input      | <code>FormField</code>, <code>TextField</code>, <code>TextArea</code>, <code>NumberField</code>, <code>DateField</code>, <code>Select</code>, <code>Combobox</code>, <code>RangeField</code>, <code>ColorField</code>, <code>PlacementPicker</code>, <code>InlineEdit</code> |
-| Choice     | <code>Checkbox</code>, <code>RadioGroup</code>, <code>Radio</code>, <code>Switch</code>, <code>ChoiceGroup</code>, <code>Choice</code>                                                                                                                                       |
-| Overlay    | <code>Dialog</code>, <code>ContextMenu</code>, <code>ContextMenuItem</code>                                                                                                                                                                                                  |
-| Feedback   | <code>SaveStatus</code>, <code>StatusMarker</code>                                                                                                                                                                                                                           |
-| Data       | <code>Metric</code>, <code>DataTable</code>, <code>DataGrid</code>, <code>RadialBreakdownChart</code>                                                                                                                                                                        |
+| Family     | Components                                                                                                                                                                                                                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Foundation | <code>ThemeRoot</code>, <code>Text</code>, <code>Heading</code>, <code>Rule</code>, <code>Stack</code>, <code>Inline</code>, <code>VisuallyHidden</code>                                                                                                                                               |
+| Structure  | <code>Section</code>, <code>SectionHeader</code>, <code>Toolbar</code>, <code>FieldGroup</code>, <code>FieldGrid</code>, <code>Breadcrumb</code>, <code>Tabs</code>, <code>TabList</code>, <code>Tab</code>, <code>TabPanel</code>                                                                     |
+| Command    | <code>Action</code>, <code>Button</code>, <code>Icon</code>, <code>IconButton</code>                                                                                                                                                                                                                   |
+| Input      | <code>FormField</code>, <code>TextField</code>, <code>TextArea</code>, <code>NumberField</code>, <code>DateField</code>, <code>Select</code>, <code>Combobox</code>, <code>RangeField</code>, <code>ColorField</code>, <code>ColorPicker</code>, <code>PlacementPicker</code>, <code>InlineEdit</code> |
+| Choice     | <code>Checkbox</code>, <code>RadioGroup</code>, <code>Radio</code>, <code>Switch</code>, <code>ChoiceGroup</code>, <code>Choice</code>                                                                                                                                                                 |
+| Overlay    | <code>Dialog</code>, <code>ContextMenu</code>, <code>ContextMenuItem</code>                                                                                                                                                                                                                            |
+| Feedback   | <code>SaveStatus</code>, <code>StatusMarker</code>                                                                                                                                                                                                                                                     |
+| Data       | <code>Metric</code>, <code>DataTable</code>, <code>DataGrid</code>, <code>RadialBreakdownChart</code>                                                                                                                                                                                                  |
 
 <code>DataTable</code>은 semantic read-only data에 사용합니다. keyboard cell navigation, sorting, row selection, inline editing이 필요하면 <code>DataGrid</code>를 사용합니다. <code>RadialBreakdownChart</code>에는 자산·부채 같은 domain 의미를 넣지 않고 segment와 formatter만 전달합니다.
 
 Storybook은 각 component의 Default, Variants, States, Accessibility와 실제 keyboard interaction을 제공합니다.
+
+### Color controls
+
+<code>ColorField</code>는 화면 안에서 CSS color를 입력하거나 native picker를 여는 control입니다. <code>ColorPicker</code>는 작은 swatch 버튼에서 Dialog를 열어 hue wheel, saturation/lightness와 HEX/RGBA/HSLA channel 입력을 조합합니다. Coarse pointer 환경에서는 wheel과 saturation/lightness slider를 숨기고 native picker와 입력을 사용합니다.
+
+<code>ColorPicker</code>는 필수 <code>label</code>과 controlled <code>value</code>를 받고, 변경값을 <code>onValueChange</code>로 전달합니다. 출력은 기본적으로 hex이며 <code>showAlpha</code>를 켜면 hex8입니다. format 선택은 편집 방식만 바꾸며 callback의 출력 형식을 바꾸지 않습니다. 변경은 각 control에서 반영되므로 Dialog를 닫는 것이 이미 반영한 색을 되돌리지는 않습니다.
+
+화면 label과 오류 안내는 <code>FormField</code>로 조합할 수 있습니다. <code>ColorPicker</code>의 <code>label</code>은 trigger와 Dialog 이름에도 쓰이므로 함께 전달합니다. 팀별 배색이나 색의 업무 의미는 consumer가 소유합니다. 상세 props와 실행 예시는 [ColorPicker 소스와 stories](./src/components/ColorPicker)를 참고하세요.
 
 ## Design principles
 

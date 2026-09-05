@@ -150,6 +150,22 @@ export const States: Story = {
   render: (): ReactElement => <ConfirmationDialogExample />,
 };
 
+export const Scrollable: Story = {
+  render: (): ReactElement => (
+    <div style={{ minHeight: '200vh' }}>
+      <DialogExample initialIsOpen={false} title="Long settings">
+        <Stack gap="lg">
+          {Array.from({ length: 30 }, (_, index) => (
+            <Text key={index}>
+              Setting {index + 1}: review this preference.
+            </Text>
+          ))}
+        </Stack>
+      </DialogExample>
+    </div>
+  ),
+};
+
 export const Accessibility: Story = {
   render: (): ReactElement => (
     <DialogExample initialIsOpen={false} title="Keyboard settings">
