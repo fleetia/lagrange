@@ -4,6 +4,7 @@ export * from './Button';
 export * from './Checkbox';
 export * from './ChoiceGroup';
 export * from './ColorField';
+export * from './ColorPicker';
 export * from './Combobox';
 export * from './ContextMenu';
 export * from './DataGrid';

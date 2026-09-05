@@ -1,5 +1,17 @@
 # @fleetia/lagrange
 
+## 0.2.0
+
+### Minor Changes
+
+- cdc5a01: Add a compact ColorPicker with an anchored dialog, keyboard-operable hue wheel, saturation and lightness controls, editable color channels, and native color selection that preserves alpha. Values use the existing ColorField normalized hex contract.
+
+  Keep controlled HSL inputs synchronized when a parent rejects an edit, and preserve precise alpha values when an unchanged channel loses focus.
+
+### Patch Changes
+
+- cdc5a01: Lock background scrolling while dialogs are open and restore prior overflow styles after the last dialog closes or unmounts.
+
 ## 0.1.1
 
 ### Patch Changes
