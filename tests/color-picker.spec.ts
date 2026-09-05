@@ -18,6 +18,10 @@ test('ColorPicker opens an accessible anchored panel and restores keyboard focus
     (await new AxeBuilder({ page }).include('dialog[open]').analyze())
       .violations,
   ).toEqual([]);
+  await page.addStyleTag({
+    content:
+      'dialog { --lagrange-semantic-typography-family-ui: "Apple SD Gothic Neo"; }',
+  });
   await expect(dialog).toHaveScreenshot('color-picker-panel-desktop.png', {
     animations: 'disabled',
     scale: 'css',
@@ -61,6 +65,10 @@ test('ColorPicker preserves alpha on a coarse pointer and stays within a narrow 
   expect(bounds).not.toBeNull();
   expect(bounds!.x).toBeGreaterThanOrEqual(0);
   expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(360);
+  await page.addStyleTag({
+    content:
+      'dialog { --lagrange-semantic-typography-family-ui: "Apple SD Gothic Neo"; }',
+  });
   await expect(dialog).toHaveScreenshot('color-picker-panel-mobile.png', {
     animations: 'disabled',
     scale: 'css',
