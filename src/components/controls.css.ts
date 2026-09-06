@@ -33,7 +33,6 @@ export const control = style({
     },
     '&:focus-visible': {
       backgroundColor: componentVars.control.focusSurface,
-      borderInlineStartColor: componentVars.control.focusIndicator,
       borderBottomColor: componentVars.control.focusIndicator,
     },
     '&[data-invalid="true"]': {

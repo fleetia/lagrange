@@ -100,7 +100,8 @@ export const cell = style({
     },
     '&:focus-visible': {
       backgroundColor: componentVars.table.rowSelectedSurface,
-      boxShadow: `inset 2px 0 0 ${semanticVars.color.interaction.focus}`,
+      outline: `${semanticVars.border.width.hairline} solid ${semanticVars.color.interaction.focus}`,
+      outlineOffset: '-1px',
     },
     '&[data-editable="true"]': {
       cursor: 'text',

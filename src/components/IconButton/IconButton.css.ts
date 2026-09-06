@@ -18,14 +18,6 @@ export const button = style({
   borderRadius: semanticVars.shape.radius.none,
   cursor: 'pointer',
   selectors: {
-    '&::before': {
-      position: 'absolute',
-      insetBlock: 0,
-      insetInlineStart: 0,
-      width: '2px',
-      backgroundColor: 'transparent',
-      content: '',
-    },
     '&:hover:not(:disabled)': {
       backgroundColor: semanticVars.color.interaction.focusSurface,
     },
@@ -34,9 +26,8 @@ export const button = style({
     },
     '&:focus-visible': {
       backgroundColor: semanticVars.color.interaction.focusSurface,
-    },
-    '&:focus-visible::before': {
-      backgroundColor: semanticVars.color.interaction.focus,
+      outline: `${semanticVars.border.width.hairline} solid ${semanticVars.color.interaction.focus}`,
+      outlineOffset: '2px',
     },
     '&:disabled': {
       color: semanticVars.color.content.secondary,

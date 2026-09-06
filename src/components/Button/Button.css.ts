@@ -23,7 +23,8 @@ export const button = style({
       outline: 'none',
     },
     '&:focus-visible': {
-      boxShadow: `inset 3px 0 ${componentVars.button.focusIndicator}`,
+      outline: `${semanticVars.border.width.hairline} solid ${componentVars.button.focusIndicator}`,
+      outlineOffset: '2px',
     },
     '&:disabled': {
       color: componentVars.button.disabledText,

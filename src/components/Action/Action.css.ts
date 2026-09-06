@@ -32,15 +32,6 @@ export const action = style({
       backgroundColor: 'currentColor',
       content: '',
     },
-    '&::after': {
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      left: `calc(${semanticVars.space.xs} * -1)`,
-      width: '2px',
-      backgroundColor: 'transparent',
-      content: '',
-    },
     '&:hover:not(:disabled)': {
       backgroundColor: semanticVars.color.interaction.focusSurface,
     },
@@ -49,9 +40,8 @@ export const action = style({
     },
     '&:focus-visible': {
       backgroundColor: semanticVars.color.interaction.focusSurface,
-    },
-    '&:focus-visible::after': {
-      backgroundColor: semanticVars.color.interaction.focus,
+      outline: `${semanticVars.border.width.hairline} solid ${semanticVars.color.interaction.focus}`,
+      outlineOffset: '2px',
     },
     '&:disabled': {
       color: semanticVars.color.content.secondary,

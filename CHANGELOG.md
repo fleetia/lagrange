@@ -1,5 +1,11 @@
 # @fleetia/lagrange
 
+## 0.2.1
+
+### Patch Changes
+
+- Replace left-edge focus markers with existing underline and surface treatments or thin outlines. Preserve selected, checked, editing, and invalid state markers.
+
 ## 0.2.0
 
 ### Minor Changes

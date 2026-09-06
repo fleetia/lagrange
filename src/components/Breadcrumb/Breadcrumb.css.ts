@@ -51,8 +51,8 @@ export const item = style({
       color: componentVars.navigation.hoverText,
       backgroundColor: componentVars.navigation.hoverSurface,
       borderBottomColor: semanticVars.color.interaction.focus,
-      outline: 0,
-      boxShadow: `-2px 0 0 ${semanticVars.color.interaction.focus}`,
+      outline: `${semanticVars.border.width.hairline} solid ${semanticVars.color.interaction.focus}`,
+      outlineOffset: '2px',
     },
   },
 });

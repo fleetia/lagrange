@@ -21,7 +21,6 @@ export const field = style({
     },
     '&:focus-within': {
       backgroundColor: componentVars.control.focusSurface,
-      borderInlineStartColor: componentVars.control.focusIndicator,
       borderBottomColor: componentVars.control.focusIndicator,
     },
     '&[data-invalid="true"]': {

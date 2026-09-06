@@ -104,7 +104,8 @@ export const panel = style({
       outline: 'none',
     },
     '&:focus-visible': {
-      boxShadow: `inset 3px 0 ${semanticVars.color.interaction.focus}`,
+      outline: `${semanticVars.border.width.hairline} solid ${semanticVars.color.interaction.focus}`,
+      outlineOffset: '-1px',
     },
   },
 });

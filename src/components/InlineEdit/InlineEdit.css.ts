@@ -41,7 +41,6 @@ export const trigger = style({
     },
     '&:focus-visible': {
       backgroundColor: componentVars.control.focusSurface,
-      borderInlineStartColor: componentVars.control.focusIndicator,
       borderBottomColor: componentVars.control.focusIndicator,
     },
     '&:disabled': {
