@@ -46,8 +46,8 @@ export const option = style({
     '&:focus-visible': {
       backgroundColor: componentVars.navigation.hoverSurface,
       borderColor: semanticVars.color.interaction.focus,
-      outline: 0,
-      boxShadow: `inset 3px 0 0 ${semanticVars.color.interaction.focus}`,
+      outline: `${semanticVars.border.width.hairline} solid ${semanticVars.color.interaction.focus}`,
+      outlineOffset: '-1px',
     },
     '&:disabled': {
       color: componentVars.choice.disabledText,

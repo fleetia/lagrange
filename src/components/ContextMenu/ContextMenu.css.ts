@@ -51,7 +51,8 @@ export const item = style({
     '&:focus-visible': {
       color: componentVars.navigation.hoverText,
       backgroundColor: componentVars.navigation.hoverSurface,
-      boxShadow: `inset 2px 0 ${semanticVars.color.interaction.focus}`,
+      outline: `${semanticVars.border.width.hairline} solid ${semanticVars.color.interaction.focus}`,
+      outlineOffset: '-1px',
     },
     '&:disabled': {
       color: componentVars.control.disabledText,

@@ -131,7 +131,3 @@ globalStyle(`${choice}:has(${input}:focus-visible)`, {
   borderBottomColor: semanticVars.color.interaction.focus,
   borderBottomStyle: 'solid',
 });
-
-globalStyle(`${choice}:has(${input}:focus-visible)::before`, {
-  backgroundColor: semanticVars.color.interaction.focus,
-});

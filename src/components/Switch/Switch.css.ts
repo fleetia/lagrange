@@ -97,7 +97,8 @@ globalStyle(`${input}:checked + ${track}::after`, {
 globalStyle(`${input}:focus-visible + ${track}`, {
   backgroundColor: componentVars.choice.focusSurface,
   borderBottomColor: semanticVars.color.interaction.focus,
-  boxShadow: `-3px 0 0 ${semanticVars.color.interaction.focus}`,
+  outline: `${semanticVars.border.width.hairline} solid ${semanticVars.color.interaction.focus}`,
+  outlineOffset: '2px',
 });
 
 globalStyle(`${root}[data-invalid="true"] ${track}`, {

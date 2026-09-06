@@ -86,7 +86,8 @@ globalStyle(`${input}:checked + ${indicator}::after`, {
 globalStyle(`${input}:focus-visible + ${indicator}`, {
   backgroundColor: componentVars.choice.focusSurface,
   borderColor: semanticVars.color.interaction.focus,
-  boxShadow: `-3px 0 0 ${semanticVars.color.interaction.focus}`,
+  outline: `${semanticVars.border.width.hairline} solid ${semanticVars.color.interaction.focus}`,
+  outlineOffset: '2px',
 });
 
 globalStyle(`${root}[data-invalid="true"] ${indicator}`, {
