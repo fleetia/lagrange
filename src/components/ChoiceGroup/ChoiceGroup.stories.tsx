@@ -29,7 +29,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Compact radio choices separated by rules and selection markers. It intentionally avoids pill styling.',
+          'Compact radio choices with underlines and background color to indicate selection.',
       },
     },
   },

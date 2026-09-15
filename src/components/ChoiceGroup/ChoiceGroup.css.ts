@@ -67,15 +67,6 @@ export const choice = style({
   borderBottom: `${semanticVars.border.width.hairline} dotted ${componentVars.choice.border}`,
   cursor: 'pointer',
   selectors: {
-    '&::before': {
-      position: 'absolute',
-      top: semanticVars.space.xs,
-      bottom: semanticVars.space.xs,
-      left: 0,
-      width: '2px',
-      backgroundColor: 'transparent',
-      content: '',
-    },
     '&:hover:not([data-disabled="true"])': {
       color: semanticVars.color.content.accent,
       backgroundColor: componentVars.choice.activeSurface,
@@ -120,10 +111,6 @@ globalStyle(`${choice}:has(${input}:checked)`, {
   backgroundColor: componentVars.choice.selectedSurface,
   borderBottomColor: componentVars.choice.selectedIndicator,
   borderBottomStyle: 'solid',
-});
-
-globalStyle(`${choice}:has(${input}:checked)::before`, {
-  backgroundColor: componentVars.choice.selectedIndicator,
 });
 
 globalStyle(`${choice}:has(${input}:focus-visible)`, {

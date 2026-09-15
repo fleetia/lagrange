@@ -104,5 +104,4 @@ globalStyle(`${input}:focus-visible + ${track}`, {
 globalStyle(`${root}[data-invalid="true"] ${track}`, {
   backgroundColor: semanticVars.color.status.criticalSurface,
   borderBottomColor: componentVars.choice.critical,
-  boxShadow: `-3px 0 0 ${componentVars.choice.critical}`,
 });
