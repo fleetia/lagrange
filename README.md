@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/icon-dark.svg">
+  <img src=".github/assets/icon.svg" alt="Lagrange" width="64" height="64">
+</picture>
+
 # Lagrange
 
 Lagrange는 촘촘하고 정확한 data interface를 위한 editorial React design system입니다.
@@ -9,6 +14,10 @@ Lagrange는 촘촘하고 정확한 data interface를 위한 editorial React desi
 - License: AGPL-3.0-only
 
 현재 API는 <code>1.0.0</code> 이전 단계입니다. 공개 API와 visual language가 안정화되기 전까지 minor release에서도 migration이 필요할 수 있습니다.
+
+## Figma
+
+디자인 원본은 [Lagrange — Library & Playground](https://www.figma.com/design/vKl8h9uoXUUljJ5yEAcNpr)에서 확인할 수 있습니다.
 
 ## 설치
 
