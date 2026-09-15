@@ -1,5 +1,12 @@
 # @fleetia/lagrange
 
+## 0.2.2
+
+### Patch Changes
+
+- 9d48b56: 기본 display, UI, data 글꼴을 을유1945로 통일하고, 패키지 stylesheet에 Regular(400)·SemiBold(600) 웹폰트 로딩을 포함합니다.
+- bb527de: Remove left accent bars from choice and input states while preserving underlines, background colors, and keyboard focus indicators.
+
 ## 0.2.1
 
 ### Patch Changes
