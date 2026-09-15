@@ -64,8 +64,6 @@ export const option = style({
     },
     '&[data-active="true"]': {
       backgroundColor: semanticVars.color.interaction.focusSurface,
-      borderInlineStart: `2px solid ${semanticVars.color.interaction.focus}`,
-      paddingInlineStart: `calc(${semanticVars.space.sm} - 2px)`,
     },
     '&[aria-selected="true"]': {
       color: semanticVars.color.content.accent,

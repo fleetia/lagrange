@@ -16,10 +16,9 @@ export const tokens = {
     vermilionWash: '#f0d6cc',
   },
   font: {
-    display:
-      '"Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif',
-    ui: 'Pretendard, "IBM Plex Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif',
-    data: '"IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace',
+    display: 'Eulyoo1945, serif',
+    ui: 'Eulyoo1945, serif',
+    data: 'Eulyoo1945, serif',
   },
   fontSize: {
     caption: '0.6875rem',

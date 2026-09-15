@@ -17,7 +17,6 @@ export const field = style({
   paddingInline: semanticVars.space.xxs,
   color: componentVars.control.text,
   backgroundColor: 'transparent',
-  borderInlineStart: '2px solid transparent',
   borderBottom: `${semanticVars.border.width.hairline} solid ${componentVars.control.border}`,
   transition: 'background-color 100ms ease, border-color 100ms ease',
   selectors: {
@@ -30,7 +29,6 @@ export const field = style({
     },
     '&[data-invalid="true"]': {
       backgroundColor: componentVars.control.invalidSurface,
-      borderInlineStartColor: componentVars.control.invalidIndicator,
       borderBottomColor: componentVars.control.invalidIndicator,
     },
     '&[data-alpha="true"]': {

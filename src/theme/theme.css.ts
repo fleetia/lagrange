@@ -1,7 +1,20 @@
-import { createTheme, style } from '@vanilla-extract/css';
+import { createTheme, globalFontFace, style } from '@vanilla-extract/css';
 
 import { semanticVars, themeVars } from './themeContract.css';
 import { componentTokens, semanticTokens } from './themeTokens';
+
+globalFontFace('Eulyoo1945', [
+  {
+    src: 'url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/Eulyoo1945-Regular.woff") format("woff")',
+    fontWeight: 400,
+    fontDisplay: 'swap',
+  },
+  {
+    src: 'url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/Eulyoo1945-SemiBold.woff") format("woff")',
+    fontWeight: 600,
+    fontDisplay: 'swap',
+  },
+]);
 
 const resetTokenGroup = <Group extends Readonly<Record<string, string>>>(
   group: Group,

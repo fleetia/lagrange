@@ -93,5 +93,4 @@ globalStyle(`${input}:focus-visible + ${indicator}`, {
 globalStyle(`${root}[data-invalid="true"] ${indicator}`, {
   backgroundColor: semanticVars.color.status.criticalSurface,
   borderColor: componentVars.choice.critical,
-  boxShadow: `-3px 0 0 ${componentVars.choice.critical}`,
 });

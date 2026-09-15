@@ -13,7 +13,6 @@ export const control = style({
   color: componentVars.control.text,
   backgroundColor: 'transparent',
   border: 0,
-  borderInlineStart: '2px solid transparent',
   borderBottom: `${semanticVars.border.width.hairline} solid ${componentVars.control.border}`,
   borderRadius: semanticVars.shape.radius.none,
   fontFamily: semanticVars.typography.family.ui,
@@ -37,7 +36,6 @@ export const control = style({
     },
     '&[data-invalid="true"]': {
       backgroundColor: componentVars.control.invalidSurface,
-      borderInlineStartColor: componentVars.control.invalidIndicator,
       borderBottomColor: componentVars.control.invalidIndicator,
     },
     '&:disabled': {

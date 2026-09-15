@@ -23,7 +23,6 @@ export const trigger = style({
   color: componentVars.control.text,
   backgroundColor: 'transparent',
   border: 0,
-  borderInlineStart: '2px solid transparent',
   borderBottom: `${semanticVars.border.width.hairline} dotted ${semanticVars.color.border.subtle}`,
   borderRadius: semanticVars.shape.radius.none,
   fontFamily: semanticVars.typography.family.ui,
