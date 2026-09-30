@@ -26,7 +26,7 @@ window.HTMLDialogElement.prototype.close = function () {
   window.setTimeout(() => this.dispatchEvent(new window.Event('close')), 0);
 };
 
-const [{ default: React, StrictMode }, { createRoot }, { Dialog }] =
+const [{ default: React, StrictMode }, { createRoot }, { Dialog, IconTile }] =
   await Promise.all([
     import('react'),
     import('react-dom/client'),
@@ -34,6 +34,8 @@ const [{ default: React, StrictMode }, { createRoot }, { Dialog }] =
   ]);
 const container = window.document.createElement('div');
 const openChanges = [];
+const tileRef = React.createRef();
+let tileActivations = 0;
 window.document.body.append(container);
 
 const root = createRoot(container);
@@ -50,6 +52,14 @@ root.render(
       },
       'Dialog content',
     ),
+    React.createElement(IconTile, {
+      icon: React.createElement('span', { 'aria-hidden': true }, '☆'),
+      label: 'React 18 icon tile',
+      onClick: () => {
+        tileActivations += 1;
+      },
+      ref: tileRef,
+    }),
   ),
 );
 
@@ -57,6 +67,15 @@ await new Promise((resolve) => window.setTimeout(resolve, 50));
 
 assert.deepEqual(openChanges, []);
 assert.equal(window.document.querySelector('dialog')?.open, true);
+assert.equal(tileRef.current?.tagName, 'BUTTON');
+assert.equal(tileRef.current?.type, 'button');
+assert.equal(
+  tileRef.current?.querySelector('[data-lagrange-part="icon-tile-label"]')
+    ?.textContent,
+  'React 18 icon tile',
+);
+tileRef.current.click();
+assert.equal(tileActivations, 1);
 
 root.unmount();
 window.close();

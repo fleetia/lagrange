@@ -7,6 +7,7 @@ type StoryA11yCase = {
 };
 
 const STORY_CASES: readonly StoryA11yCase[] = [
+  { id: 'components-icontile--accessibility', name: 'IconTile accessibility' },
   { id: 'components-action--accessibility', name: 'Action accessibility' },
   {
     id: 'components-breadcrumb--accessibility',
@@ -166,3 +167,60 @@ for (const storyCase of STORY_CASES) {
     expect(results.violations).toEqual([]);
   });
 }
+
+test('IconTile overflowing label has keyboard access and no other axe violations', async ({
+  page,
+}) => {
+  await page.goto(
+    '/iframe.html?id=components-icontile--scrollable&viewMode=story',
+  );
+  const tile = page.getByTestId('scrollable-tile');
+  const label = tile.locator('[data-lagrange-part="icon-tile-label"]');
+  await expect(tile).toBeVisible();
+  expect(
+    await label.evaluate(
+      (element) => element.scrollHeight - element.clientHeight,
+    ),
+  ).toBeGreaterThan(0);
+  await tile.focus();
+  await page.keyboard.press('End');
+  await expect
+    .poll(() => label.evaluate((element) => element.scrollTop))
+    .toBeGreaterThan(0);
+  await page.keyboard.press('Home');
+  await expect
+    .poll(() => label.evaluate((element) => element.scrollTop))
+    .toBe(0);
+  await expect(tile).toBeFocused();
+
+  const results = await analyzeStory(page);
+  const manualKeyboardRule = results.violations.filter(
+    ({ id }) => id === 'scrollable-region-focusable',
+  );
+  expect(
+    results.violations.filter(({ id }) => id !== 'scrollable-region-focusable'),
+  ).toEqual([]);
+
+  // Axe cannot infer this label's parent-button key handler; Chromium and WebKit verify it directly.
+  for (const violation of manualKeyboardRule) {
+    expect(violation.nodes).toHaveLength(1);
+    for (const node of violation.nodes) {
+      expect(node.target).toHaveLength(1);
+      const selector = node.target[0];
+      if (typeof selector !== 'string') {
+        throw new Error('Expected a single label target for keyboard review.');
+      }
+      const target = page.locator(selector);
+      await expect(target).toHaveCount(1);
+      expect(
+        await target.evaluate(
+          (element) =>
+            element ===
+            document.querySelector(
+              '[data-testid="scrollable-tile"] [data-lagrange-part="icon-tile-label"]',
+            ),
+        ),
+      ).toBe(true);
+    }
+  }
+});
