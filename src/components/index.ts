@@ -15,6 +15,7 @@ export * from './FieldGroup';
 export * from './FormField';
 export * from './Icon';
 export * from './IconButton';
+export * from './IconTile';
 export * from './InlineEdit';
 export * from './Layout';
 export * from './Metric';

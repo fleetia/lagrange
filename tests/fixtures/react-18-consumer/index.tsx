@@ -9,6 +9,7 @@ import {
   DataTable,
   Dialog,
   FormField,
+  IconTile,
   NumberField,
   PlacementPicker,
   RadialBreakdownChart,
@@ -128,6 +129,14 @@ export const fixture = (
       <ContextMenuItem>Open</ContextMenuItem>
     </ContextMenu>
     <Button>Save</Button>
+    <IconTile
+      data-testid="react-18-icon-tile"
+      icon={<span aria-hidden="true">☆</span>}
+      iconSize={32}
+      label="자료 모아보기"
+      labelProps={{ className: 'consumer-label', title: '자료 모아보기' }}
+      layout="vertical"
+    />
     <DataTable
       columns={columns}
       getRowKey={(row) => row.id}

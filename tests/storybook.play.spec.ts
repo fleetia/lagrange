@@ -8,6 +8,16 @@ type StoryPlayCase = {
 
 const STORY_PLAY_CASES: readonly StoryPlayCase[] = [
   {
+    id: 'components-icontile--accessibility',
+    name: 'IconTile native keyboard activation',
+    assertComplete: async (page) => {
+      await expect(
+        page.getByRole('button', { name: '키보드로 자료 열기' }),
+      ).toBeFocused();
+      await expect(page.getByRole('status')).toHaveText('Opened 2 times');
+    },
+  },
+  {
     id: 'components-breadcrumb--accessibility',
     name: 'Breadcrumb keyboard navigation',
     assertComplete: async (page) => {

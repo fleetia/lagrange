@@ -16,6 +16,21 @@ const VIEWPORTS: Record<ViewportName, ViewportSize> = {
 
 const DESKTOP_CASES: readonly Omit<StoryVisualCase, 'viewport'>[] = [
   {
+    id: 'components-icontile--default',
+    name: 'IconTile default',
+    snapshot: 'icon-tile-default-desktop.png',
+  },
+  {
+    id: 'components-icontile--variants',
+    name: 'IconTile variants',
+    snapshot: 'icon-tile-variants-desktop.png',
+  },
+  {
+    id: 'components-icontile--states',
+    name: 'IconTile states',
+    snapshot: 'icon-tile-states-desktop.png',
+  },
+  {
     id: 'components-button--default',
     name: 'Button default',
     snapshot: 'button-default-desktop.png',

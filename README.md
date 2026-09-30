@@ -130,7 +130,7 @@ Lagrange는 app domain을 포함하지 않는 generic component만 제공합니�
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Foundation | <code>ThemeRoot</code>, <code>Text</code>, <code>Heading</code>, <code>Rule</code>, <code>Stack</code>, <code>Inline</code>, <code>VisuallyHidden</code>                                                                                                                                               |
 | Structure  | <code>Section</code>, <code>SectionHeader</code>, <code>Toolbar</code>, <code>FieldGroup</code>, <code>FieldGrid</code>, <code>Breadcrumb</code>, <code>Tabs</code>, <code>TabList</code>, <code>Tab</code>, <code>TabPanel</code>                                                                     |
-| Command    | <code>Action</code>, <code>Button</code>, <code>Icon</code>, <code>IconButton</code>                                                                                                                                                                                                                   |
+| Command    | <code>Action</code>, <code>Button</code>, <code>Icon</code>, <code>IconButton</code>, <code>IconTile</code>                                                                                                                                                                                            |
 | Input      | <code>FormField</code>, <code>TextField</code>, <code>TextArea</code>, <code>NumberField</code>, <code>DateField</code>, <code>Select</code>, <code>Combobox</code>, <code>RangeField</code>, <code>ColorField</code>, <code>ColorPicker</code>, <code>PlacementPicker</code>, <code>InlineEdit</code> |
 | Choice     | <code>Checkbox</code>, <code>RadioGroup</code>, <code>Radio</code>, <code>Switch</code>, <code>ChoiceGroup</code>, <code>Choice</code>                                                                                                                                                                 |
 | Overlay    | <code>Dialog</code>, <code>ContextMenu</code>, <code>ContextMenuItem</code>                                                                                                                                                                                                                            |
@@ -140,6 +140,40 @@ Lagrange는 app domain을 포함하지 않는 generic component만 제공합니�
 <code>DataTable</code>은 semantic read-only data에 사용합니다. keyboard cell navigation, sorting, row selection, inline editing이 필요하면 <code>DataGrid</code>를 사용합니다. <code>RadialBreakdownChart</code>에는 자산·부채 같은 domain 의미를 넣지 않고 segment와 formatter만 전달합니다.
 
 Storybook은 각 component의 Default, Variants, States, Accessibility와 실제 keyboard interaction을 제공합니다.
+
+### Icon tiles
+
+<code>IconTile</code>은 아이콘과 이름으로 구성된 native button입니다. 기본 크기는 80×80px이며, <code>style</code>이나 <code>className</code>으로 크기와 색을 조정합니다. 아이콘과 이름 사이 간격은 <code>semantic.space.sm</code>(기본 8px)을 사용합니다.
+
+Figma의 compact 80×80px 기준은 [02 Library의 IconTile main component](https://www.figma.com/design/vKl8h9uoXUUljJ5yEAcNpr?node-id=232-5469)와 [Starlit Playground instance](https://www.figma.com/design/vKl8h9uoXUUljJ5yEAcNpr?node-id=232-5470)에 반영되어 있습니다. main component는 세로 Auto Layout에 <code>semantic/space/sm</code> 간격, 세로 3px·가로 8px padding, <code>Text/Caption/Medium</code> style을 사용합니다. fill과 1px stroke는 각각 <code>semantic/color/surface/raised</code>, <code>semantic/color/border/subtle</code>에 연결되어 있습니다. 62×28.6px label viewport는 auto-height text를 clip하고 Prototype의 vertical scrolling을 제공합니다.
+
+[300px 높이 예시](https://www.figma.com/design/vKl8h9uoXUUljJ5yEAcNpr?node-id=232-11177)는 같은 token과 text style을 사용하는 독립 Auto Layout frame입니다. 고정 크기인 compact instance와 달리 label viewport를 84px로 설정해 긴 이름 전체가 들어가는 상태를 보여줍니다. 코드에서는 카드 높이와 이름 길이에 따라 viewport 높이를 계산합니다.
+
+```tsx
+import { IconTile } from '@fleetia/lagrange';
+
+<IconTile
+  icon={<span>★</span>}
+  label="여러 줄로 표시하고 끝까지 읽을 수 있는 긴 이름"
+  style={{ height: 300 }}
+/>;
+```
+
+| Prop                    | Type                        | 기본값과 의미                                                                                                         |
+| ----------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| <code>icon</code>       | <code>ReactNode</code>      | 필수. 장식용 아이콘을 전달합니다.                                                                                     |
+| <code>label</code>      | <code>string</code>         | 필수. 표시할 이름이며 button의 기본 accessible name입니다.                                                            |
+| <code>iconSize</code>   | <code>number</code>         | 28. 아이콘 영역의 px 크기이며 이름에 남는 높이를 계산합니다.                                                          |
+| <code>layout</code>     | <code>IconTileLayout</code> | <code>'vertical'</code>. 세로 배치는 줄바꿈하고 가로 배치는 한 줄 ellipsis를 사용합니다.                              |
+| <code>labelProps</code> | <code>span</code> props     | 이름 영역에 class, style, data attribute 등을 전달합니다. <code>children</code>과 <code>tabIndex</code>는 제외합니다. |
+
+<code>children</code>을 제외한 native button props와 <code>ref</code>를 지원합니다. 세로 이름이 길면 완전한 줄이 들어가는 높이로 viewport를 제한하고 내부에서 스크롤합니다. button에 focus한 상태에서 ArrowUp/ArrowDown은 한 줄, PageUp/PageDown은 viewport 높이만큼 이동하고 Home/End는 처음과 끝으로 이동합니다. Enter/Space는 button을 활성화합니다. 이름 영역은 wheel과 touch로도 스크롤할 수 있습니다. 브라우저가 스크롤 가능한 이름 영역에 별도 focus를 제공하면 그 영역에서는 native keyboard scrolling을 사용합니다.
+
+이름이 넘칠 때만 스크롤 키의 기본 동작을 막습니다. 가로 배치와 Alt/Ctrl/Meta 조합은 소비하지 않으며, consumer의 <code>onKeyDown</code>이 먼저 실행되어 <code>preventDefault()</code>로 내부 스크롤을 막을 수 있습니다. 이름 전체는 스크롤 위치와 관계없이 accessible name에 포함됩니다. 별도 이름이 필요하면 <code>aria-label</code>을 전달합니다.
+
+DOM slots는 <code>data-lagrange-part="icon-tile"</code>, <code>"icon-tile-icon"</code>, <code>"icon-tile-label"</code>로 구분합니다. 실행 예시는 [IconTile 소스와 stories](./src/components/IconTile)를 참고하세요.
+
+button focus에서의 여섯 스크롤 키와 Enter/Space 활성화는 [browser tests](./tests/icon-tile.spec.ts)로 Chromium·WebKit에서 확인합니다. axe는 label의 parent button key handler를 추론하지 못하므로, [overflow accessibility test](./tests/storybook.a11y.spec.ts)는 해당 label 하나의 <code>scrollable-region-focusable</code> 결과만 실제 키보드 검증으로 확인합니다. 다른 axe rule과 다른 target의 위반은 허용하지 않습니다.
 
 ### Color controls
 
