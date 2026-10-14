@@ -5,9 +5,9 @@
   "license": "AGPL-3.0-only",
   "type": "module",
   "scripts": {
-    "dev": "pnpm --filter @comet/storybook dev",
-    "build": "pnpm --filter @comet/storybook build",
-    "check": "pnpm --filter \"./ds/*\" run check:generated && tsc -p ds/tsconfig.json && pnpm --filter @comet/storybook typecheck && pnpm --filter @comet/storybook check:stories && oxlint --config .oxlintrc.json ds",
+    "dev": "corepack pnpm --filter @comet/storybook dev",
+    "build": "corepack pnpm --filter @comet/storybook build",
+    "check": "corepack pnpm --filter \"./ds/*\" run check:generated && tsc -p ds/tsconfig.json && corepack pnpm --filter @comet/storybook typecheck && corepack pnpm --filter @comet/storybook check:stories && oxlint --config .oxlintrc.json ds",
     "test": "vitest run --config vitest.ds.config.ts",
     "format:check": "oxfmt --config .oxfmtrc.json --check"
   },
