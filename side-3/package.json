@@ -1,0 +1,32 @@
+{
+  "name": "@fleetia/lagrange-side-3",
+  "version": "0.0.0",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @comet/storybook dev",
+    "build": "pnpm --filter @comet/storybook build",
+    "check": "pnpm --filter \"./ds/*\" run check:generated && tsc -p ds/tsconfig.json && pnpm --filter @comet/storybook typecheck && pnpm --filter @comet/storybook check:stories && oxlint --config .oxlintrc.json ds",
+    "test": "vitest run --config vitest.ds.config.ts",
+    "format:check": "oxfmt --config .oxfmtrc.json --check"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vanilla-extract/vite-plugin": "^5.2.6",
+    "@vitejs/plugin-react": "^6.1.1",
+    "jsdom": "30.0.1",
+    "oxfmt": "^0.68.0",
+    "oxlint": "^1.83.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.0"
+  },
+  "packageManager": "pnpm@11.27.0",
+  "engines": {
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
+  }
+}

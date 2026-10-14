@@ -1,0 +1,15 @@
+{
+  "sortPackageJson": false,
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/storybook-static/**",
+    "**/test-results/**",
+    "ds/icon/src/icons/**",
+    "ds/icon/src/index.ts",
+    "ds/token/src/index.ts",
+    "ds/token/styles.css",
+    "ds/*/figma/**",
+    "pnpm-lock.yaml",
+    "ds/icon/src/Icon.tsx"
+  ]
+}

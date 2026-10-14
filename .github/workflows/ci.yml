@@ -64,6 +64,28 @@ jobs:
       - name: Build Storybook
         run: pnpm storybook:build
 
+      - name: Set up Node.js for side-3
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 22.22.2
+          cache: pnpm
+          cache-dependency-path: side-3/pnpm-lock.yaml
+
+      - name: Install side-3 dependencies
+        working-directory: side-3
+        run: corepack pnpm install --frozen-lockfile
+
+      - name: Check side-3
+        working-directory: side-3
+        run: corepack pnpm check && corepack pnpm format:check && corepack pnpm test
+
+      - name: Build side-3 Storybook
+        working-directory: side-3
+        run: corepack pnpm build
+
+      - name: Include side-3 in GitHub Pages
+        run: cp -R side-3/storybook-static storybook-static/side-3
+
       - name: Configure GitHub Pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0

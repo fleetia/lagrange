@@ -2,5 +2,6 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "printWidth": 80,
   "singleQuote": true,
-  "sortPackageJson": false
+  "sortPackageJson": false,
+  "ignorePatterns": ["side-3/**"]
 }

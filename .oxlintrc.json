@@ -18,7 +18,8 @@
     "**/storybook-static/**",
     "**/playwright-report/**",
     "**/test-results/**",
-    "**/coverage/**"
+    "**/coverage/**",
+    "side-3/**"
   ],
   "rules": {
     "constructor-super": "error",
