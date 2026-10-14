@@ -142,7 +142,6 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs:
       - verify
-      - visual
     runs-on: ubuntu-latest
     timeout-minutes: 10
     concurrency:
